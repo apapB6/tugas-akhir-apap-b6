@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -59,7 +60,7 @@ public class BukuModel implements Serializable {
     @JsonIgnore
     private JenisModel buku_jenis;
     
-    @OneToMany(mappedBy = "PinjamBuku", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "PinjamBuku", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Set<PeminjamanModel> peminjamanList = new HashSet<>();
 
     

@@ -53,13 +53,13 @@ public class PeminjamanModel implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "uuid_user", referencedColumnName = "id")
-    @OnDelete(action = OnDeleteAction.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private UserModel user_peminjaman;
 	
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_buku", referencedColumnName = "id")
-    @OnDelete(action = OnDeleteAction.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private BukuModel PinjamBuku;
 
