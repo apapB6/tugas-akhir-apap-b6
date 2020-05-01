@@ -27,6 +27,31 @@
 | 1806269814 | Shafira Fauzia | <ol><li>[Web Service, GET] Menampilkan User Profile</li> <li>[Web Service, POST] Menambah User</li> </ol> |
 
 ## Installing
+Install `java` at least version `1.8.0`, follow [this instruction](https://www.java.com/en/download/help/download_options.xml) to install Java 1.8 JDK.
+
+After Java installed, Follow this instructions
+```bash
+$ git clone https://github.com/apap-ekstensi-2018/TA_1 tugas_akhir
+$ cd tugas_akhir
+$ ./mvnw install
+$ ./mvnw build
+$ ./mwnw spring-boot:run
+```
+Go to `http://localhost:8080/` to [start this application.](http://localhost:8080/)
+
+## Deployment
+Once `spring-boot-maven-plugin` has been included in your `pom.xml`, it automatically tries to rewrite archives to make them executable by using the `spring-boot:repackage` goal.
+You should configure your project to build a jar or war (as appropriate) by using the usual packaging element, as shown in the following example:
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- ... -->
+	<packaging>jar</packaging>
+	<!-- ... -->
+</project>
+```
+[See more](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#build-tool-plugins-maven-packaging)
 
 
 ## Features
