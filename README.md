@@ -31,8 +31,8 @@ Install `java` at least version `1.8.0`, follow [this instruction](https://www.j
 
 After Java installed, Follow this instructions
 ```bash
-$ git clone https://github.com/apap-ekstensi-2018/TA_1 tugas_akhir
-$ cd tugas_akhir
+$ git clone https://github.com/apapB6/tugas-akhir-apap-b6.git
+$ cd Backend/finalproject_B6-master
 $ ./mvnw install
 $ ./mvnw build
 $ ./mwnw spring-boot:run
