@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2019 at 02:20 AM
+-- Generation Time: Oct 29, 2019 at 02:22 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -25,35 +25,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Table structure for table `jenis_buku`
 --
 
-CREATE TABLE `role` (
+CREATE TABLE `jenis_buku` (
   `id` int(11) NOT NULL,
-  `nama` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+  `jenis_buku` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `role`
+-- Dumping data for table `jenis_buku`
 --
 
-INSERT INTO `role` (`id`, `nama`) VALUES
-(1, 'Kepala Sekolah'),
-(2, 'Admin TU'),
-(3, 'Guru'),
-(4, 'Siswa'),
-(5, 'Pustakawan'),
-(6, 'Pengurus Koperasi'),
-(7, 'Anggota Koperasi');
+INSERT INTO `jenis_buku` (`id`, `jenis_buku`) VALUES
+(1, 'Karya Tulis'),
+(2, 'Majalah/Koran'),
+(3, 'Cerita/Novel'),
+(4, 'Buku Ajar'),
+(5, 'Lainnya');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `role`
+-- Indexes for table `jenis_buku`
 --
-ALTER TABLE `role`
+ALTER TABLE `jenis_buku`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -61,10 +59,10 @@ ALTER TABLE `role`
 --
 
 --
--- AUTO_INCREMENT for table `role`
+-- AUTO_INCREMENT for table `jenis_buku`
 --
-ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `jenis_buku`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
