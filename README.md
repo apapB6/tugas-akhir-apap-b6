@@ -74,5 +74,5 @@ You should configure your project to build a jar or war (as appropriate) by usin
 - [ ] [Web Service, POST] Menambah User 
 - [ ] Menampilkan Daftar Buku
 - [ ] Menampilkan Detail Pengadaan 
-- [ ] Menampilkan detail peminjaman
+- [ ] Menampilkan Detail peminjaman
 
