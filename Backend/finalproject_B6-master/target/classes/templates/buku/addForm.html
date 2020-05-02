@@ -95,7 +95,7 @@
 										<div class="form-group col-md-9">
 										<select class="form-control" id= "jenis_buku" name="jenis_buku" th:field="*{buku_jenis}">
 												<option value="0">-Select-</option>
-												<option th:each="jenis_buku : ${jenisList}" 
+												<option th:each="jenis_buku : ${jenis_buku}" 
 													th:value="${jenis_buku.id}" 
 													th:text="${jenis_buku.nama}">
 												</option>

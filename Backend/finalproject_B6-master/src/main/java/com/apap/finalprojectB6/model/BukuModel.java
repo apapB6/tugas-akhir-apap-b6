@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -52,21 +54,21 @@ public class BukuModel implements Serializable {
     @Column(name = "jumlah", nullable = false)
     private int jumlah;
     
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_jenis_buku")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_jenis_buku", referencedColumnName = "id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private JenisModel buku_jenis;
     
-    //CEK ULANG
-    @OneToMany(mappedBy = "PinjamBuku", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "PinjamBuku", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Set<PeminjamanModel> peminjamanList = new HashSet<>();
 
+    
     /**
      * Getter&Setter
      */
     
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -121,5 +123,33 @@ public class BukuModel implements Serializable {
 	public void setPeminjamanList(Set<PeminjamanModel> peminjamanList) {
 		this.peminjamanList = peminjamanList;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+	    if(o == null)
+	    {
+	        return false;
+	    }
+	    if (o == this)
+	    {
+	        return true;
+	    }
+	    if (getClass() != o.getClass())
+	    {
+	        return false;
+	    }
+	     
+	    BukuModel buku = (BukuModel) o;
+	    return (this.getId() == buku.getId());
+	}
+	
+	@Override
+	public int hashCode()
+	{
+	    final int PRIME = 31;
+	    int result = 1;
+	    result = PRIME * result + (int) getId();
+	    return result;
+	}  
     
 }
