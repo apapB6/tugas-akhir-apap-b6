@@ -22,7 +22,7 @@
 ## Kontrak Tahap 3 Tugas Akhir
 | NPM | Nama Lengkap | Fitur yang akan diselesaikan |
 |-----|--------------|------------------------------|
-| 1806269676 | Dwi Ana Ambar Rofiqoh | <ol><li>Mengubah JumlahBuku</li> <li>Menghapus Buku</li> <li>[Web Service, GET] Daftar User untuk SI-TU</li> </ol> |
+| 1806269676 | Dwi Ana Ambar Rofiqoh | <ol><li>Mengubah Jumlah Buku</li> <li>Menghapus Buku</li> <li>[Web Service, GET] Daftar User untuk SI-TU</li> </ol> |
 | 1806269801 | Riska Kurnia Dewi | <ol><li>Mengubah Status Pengajuan Peminjaman</li> <li>Menghapus Pengajuan Pengadaan</li> <li>[Web Service, POST] Membuat Surat Peringatan Overdue ke SI-TU</li> </ol> |
 | 1806269814 | Shafira Fauzia | <ol><li>[Web Service, GET] Menampilkan User Profile</li> <li>[Web Service, POST] Menambah User</li> </ol> |
 
