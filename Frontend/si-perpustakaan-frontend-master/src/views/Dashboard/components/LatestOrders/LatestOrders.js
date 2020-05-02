@@ -46,9 +46,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const statusColors = {
-	dikembalikan: 'success',
-	dipinjam: 'info',
-	belumDikembalikan: 'danger'
+	Overdue: 'danger'
 };
 
 const LatestOrders = props => {
@@ -64,7 +62,8 @@ const LatestOrders = props => {
 			className={clsx(classes.root, className)}
 		>
 			<CardHeader
-				title="Data Keterlambatan Pengembalian Buku"
+				title="DATA KETERLAMBATAN PENGEMBALIAN BUKU"
+				style={{ textAlign: 'center' }}
 			/>
 			<Divider />
 			<CardContent className={classes.content}>
@@ -76,8 +75,12 @@ const LatestOrders = props => {
 									<TableCell>No.</TableCell>
 									{/* <TableCell>ID Peminjaman</TableCell> */}
 									<TableCell>Nama Peminjam</TableCell>
+									<TableCell>Judul Buku</TableCell>
 									<TableCell>Status</TableCell>
+									<TableCell>Jumlah Hari</TableCell>
+									<TableCell>Jumlah Denda</TableCell>
 								</TableRow>
+
 							</TableHead>
 							<TableBody>
 								{orders.map(order => (
@@ -88,6 +91,7 @@ const LatestOrders = props => {
 										<TableCell>{orders.indexOf(order) + 1}</TableCell>
 										{/* <TableCell>{order.ref}</TableCell> */}
 										<TableCell>{order.customer.name}</TableCell>
+										<TableCell>{order.customer.judul}</TableCell>
 										<TableCell>
 											<div className={classes.statusContainer}>
 												<StatusBullet
@@ -98,6 +102,8 @@ const LatestOrders = props => {
 												{order.namaStatus}
 											</div>
 										</TableCell>
+										<TableCell>{order.customer.jumlah_hari}</TableCell>
+										<TableCell>{order.customer.jumlah_denda}</TableCell>
 									</TableRow>
 								))}
 							</TableBody>

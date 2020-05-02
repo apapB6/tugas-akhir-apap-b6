@@ -6,8 +6,8 @@ import com.apap.finalprojectB6.model.UserModel;
 
 
 public interface UserService {
-	UserModel addUser(UserModel user);
-	public String encrypt(String Password);
+//	UserModel addUser(UserModel user);
+//	public String encrypt(String Password);
 	List<UserModel> getAllUser();
 	UserModel getUserById(int id);
 	UserModel getUserByPass(String pass);

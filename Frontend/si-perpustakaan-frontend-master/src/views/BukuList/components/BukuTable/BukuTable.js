@@ -20,6 +20,7 @@ import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { getInitials } from 'helpers';
 import { StatusBullet } from 'components';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 const useStyles = makeStyles(theme => ({
 	root: {},
@@ -34,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 		alignItems: 'center'
 	},
 	avatar: {
-		marginRight: theme.spacing(2)
+		marginRight: theme.spacing(1)
 	},
 	actions: {
 		justifyContent: 'flex-end'
@@ -79,6 +80,7 @@ const BukuTable = props => {
 									<TableCell>Gambar</TableCell>
 									<TableCell>Judul</TableCell>
 									<TableCell>Pengarang</TableCell>
+									<TableCell>Penerbit</TableCell>
 									<TableCell>Status</TableCell>
 									<TableCell>Aksi</TableCell>
 								</TableRow>
@@ -106,6 +108,11 @@ const BukuTable = props => {
 											</div>
 										</TableCell>
 										<TableCell>
+											<div className={classes.nameContainer}>
+												<Typography variant="body1">{user.name}</Typography>
+											</div>
+										</TableCell>
+										<TableCell>
 											<StatusBullet
 												className={classes.status}
 												color={statusColors["tersedia"]}
@@ -113,6 +120,7 @@ const BukuTable = props => {
 											/> Tersedia
 											</TableCell>
 										<TableCell>
+											<VisibilityIcon />
 											<CreateIcon />
 											<DeleteIcon />
 										</TableCell>
