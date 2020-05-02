@@ -8,7 +8,7 @@
 ## Kontrak Tahap 1 Tugas Akhir
 | NPM | Nama Lengkap | Fitur yang akan diselesaikan |
 |-----|--------------|------------------------------|
-| 1806269676 | Dwi Ana Ambar Rofiqoh | <ol><li>Menampilkan Daftar Buku</li> <li>Halaman Utama</li> </ol> |
+| 1806269676 | Dwi Ana Ambar Rofiqoh | <ol><li>Halaman Utama</li> <li>Menampilkan Daftar Buku</li> </ol> |
 | 1806269801 | Riska Kurnia Dewi | <ol><li>Logout</li> <li>Menampilkan Daftar Pengajuan Peminjaman</li> </ol> |
 | 1806269814 | Shafira Fauzia | <ol><li>Login</li> <li>Menampilkan Daftar Pengajuan Pengadaan</li> </ol> |
 
