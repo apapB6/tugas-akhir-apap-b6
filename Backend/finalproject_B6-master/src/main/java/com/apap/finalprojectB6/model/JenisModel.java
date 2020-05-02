@@ -27,7 +27,7 @@ public class JenisModel implements Serializable {
 
     @NotNull
     @Size(max = 200)
-    @Column(name = "nama", nullable = false)
+    @Column(name = "jenis_buku", nullable = false)
     private String nama;
     
      @OneToMany(mappedBy = "buku_jenis", fetch = FetchType.LAZY)
