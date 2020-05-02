@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.apap.finalprojectB6.model.BukuModel;
 import com.apap.finalprojectB6.model.JenisModel;
 
-public interface JenisDB extends JpaRepository<JenisModel, Long>{
+public interface JenisDB extends JpaRepository<JenisModel, Integer>{
 	JenisModel findById(int id);
 	void deleteById(int id);
 }

@@ -28,8 +28,6 @@ import com.apap.finalprojectB6.service.JenisService;
 import com.apap.finalprojectB6.service.PeminjamanService;
 import com.apap.finalprojectB6.service.UserService;
 
-
-
 @Controller
 public class BukuController {
 	@Autowired
@@ -62,7 +60,7 @@ public class BukuController {
 		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 		model.addAttribute("detailUser", detailUser);
 		model.addAttribute("navigation", navigation);
-		model.addAttribute("jenis_buku", jenisList);
+		model.addAttribute("jenisList", jenisList);
 		model.addAttribute("buku", new BukuModel());
 		return "buku/addForm";	
 	}
@@ -70,9 +68,6 @@ public class BukuController {
 	@RequestMapping(value = "/buku/tambah", method = RequestMethod.POST, params={"submit"})
 	private String addSubmit(@ModelAttribute BukuModel buku, Model model) {
 		String navigation = "Berhasil";
-		// JenisModel jenisId = jenisService.getJenisById(jenis_buku.getId()).get();
-		//Field error in object 'bukuModel' on field 'buku_jenis': rejected value [1]; codes [typeMismatch.bukuModel.buku_jenis,typeMismatch.buku_jenis,typeMismatch.com.apap.finalprojectB6.model.JenisModel,typeMismatch];
-		// buku.setBuku_jenis(jenisId);
 		bukuService.addBuku(buku);
 		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 		model.addAttribute("detailUser", detailUser);
@@ -92,7 +87,7 @@ public class BukuController {
 	}
 	
 	@RequestMapping(value = "/detail-buku", method = RequestMethod.POST, params={"submit"})
-	private String detail1(@RequestParam(value = "id") int id, @ModelAttribute PeminjamanModel peminjaman, Model model) {
+	private String detail1(@RequestParam(value = "id") int id, Model model) {
 		UserModel user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 		BukuModel buku = bukuService.getBukuById(id);
 		LocalDate today = LocalDate.now();
@@ -100,12 +95,12 @@ public class BukuController {
 		Date date = Date.valueOf(today);
 		Date duedate = Date.valueOf(nextWeek);
 		String navigation = "Detail Buku";
+		PeminjamanModel peminjaman = new PeminjamanModel();
 		peminjaman.setPinjamBuku(buku);
 		peminjaman.setStatus(0);
 		peminjaman.setTanggal_peminjaman(date);
 		peminjaman.setTanggal_pengembalian(duedate);
 		peminjaman.setUser_peminjaman(user);
-		peminjaman.setPinjamBuku(buku);
 		peminjamanService.addPeminjaman(peminjaman);
 		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 		model.addAttribute("detailUser", detailUser);

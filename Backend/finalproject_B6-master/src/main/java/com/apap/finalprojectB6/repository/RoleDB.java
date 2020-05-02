@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.apap.finalprojectB6.model.RoleModel;
 
 @Repository
-public interface RoleDB extends JpaRepository<RoleModel, Long> {
+public interface RoleDB extends JpaRepository<RoleModel, Integer> {
 	RoleModel findByNama(String nama);
 	RoleModel findById(int id);
 

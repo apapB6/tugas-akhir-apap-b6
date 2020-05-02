@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.apap.finalprojectB6.model.UserModel;
 
 @Repository
-public interface UserRoleDB extends JpaRepository<UserModel, Long> {
+public interface UserRoleDB extends JpaRepository<UserModel, Integer> {
 	UserModel findByUsername(String username);
 	void deleteById(int id);
 	UserModel findById(int id);
