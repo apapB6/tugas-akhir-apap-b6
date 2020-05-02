@@ -31,19 +31,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `jenis_buku` (
   `id` int(11) NOT NULL,
   `jenis_buku` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `nama` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `jenis_buku`
 --
 
-INSERT INTO `jenis_buku` (`id`, `jenis_buku`, `nama`) VALUES
-(1, 'Karya Tulis', 'Karya Tulis'),
-(2, 'Majalah/Koran', 'Majalah/Koran'),
-(3, 'Cerita/Novel', 'Cerita/Novel'),
-(4, 'Buku Ajar', 'Buku Ajar'),
-(5, 'Lainnya', 'Lainnya');
+INSERT INTO `jenis_buku` (`id`, `jenis_buku`) VALUES
+(1, 'Karya Tulis'),
+(2, 'Majalah/Koran'),
+(3, 'Cerita/Novel'),
+(4, 'Buku Ajar'),
+(5, 'Lainnya');
 
 --
 -- Indexes for dumped tables
