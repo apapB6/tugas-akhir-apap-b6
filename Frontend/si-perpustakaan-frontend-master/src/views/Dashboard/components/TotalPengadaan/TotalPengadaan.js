@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import ComponentService from '../ComponentService'
 
 
 const useStyles = makeStyles(theme => ({
@@ -49,6 +50,14 @@ const TotalPengadaan = props => {
 
 	const classes = useStyles();
 
+	const [totalPengadaan, setTotalPengadaan] = useState(0);
+
+	useEffect(() => refreshTotalPengadaan())
+
+	const refreshTotalPengadaan = () => {
+		ComponentService.getAllPengadaan().then(response => setTotalPengadaan(response.data.length))
+	}
+
 	return (
 		<Card
 			{...rest}
@@ -68,7 +77,7 @@ const TotalPengadaan = props => {
 						>
 							PERMINTAAN PENGADAAN
             </Typography>
-						<Typography variant="h3">250</Typography>
+						<Typography variant="h3">{totalPengadaan}</Typography>
 					</Grid>
 					<Grid item>
 						<Avatar className={classes.avatar}>
@@ -78,12 +87,14 @@ const TotalPengadaan = props => {
 				</Grid>
 				<div className={classes.difference}>
 					<NavigateNextIcon className={classes.differenceIcon} />
-					<Typography
-						className={classes.caption}
-						variant="caption"
-					>
-						Lihat Selengkapnya
-          			</Typography>
+					<a href="/pengadaan">
+						<Typography
+							className={classes.caption}
+							variant="caption"
+						>
+							Lihat Selengkapnya
+						</Typography>
+					</a>
 				</div>
 			</CardContent>
 		</Card>

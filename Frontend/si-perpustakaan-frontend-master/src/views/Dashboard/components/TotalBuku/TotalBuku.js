@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import ComponentService from '../ComponentService'
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -52,6 +53,14 @@ const TotalBuku = props => {
 
 	const classes = useStyles();
 
+	const [totalBuku, setTotalBuku] = useState(0);
+
+	useEffect(() => refreshTotalBuku())
+
+	const refreshTotalBuku = () => {
+		ComponentService.getAllBuku().then(response => setTotalBuku(response.data.length))
+	}
+
 	return (
 		<Card
 			{...rest}
@@ -71,7 +80,7 @@ const TotalBuku = props => {
 						>
 							TOTAL BUKU
             </Typography>
-						<Typography variant="h3">4550</Typography>
+						<Typography variant="h3">{totalBuku}</Typography>
 					</Grid>
 					<Grid item>
 						<Avatar className={classes.avatar}>
@@ -81,12 +90,14 @@ const TotalBuku = props => {
 				</Grid>
 				<div className={classes.difference}>
 					<NavigateNextIcon className={classes.differenceIcon} />
-					<Typography
-						className={classes.caption}
-						variant="caption"
-					>
-						Lihat Selengkapnya
+					<a href="/buku">
+						<Typography
+							className={classes.caption}
+							variant="caption"
+						>
+							Lihat Selengkapnya
           			</Typography>
+					</a>
 				</div>
 			</CardContent>
 		</Card>
