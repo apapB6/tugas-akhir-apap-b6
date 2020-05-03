@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Beranda</title>
+	
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+
+	
+	<style>
+		body {
+		font-family: "Lato", sans-serif;
+		}
+
+		.sidenav {
+		height: 100%;
+		width: 250px;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		background-color: #FFFFFF;
+		overflow-x: hidden;
+		padding-top: 20px;
+		}
+
+		.sidenav a {
+		padding: 6px 8px 6px 16px;
+		text-decoration: none;
+		font-size: 20px;
+		color: #000000;
+		display: block;
+		}
+
+		.sidenav a:hover {
+		color: #63b761;
+		}
+
+		.main {
+		margin-left: 250px; /* Same as the width of the sidenav */
+		font-size: 15px; /* Increased text to enable scrolling */
+		padding: 0px 0px;
+		}
+
+		@media screen and (max-height: 450px) {
+		.sidenav {padding-top: 15px;}
+		.sidenav a {font-size: 18px;}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="sidenav">
+		<br><a href="/profile">FOTO</a>
+		<p th:text="${detailUser.getNama()}"></p>
+		<p th:text="${detailUser.getUser_role().getNama()}"></p>
+		<br><br>
+		<a href="/">Beranda</a>
+		<a href="/jenis">Jenis Buku</a>
+		<a href="/buku">Buku</a>
+		<a href="/peminjaman">Peminjaman</a>
+		<a href="/pengadaan">Pengadaan</a>
+		<a href="/pengguna">Pengguna</a>
+	</div>
+
+	<div class="main">
+		<nav th:replace="fragments/fragment :: navbar"></nav>
+		
+   		<div class="container-fluid">
+		<div class="container-fluid">
+            <br> 			
+                <div class="table-responsive">	 
+                      	<table style="width:30%; display:inline-block">
+						<thead class="thead-dark">
+						<tr>
+							<th style="text-align: center">Total Buku</th>
+						</tr>
+						</thead>
+					 	<tbody>
+					 	<tr>
+							<td align=Center th:text="${jumlah_buku}"></td>
+						</tr>
+					</table>
+					<table style="width:30%; display:inline-block">
+						<thead class="thead-dark">
+						<tr>
+							<th style="text-align: center">Permintaan Pengadaan</th>
+						</tr>
+						</thead>
+					 	<tbody>
+					 	<tr>
+							<td align=Center th:text="${jumlah_pengadaan}"></td>
+						</tr>
+					</table>
+					<table style="width:30%; display:inline-block">
+						<thead class="thead-dark">
+						<tr>
+							<th style="text-align: center">Total Pengguna</th>
+						</tr>
+						</thead>
+					 	<tbody>
+					 	<tr>
+							<td align=Center th:text="${jumlah_pengguna}"></td>
+						</tr>
+					</table>
+      			</div>
+        	</div>
+    	</div>        
+				
+		<br><br>
+		<div class="container-fluid">
+		<div class="container-fluid">
+		<br>   
+		<h4 align="center">DATA KETERLAMBATAN PENGEMBALIAN BUKU</h4>
+		<br>
+        <div class="row">
+            <br> 			
+                <div class="table-responsive">	                  
+                      	<table class="table table-striped">
+						<thead class="thead-dark">
+						<tr>
+							<th width="5%" style="text-align: center">No</th>
+							<th width="10%" style="text-align: center">Nama Peminjam</th>
+							<th width="10%" style="text-align: center">Judul Buku</th>
+							<th width="5%" style="text-align: center">Status</th>
+							<th width="5%" style="text-align: center">Jumlah Hari Keterlambatan</th>
+							<th width="5%" style="text-align: center">Jumlah Denda</th>
+						</tr>
+						</thead>
+						
+					 	<tbody>
+							<tr  th:each="peminjaman, i : ${peminjaman}"> 
+								<td align=Center th:text="${i.count}"></td>
+								<td><span th:if="${peminjaman.user_peminjaman.id != 0}"> 
+									<span th:each="user : ${peminjaman.user_peminjaman}">
+										<span th:text="${user.nama}"></span>
+								</span></span></td>
+								<td>
+								<span th:if="${peminjaman.PinjamBuku.id != 0}"> 
+										<span th:each="pinjam : ${peminjaman.PinjamBuku}">
+											<span th:text="${pinjam.judul}"></span>
+										</span>
+									</span></td>
+								<td><span th:if="${peminjaman.status == 5}" style="color:red">Overdue</span>
+								</td>
+								<td th:text="${peminjaman.jumlah_hari}"></td>
+								<td th:text="${peminjaman.denda}"></td>
+							</tr>
+					</table>
+					<br>
+					<br>
+      			</div>
+        	</div>
+    	</div>        
+	</div>
+	</div>
+</body>
+</html>

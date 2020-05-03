@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Berhasil</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<br>
+		<div class="alert alert-success" role="alert">
+		<h2><center><b>Peminjaman Berhasil Dilakukan!</b></center></h2></div>
+		<h4>Klik <a th:href="@{/peminjaman}" class="alert-link">disini</a> untuk melihat daftar pengajuan peminjaman.</h4>
+</body>
+</html>
