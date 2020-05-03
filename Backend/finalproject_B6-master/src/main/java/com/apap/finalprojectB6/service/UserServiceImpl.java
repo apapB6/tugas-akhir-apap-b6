@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.apap.finalprojectB6.model.RoleModel;
 import com.apap.finalprojectB6.model.UserModel;
 import com.apap.finalprojectB6.repository.UserRoleDB;
+import java.util.UUID;
 
 
 @Service
@@ -23,13 +24,19 @@ public class UserServiceImpl implements UserService {
 		user.setNip(user.CreateNIP());
 	}
 	
-//	@Override
-//	public UserModel addUser(UserModel user) {
+	@Override
+	public UserModel addUser(UserModel user) {
 //		String pass = encrypt(user.getPassword());
+		String uuid = UUID.randomUUID().toString().replace("-", "");
+		UserModel uuidcheck = this.getUserByUuid(uuid);
+		while (uuidcheck != null) {
+			uuid = UUID.randomUUID().toString().replace("-", "");
+		}
 //		user.setPassword(pass);
-//		this.createNip(user);
-//		return userdb.save(user);
-//	}
+		user.setUuid(uuid);
+		this.createNip(user);
+		return userdb.save(user);
+	}
 //	
 //	@Override
 //	public String encrypt(String password) {
@@ -51,8 +58,14 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public UserModel getUserByPass(String pass) {
-		return userdb.findByPassword(pass);
+	public UserModel getUserByUuid(String uuid) {
+		return userdb.findByUuid(uuid);
+	}
+	
+	@Override
+	public UserModel getUserByUsername(String username) {
+		// TODO Auto-generated method stub
+		return userdb.findByUsername(username);
 	}
 
 	@Override

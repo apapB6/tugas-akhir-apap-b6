@@ -22,9 +22,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "pengadaan_buku")
 public class PengadaanModel implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+	
+	@NotNull
+    @Size(max = 200)
+    @Column(name = "uuid_user", nullable = false)
+    private String uuid_user;
 	
     @NotNull
     @Size(max = 200)
@@ -54,11 +61,6 @@ public class PengadaanModel implements Serializable {
     @Column(name = "status", nullable = false)
     private int status;
     
-    @NotNull
-//    @Size(max = 200)
-    @Column(name = "uuid_user", nullable = false)
-    private int uuid_user;
-    
 //    @ManyToOne(fetch = FetchType.LAZY, optional = false)
 //    @JoinColumn(name = "uuid_user", referencedColumnName = "id")
 //    @OnDelete(action = OnDeleteAction.CASCADE)
@@ -76,6 +78,18 @@ public class PengadaanModel implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public String getUuid_user() {
+		return uuid_user;
+	}
+
+	public void setUuid_user(String uuid_user) {
+		this.uuid_user = uuid_user;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public String getJudul() {
@@ -124,14 +138,6 @@ public class PengadaanModel implements Serializable {
 
 	public void setStatus(int status) {
 		this.status = status;
-	}
-
-	public int getUuid_user() {
-		return uuid_user;
-	}
-
-	public void setUuid_user(int uuid_user) {
-		this.uuid_user = uuid_user;
 	}
 
 //	public UserModel getUser_pengadaan() {

@@ -6,11 +6,12 @@ import com.apap.finalprojectB6.model.UserModel;
 
 
 public interface UserService {
-//	UserModel addUser(UserModel user);
+	UserModel addUser(UserModel user);
 //	public String encrypt(String Password);
 	List<UserModel> getAllUser();
 	UserModel getUserById(int id);
-	UserModel getUserByPass(String pass);
+	UserModel getUserByUuid(String uuid);
+	UserModel getUserByUsername(String username);
 	void createNip(UserModel user);
 	UserModel getUser(String user);
 	boolean validate(String username);

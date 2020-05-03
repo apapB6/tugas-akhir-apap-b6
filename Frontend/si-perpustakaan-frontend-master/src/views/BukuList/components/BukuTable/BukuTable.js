@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -18,9 +18,10 @@ import {
 } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import { getInitials } from 'helpers';
 import { StatusBullet } from 'components';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import BukuListService from './BukuListService';
 
 const useStyles = makeStyles(theme => ({
 	root: {},
@@ -42,8 +43,14 @@ const useStyles = makeStyles(theme => ({
 	},
 	status: {
 		marginRight: theme.spacing(1)
+	},
+	img: {
+		maxWidth: 30,
+		height: 'auto'
 	}
 }));
+
+const imgUrl = '/images/avatars/buku.jpg'
 
 const statusColors = {
 	tersedia: 'success',
@@ -56,6 +63,15 @@ const BukuTable = props => {
 	const classes = useStyles();
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [page, setPage] = useState(0);
+	const [BukuList, setBukuList] = useState([]);
+
+	useEffect(() => {
+		refreshBuku()
+	})
+
+	const refreshBuku = () => {
+		BukuListService.getAllBuku().then(response => setBukuList(response.data))
+	}
 
 	const handlePageChange = (event, page) => {
 		setPage(page);
@@ -64,6 +80,30 @@ const BukuTable = props => {
 	const handleRowsPerPageChange = event => {
 		setRowsPerPage(event.target.value);
 	};
+
+	const statusOption = (index) => {
+		if (BukuList[index].jumlah === 0) {
+			return (<div>
+				<StatusBullet
+					className={classes.status}
+					color="danger"
+					size="sm"
+				/>
+				Kosong
+			</div>
+			)
+		} else {
+			return (<div>
+				<StatusBullet
+					className={classes.status}
+					color="success"
+					size="sm"
+				/>
+				Tersedia
+			</div>
+			)
+		}
+	}
 
 	return (
 		<Card
@@ -83,42 +123,26 @@ const BukuTable = props => {
 									<TableCell>Penerbit</TableCell>
 									<TableCell>Status</TableCell>
 									<TableCell>Aksi</TableCell>
-								</TableRow>
+									</TableRow>
 							</TableHead>
 							<TableBody>
-								{users.slice(0, rowsPerPage).map(user => (
+								{BukuList.slice(0, rowsPerPage).map(buku => (
 									<TableRow
 										className={classes.tableRow}
 										hover
-										key={user.id}
+										key={buku.id}
 									>
-										<TableCell>{users.indexOf(user) + 1}</TableCell>
+										<TableCell>{BukuList.indexOf(buku) + 1}</TableCell>
 										<TableCell>
-											<Avatar
-												className={classes.avatar}
-												src={user.avatarUrl}
-											>
-												{getInitials(user.name)}
-											</Avatar>
+										<img 
+											src={imgUrl}
+											className={classes.img}
+										></img>
 										</TableCell>
-										<TableCell>APAP</TableCell>
-										<TableCell>
-											<div className={classes.nameContainer}>
-												<Typography variant="body1">{user.name}</Typography>
-											</div>
-										</TableCell>
-										<TableCell>
-											<div className={classes.nameContainer}>
-												<Typography variant="body1">{user.name}</Typography>
-											</div>
-										</TableCell>
-										<TableCell>
-											<StatusBullet
-												className={classes.status}
-												color={statusColors["tersedia"]}
-												size="sm"
-											/> Tersedia
-											</TableCell>
+										<TableCell>{buku.judul}</TableCell>
+										<TableCell>{buku.pengarang}</TableCell>
+										<TableCell>{buku.penerbit}</TableCell>
+										<TableCell>{statusOption(BukuList.indexOf(buku))}</TableCell>
 										<TableCell>
 											<VisibilityIcon />
 											<CreateIcon />
@@ -134,7 +158,7 @@ const BukuTable = props => {
 			<CardActions className={classes.actions}>
 				<TablePagination
 					component="div"
-					count={users.length}
+					count={BukuList.length}
 					onChangePage={handlePageChange}
 					onChangeRowsPerPage={handleRowsPerPageChange}
 					page={page}
