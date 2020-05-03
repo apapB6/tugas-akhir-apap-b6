@@ -85,7 +85,7 @@ const PengadaanTable = props => {
 			return (<div>
 				<StatusBullet
 					className={classes.status}
-					color="danger"
+					color="info"
 					size="sm"
 				/>
 				Menunggu Persetujuan
@@ -95,7 +95,7 @@ const PengadaanTable = props => {
 			return (<div>
 				<StatusBullet
 					className={classes.status}
-					color="success"
+					color="danger"
 					size="sm"
 				/>
 				Ditolak
