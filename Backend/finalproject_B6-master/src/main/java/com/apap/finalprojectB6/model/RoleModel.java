@@ -29,8 +29,8 @@ public class RoleModel implements Serializable {
     @Column(name = "nama", nullable = false)
     private String nama;
     
-    @OneToMany(mappedBy = "user_role", fetch = FetchType.LAZY)
-    private Set<UserModel> userList = new HashSet<>();
+//    @OneToMany(mappedBy = "user_role", fetch = FetchType.LAZY)
+//    private Set<UserModel> userList = new HashSet<>();
     
     /**
      * Getter&Setter
@@ -53,12 +53,12 @@ public class RoleModel implements Serializable {
 		this.nama = nama;
 	}
 
-	public Set<UserModel> getUserList() {
-		return userList;
-	}
-
-	public void setUserList(Set<UserModel> userList) {
-		this.userList = userList;
-	}
+//	public Set<UserModel> getUserList() {
+//		return userList;
+//	}
+//
+//	public void setUserList(Set<UserModel> userList) {
+//		this.userList = userList;
+//	}
     
 }

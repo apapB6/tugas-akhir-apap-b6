@@ -24,7 +24,6 @@ public class JenisServiceImpl implements JenisService {
 		return jenisdb.findAll();
 	}
 	
-	
 	@Override
 	public JenisModel getJenisById(int id) {
 		return jenisdb.findById(id);

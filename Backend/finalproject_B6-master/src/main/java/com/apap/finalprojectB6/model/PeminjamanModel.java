@@ -17,6 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -50,18 +51,27 @@ public class PeminjamanModel implements Serializable {
     @NotNull
     @Column(name = "denda", nullable = false)
     private int denda;
+    
+    @NotNull
+    @Column(name = "id_buku", nullable = false)
+    private int id_buku;
+    
+    @NotNull
+//    @Size(max = 200)
+    @Column(name = "uuid_user", nullable = false)
+    private int uuid_user;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "uuid_user", referencedColumnName = "id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private UserModel user_peminjaman;
-	
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_buku", referencedColumnName = "id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private BukuModel PinjamBuku;
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "uuid_user", referencedColumnName = "id")
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+//    private UserModel user_peminjaman;
+//	
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "id_buku", referencedColumnName = "id")
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+//    private BukuModel PinjamBuku;
 
     /**
      * Getter&Setter
@@ -99,22 +109,6 @@ public class PeminjamanModel implements Serializable {
 		this.status = status;
 	}
 
-	public UserModel getUser_peminjaman() {
-		return user_peminjaman;
-	}
-
-	public void setUser_peminjaman(UserModel user_peminjaman) {
-		this.user_peminjaman = user_peminjaman;
-	}
-
-	public BukuModel getPinjamBuku() {
-		return PinjamBuku;
-	}
-
-	public void setPinjamBuku(BukuModel pinjamBuku) {
-		PinjamBuku = pinjamBuku;
-	}
-
 	public int getJumlah_hari() {
 		return jumlah_hari;
 	}
@@ -130,5 +124,54 @@ public class PeminjamanModel implements Serializable {
 	public void setDenda(int denda) {
 		this.denda = denda;
 	}
+
+	public int getUuid_user() {
+		return uuid_user;
+	}
+
+	public void setUuid_user(int uuid_user) {
+		this.uuid_user = uuid_user;
+	}
+
+	public int getId_buku() {
+		return id_buku;
+	}
+
+	public void setId_buku(int id_buku) {
+		this.id_buku = id_buku;
+	}
+	
+
+//	public UserModel getUser_peminjaman() {
+//		return user_peminjaman;
+//	}
+//
+//	public void setUser_peminjaman(UserModel user_peminjaman) {
+//		this.user_peminjaman = user_peminjaman;
+//	}
+//
+//	public BukuModel getPinjamBuku() {
+//		return PinjamBuku;
+//	}
+//
+//	public void setPinjamBuku(BukuModel pinjamBuku) {
+//		PinjamBuku = pinjamBuku;
+//	}
+//
+//	public int getJumlah_hari() {
+//		return jumlah_hari;
+//	}
+//
+//	public void setJumlah_hari(int jumlah_hari) {
+//		this.jumlah_hari = jumlah_hari;
+//	}
+//
+//	public int getDenda() {
+//		return denda;
+//	}
+//
+//	public void setDenda(int denda) {
+//		this.denda = denda;
+//	}
 
 }
