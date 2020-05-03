@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom'
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import PeopleIcon from '@material-ui/icons/PeopleOutlined';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import ComponentService from '../ComponentService'
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -48,6 +50,14 @@ const TotalUsers = props => {
 
 	const classes = useStyles();
 
+	const [totalUser, setTotalUser] = useState(0);
+
+	useEffect(() => refreshTotalUser())
+
+	const refreshTotalUser = () => {
+		ComponentService.getAllUser().then(response => setTotalUser(response.data.length))
+	}
+
 	return (
 		<Card
 			{...rest}
@@ -67,7 +77,7 @@ const TotalUsers = props => {
 						>
 							TOTAL PENGGUNA
             </Typography>
-						<Typography variant="h3">1600</Typography>
+						<Typography variant="h3">{totalUser}</Typography>
 					</Grid>
 					<Grid item>
 						<Avatar className={classes.avatar}>
@@ -77,12 +87,14 @@ const TotalUsers = props => {
 				</Grid>
 				<div className={classes.difference}>
 					<NavigateNextIcon className={classes.differenceIcon} />
-					<Typography
-						className={classes.caption}
-						variant="caption"
-					>
-						Lihat Selengkapnya
-          			</Typography>
+					<a href="users">
+						<Typography
+							className={classes.caption}
+							variant="caption"
+						>
+							Lihat Selengkapnya
+						</Typography>
+					</a>
 				</div>
 			</CardContent>
 		</Card>
