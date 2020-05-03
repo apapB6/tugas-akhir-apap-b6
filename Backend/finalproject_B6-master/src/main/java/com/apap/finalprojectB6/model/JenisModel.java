@@ -30,8 +30,8 @@ public class JenisModel implements Serializable {
     @Column(name = "jenis_buku", nullable = false)
     private String nama;
     
-     @OneToMany(mappedBy = "buku_jenis", fetch = FetchType.LAZY)
-     private Set<BukuModel> listBuku = new HashSet<>();
+//     @OneToMany(mappedBy = "buku_jenis", fetch = FetchType.LAZY)
+//     private Set<BukuModel> listBuku = new HashSet<>();
     
     /**
      * Getter&Setter
@@ -54,40 +54,40 @@ public class JenisModel implements Serializable {
 		this.nama = nama;
 	}
 
-	 public Set<BukuModel> getListBuku() {
-	 	return listBuku;
-	 }
-
-	 public void setListBuku(Set<BukuModel> listBuku) {
-	 	this.listBuku = listBuku;
-	 }
-
-	@Override
-	public boolean equals(Object o) {
-	    if(o == null)
-	    {
-	        return false;
-	    }
-	    if (o == this)
-	    {
-	        return true;
-	    }
-	    if (getClass() != o.getClass())
-	    {
-	        return false;
-	    }
-	     
-	    JenisModel jenis = (JenisModel) o;
-	    return (this.getId() == jenis.getId());
-	}
-	
-	@Override
-	public int hashCode()
-	{
-	    final int PRIME = 31;
-	    int result = 1;
-	    result = PRIME * result + (int) getId();
-	    return result;
-	}
+//	 public Set<BukuModel> getListBuku() {
+//	 	return listBuku;
+//	 }
+//
+//	 public void setListBuku(Set<BukuModel> listBuku) {
+//	 	this.listBuku = listBuku;
+//	 }
+//
+//	@Override
+//	public boolean equals(Object o) {
+//	    if(o == null)
+//	    {
+//	        return false;
+//	    }
+//	    if (o == this)
+//	    {
+//	        return true;
+//	    }
+//	    if (getClass() != o.getClass())
+//	    {
+//	        return false;
+//	    }
+//	     
+//	    JenisModel jenis = (JenisModel) o;
+//	    return (this.getId() == jenis.getId());
+//	}
+//	
+//	@Override
+//	public int hashCode()
+//	{
+//	    final int PRIME = 31;
+//	    int result = 1;
+//	    result = PRIME * result + (int) getId();
+//	    return result;
+//	}
    
 }

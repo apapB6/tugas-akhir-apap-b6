@@ -11,10 +11,7 @@ public interface UserService {
 	List<UserModel> getAllUser();
 	UserModel getUserById(int id);
 	UserModel getUserByPass(String pass);
-	void updateUser(int id, UserModel user);
-	void deleteUser(int id);
 	void createNip(UserModel user);
 	UserModel getUser(String user);
-
-
+	boolean validate(String username);
 }

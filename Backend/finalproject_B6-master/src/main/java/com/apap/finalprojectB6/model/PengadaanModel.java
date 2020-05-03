@@ -54,11 +54,16 @@ public class PengadaanModel implements Serializable {
     @Column(name = "status", nullable = false)
     private int status;
     
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "uuid_user", referencedColumnName = "id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private UserModel user_pengadaan;
+    @NotNull
+//    @Size(max = 200)
+    @Column(name = "uuid_user", nullable = false)
+    private int uuid_user;
+    
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "uuid_user", referencedColumnName = "id")
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+//    private UserModel user_pengadaan;
     
     /**
      * Getter&Setter
@@ -121,13 +126,21 @@ public class PengadaanModel implements Serializable {
 		this.status = status;
 	}
 
-	public UserModel getUser_pengadaan() {
-		return user_pengadaan;
+	public int getUuid_user() {
+		return uuid_user;
 	}
 
-	public void setUser_pengadaan(UserModel user_pengadaan) {
-		this.user_pengadaan = user_pengadaan;
+	public void setUuid_user(int uuid_user) {
+		this.uuid_user = uuid_user;
 	}
+
+//	public UserModel getUser_pengadaan() {
+//		return user_pengadaan;
+//	}
+//
+//	public void setUser_pengadaan(UserModel user_pengadaan) {
+//		this.user_pengadaan = user_pengadaan;
+//	}
     
     
 }

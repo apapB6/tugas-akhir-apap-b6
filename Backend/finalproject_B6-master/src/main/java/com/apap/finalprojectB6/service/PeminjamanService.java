@@ -6,7 +6,7 @@ import com.apap.finalprojectB6.model.PeminjamanModel;
 
 
 public interface PeminjamanService {
-	void addPeminjaman(PeminjamanModel pinjam);
+	PeminjamanModel addPeminjaman(PeminjamanModel pinjam);
 	List<PeminjamanModel> getAllPeminjaman();
 	PeminjamanModel getPeminjamanById(int id);
 	PeminjamanModel getPeminjamanByStatus(int status);

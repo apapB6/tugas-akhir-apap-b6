@@ -54,26 +54,20 @@ public class UserServiceImpl implements UserService {
 	public UserModel getUserByPass(String pass) {
 		return userdb.findByPassword(pass);
 	}
-	
-	@Override
-	public void updateUser(int id, UserModel buku) {
-//		UserModel old = this.getUserById(id);
-//		old.setJudul(buku.getJudul());
-//		old.setPengarang(buku.getPengarang());
-//		old.setPenerbit(buku.getPenerbit());
-//		old.setJumlah(buku.getJumlah());
-//		old.setBuku_jenis(buku.getBuku_jenis());
-//		userdb.save(old);
-	}
-	
-	@Override
-	public void deleteUser(int id) {
-		userdb.deleteById(id);
-	}
 
 	@Override
 	public UserModel getUser(String user) {
 		return userdb.findByUsername(user);
+	}
+	
+	@Override
+	public boolean validate(String username) {
+		List<UserModel> userList = userdb.validate(username);
+		if (userList.size() > 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 }

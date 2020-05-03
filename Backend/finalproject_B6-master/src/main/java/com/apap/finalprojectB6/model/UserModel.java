@@ -85,23 +85,34 @@ public class UserModel implements Serializable {
     @Column(name = "password", nullable = false)
     private String password;
    
-    @OneToMany(mappedBy = "user_peminjaman", fetch = FetchType.LAZY)
-    private Set<PeminjamanModel> listPeminjaman = new HashSet<>();
+//    @OneToMany(mappedBy = "user_peminjaman", fetch = FetchType.LAZY)
+//    private Set<PeminjamanModel> listPeminjaman = new HashSet<>();
+//    
+//    @OneToMany(mappedBy = "user_pengadaan", fetch = FetchType.LAZY)
+//    private Set<PengadaanModel> listPengadaan = new HashSet<>();
+//    
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "id_role", referencedColumnName = "id")
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+//    private RoleModel user_role;
     
-    @OneToMany(mappedBy = "user_pengadaan", fetch = FetchType.LAZY)
-    private Set<PengadaanModel> listPengadaan = new HashSet<>();
-    
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_role", referencedColumnName = "id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private RoleModel user_role;
+    @NotNull
+    @Column(name = "id_role", nullable = false)
+    private int id_role;
     
 /**
  * 
  * Getter&Setter
  */
     
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getUsername() {
 		return username;
@@ -119,37 +130,29 @@ public class UserModel implements Serializable {
 		this.password = password;
 	}
 
-	public RoleModel getUser_role() {
-		return user_role;
-	}
+//	public RoleModel getUser_role() {
+//		return user_role;
+//	}
+//
+//	public void setUser_role(RoleModel user_role) {
+//		this.user_role = user_role;
+//	}
 
-	public void setUser_role(RoleModel user_role) {
-		this.user_role = user_role;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Set<PeminjamanModel> getListPeminjaman() {
-		return listPeminjaman;
-	}
-
-	public void setListPeminjaman(Set<PeminjamanModel> listPeminjaman) {
-		this.listPeminjaman = listPeminjaman;
-	}
-
-	public Set<PengadaanModel> getListPengadaan() {
-		return listPengadaan;
-	}
-
-	public void setListPengadaan(Set<PengadaanModel> listPengadaan) {
-		this.listPengadaan = listPengadaan;
-	}
+//	public Set<PeminjamanModel> getListPeminjaman() {
+//		return listPeminjaman;
+//	}
+//
+//	public void setListPeminjaman(Set<PeminjamanModel> listPeminjaman) {
+//		this.listPeminjaman = listPeminjaman;
+//	}
+//
+//	public Set<PengadaanModel> getListPengadaan() {
+//		return listPengadaan;
+//	}
+//
+//	public void setListPengadaan(Set<PengadaanModel> listPengadaan) {
+//		this.listPengadaan = listPengadaan;
+//	}
 	
 
 	public String getNama() {
@@ -192,8 +195,6 @@ public class UserModel implements Serializable {
 		this.alamat = alamat;
 	}
 
-	
-
 	public String getTelepon() {
 		return telepon;
 	}
@@ -201,35 +202,45 @@ public class UserModel implements Serializable {
 	public void setTelepon(String telepon) {
 		this.telepon = telepon;
 	}
+	
+	
 
-	@Override
-	public boolean equals(Object o) {
-	    if(o == null)
-	    {
-	        return false;
-	    }
-	    if (o == this)
-	    {
-	        return true;
-	    }
-	    if (getClass() != o.getClass())
-	    {
-	        return false;
-	    }
-	     
-	    UserModel user = (UserModel) o;
-	    return (this.getId() == user.getId());
+//	@Override
+//	public boolean equals(Object o) {
+//	    if(o == null)
+//	    {
+//	        return false;
+//	    }
+//	    if (o == this)
+//	    {
+//	        return true;
+//	    }
+//	    if (getClass() != o.getClass())
+//	    {
+//	        return false;
+//	    }
+//	     
+//	    UserModel user = (UserModel) o;
+//	    return (this.getId() == user.getId());
+//	}
+//	
+//	@Override
+//	public int hashCode()
+//	{
+//	    final int PRIME = 31;
+//	    int result = 1;
+//	    result = PRIME * result + (int) getId();
+//	    return result;
+//	}  
+	
+	public int getId_role() {
+		return id_role;
 	}
-	
-	@Override
-	public int hashCode()
-	{
-	    final int PRIME = 31;
-	    int result = 1;
-	    result = PRIME * result + (int) getId();
-	    return result;
-	}  
-	
+
+	public void setId_role(int id_role) {
+		this.id_role = id_role;
+	}
+
 	public String CreateNIP() {
 		//Random Alphabet
 		Random r = new Random();

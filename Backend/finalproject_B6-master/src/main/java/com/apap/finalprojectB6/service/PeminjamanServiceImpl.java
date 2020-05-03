@@ -24,8 +24,8 @@ public class PeminjamanServiceImpl implements PeminjamanService {
 	private PeminjamanDB peminjamandb;
 	
 	@Override
-	public void addPeminjaman(PeminjamanModel pinjam) {
-		peminjamandb.save(pinjam);
+	public PeminjamanModel addPeminjaman(PeminjamanModel pinjam) {
+		return peminjamandb.save(pinjam);
 	}
 
 	
