@@ -1,0 +1,18 @@
+package com.apap.finalprojectB6.service;
+
+import java.util.List;
+
+import com.apap.finalprojectB6.model.BukuModel;
+import com.apap.finalprojectB6.model.JenisModel;
+
+
+public interface BukuService {
+	BukuModel addBuku(BukuModel buku);
+	List<BukuModel> getAllBuku();
+	BukuModel getBukuById(int id);
+	void updateBuku(int id, BukuModel buku);
+	void updateJumlahKurang(int id, BukuModel buku);
+	void updateJumlahTambah(int id, BukuModel buku);
+	void deleteBuku(int id);
+
+}
