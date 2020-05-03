@@ -14,7 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.GetMapping;
+=======
+>>>>>>> 2d45837cce77c6ffc5e835588110a691f4bd75db
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,7 +52,11 @@ public class BukuController {
 	@Autowired
 	private UserService userService;
 	
+<<<<<<< HEAD
 	@GetMapping(value = "/viewall")
+=======
+	@RequestMapping(value = "/viewall", method = RequestMethod.GET)
+>>>>>>> 2d45837cce77c6ffc5e835588110a691f4bd75db
 	private List<BukuModel> view(Model model) {
 		List<BukuModel> buku = bukuService.getAllBuku();
 //		String navigation = "SIP";
@@ -72,24 +79,39 @@ public class BukuController {
 //		return "buku/addForm";	
 //	}
 //	
+<<<<<<< HEAD
 	@PostMapping(value = "/add")
 	private BukuModel addSubmit(@RequestBody BukuModel buku) {
+=======
+//	@RequestMapping(value = "/buku/tambah", method = RequestMethod.POST, params={"submit"})
+//	private String addSubmit(@ModelAttribute BukuModel buku, Model model) {
+>>>>>>> 2d45837cce77c6ffc5e835588110a691f4bd75db
 //		String navigation = "Berhasil";
 //		bukuService.addBuku(buku);
 //		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 //		model.addAttribute("detailUser", detailUser);
 //		model.addAttribute("navigation", navigation);
+<<<<<<< HEAD
 		return bukuService.addBuku(buku);
 	} 
 //	
 	@GetMapping(value = "/detail")
 	private BukuModel detail(@RequestParam(value = "id") int id) {
 		BukuModel buku = bukuService.getBukuById(id);
+=======
+//		return "buku/add-success";
+//	} 
+//	
+//	@RequestMapping(value = "/detail-buku", method = RequestMethod.GET)
+//	private String detail(@RequestParam(value = "id") int id, Model model) {
+//		BukuModel buku = bukuService.getBukuById(id);
+>>>>>>> 2d45837cce77c6ffc5e835588110a691f4bd75db
 //		String navigation = "Detail Buku";
 //		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 //		model.addAttribute("detailUser", detailUser);
 //		model.addAttribute("navigation", navigation);
 //		model.addAttribute("buku", buku);
+<<<<<<< HEAD
 		return buku;
 	}
 	
@@ -116,6 +138,33 @@ public class BukuController {
 //		model.addAttribute("navigation", navigation);
 		return peminjamanService.addPeminjaman(peminjaman);
 	}
+=======
+//		return "buku/detail-buku";
+//	}
+//	
+//	@RequestMapping(value = "/detail-buku", method = RequestMethod.POST, params={"submit"})
+//	private String detail1(@RequestParam(value = "id") int id, Model model) {
+//		UserModel user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+//		BukuModel buku = bukuService.getBukuById(id);
+//		LocalDate today = LocalDate.now();
+//		LocalDate nextWeek = today.plus(1, ChronoUnit.WEEKS);
+//		Date date = Date.valueOf(today);
+//		Date duedate = Date.valueOf(nextWeek);
+//		String navigation = "Detail Buku";
+//		PeminjamanModel peminjaman = new PeminjamanModel();
+//		peminjaman.setPinjamBuku(buku);
+//		peminjaman.setStatus(0);
+//		peminjaman.setTanggal_peminjaman(date);
+//		peminjaman.setTanggal_pengembalian(duedate);
+//		peminjaman.setUser_peminjaman(user);
+//		peminjamanService.addPeminjaman(peminjaman);
+//		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+//		model.addAttribute("detailUser", detailUser);
+//		bukuService.updateJumlahKurang(id, buku);
+//		model.addAttribute("navigation", navigation);
+//		return "peminjaman/peminjaman-success";
+//	}
+>>>>>>> 2d45837cce77c6ffc5e835588110a691f4bd75db
 //	
 //	@RequestMapping(value = "/buku/ubah/{id}", method = RequestMethod.GET)
 //	private String updateBuku(@PathVariable(value = "id") int id, Model model) {
@@ -164,4 +213,8 @@ public class BukuController {
 //			model.addAttribute("detailUser", detailUser);
 //			return "buku/delete-success";
 //	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2d45837cce77c6ffc5e835588110a691f4bd75db
 }
