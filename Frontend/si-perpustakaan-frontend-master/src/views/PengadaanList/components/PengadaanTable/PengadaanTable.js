@@ -21,6 +21,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { getInitials } from 'helpers';
 import PengadaanListService from './PengadaanListService';
+import { StatusBullet } from 'components'
 
 const useStyles = makeStyles(theme => ({
 	root: {},
@@ -39,6 +40,9 @@ const useStyles = makeStyles(theme => ({
 	},
 	actions: {
 		justifyContent: 'flex-end'
+	},
+	status: {
+		marginRight: theme.spacing(1)
 	}
 }));
 
@@ -68,13 +72,45 @@ const PengadaanTable = props => {
 
 	const statusOption = (index) => {
 		if (pengadaanList[index].status === 0) {
-			return "Usulan Pengguna"
+			return (<div>
+				<StatusBullet
+					className={classes.status}
+					color="info"
+					size="sm"
+				/>
+				Usulan Pengguna
+			</div>
+			)
 		} else if (pengadaanList[index].status === 1) {
-			return "Menunggu Persetujuan"
+			return (<div>
+				<StatusBullet
+					className={classes.status}
+					color="danger"
+					size="sm"
+				/>
+				Menunggu Persetujuan
+			</div>
+			)
 		} else if (pengadaanList[index].status === 2) {
-			return "Ditolak"
+			return (<div>
+				<StatusBullet
+					className={classes.status}
+					color="success"
+					size="sm"
+				/>
+				Ditolak
+			</div>
+			)
 		} else {
-			return "Disetujui"
+			return (<div>
+				<StatusBullet
+					className={classes.status}
+					color="success"
+					size="sm"
+				/>
+				Disetujui
+			</div>
+			)
 		}
 	}
 
