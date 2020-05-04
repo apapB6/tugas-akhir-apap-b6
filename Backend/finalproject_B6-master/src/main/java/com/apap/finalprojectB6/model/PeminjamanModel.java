@@ -2,7 +2,9 @@ package com.apap.finalprojectB6.model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -63,7 +65,11 @@ public class PeminjamanModel implements Serializable {
     @Column(name = "id_buku", nullable = false)
     private int id_buku;
     
-
+    @NotNull
+    @Size(max = 200)
+    @Column(name = "nama_buku", nullable = false)
+    private String nama_buku;
+    
 //    @ManyToOne(fetch = FetchType.LAZY, optional = false)
 //    @JoinColumn(name = "uuid_user", referencedColumnName = "id")
 //    @OnDelete(action = OnDeleteAction.CASCADE)
@@ -147,8 +153,16 @@ public class PeminjamanModel implements Serializable {
 	public void setId_buku(int id_buku) {
 		this.id_buku = id_buku;
 	}
-	
 
+	public String getNama_buku() {
+		return nama_buku;
+	}
+
+	public void setNama_buku(String nama_buku) {
+		this.nama_buku = nama_buku;
+	}
+
+	
 //	public UserModel getUser_peminjaman() {
 //		return user_peminjaman;
 //	}

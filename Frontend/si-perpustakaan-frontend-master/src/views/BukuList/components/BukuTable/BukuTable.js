@@ -52,11 +52,6 @@ const useStyles = makeStyles(theme => ({
 
 const imgUrl = '/images/avatars/buku.jpg'
 
-const statusColors = {
-	tersedia: 'success',
-	kosong: 'danger'
-};
-
 const BukuTable = props => {
 	const { className, users, ...rest } = props;
 
