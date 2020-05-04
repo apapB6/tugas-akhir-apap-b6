@@ -35,7 +35,13 @@ public class PeminjamanController {
 	private BukuService bukuService;
 
 	@RequestMapping(value = "/viewall", method = RequestMethod.GET)
+	private List<PeminjamanModel> pinjam(Model model) {
+		List<PeminjamanModel> peminjaman = peminjamanService.getAllPeminjaman();
+		for(int i = 0; i < peminjaman.size(); i++) {
+			peminjaman.get(i).setNama_buku(bukuService.getBukuById(peminjaman.get(i).getId_buku()).getJudul());
+		}
 
+		
 		// String navigation = "SIP";
 		// model.addAttribute("navigation", navigation);
 		// model.addAttribute("peminjaman", peminjaman);
