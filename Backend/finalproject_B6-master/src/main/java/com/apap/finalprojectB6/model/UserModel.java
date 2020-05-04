@@ -35,12 +35,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "user")
 public class UserModel implements Serializable {	
+<<<<<<< HEAD
 	
 //	@Id
 //	@GeneratedValue(strategy = GenerationType.AUTO)
 //	@Type(type="uuid-char")
 //	@Column(name="uuid", columnDefinition = "VARCHAR(200)", insertable = false, updatable = false, nullable = false)
 //	private String uuid;
+=======
+	private static final long serialVersionUID = 1L;
+>>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,6 +57,14 @@ public class UserModel implements Serializable {
 	
 	@NotNull
 	@Size(max = 200)
+<<<<<<< HEAD
+=======
+	@Column(name = "uuid", nullable = false)
+	private String uuid;
+	
+	@NotNull
+	@Size(max = 200)
+>>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 	@Column(name = "nip", nullable = false, unique = true)
 	private String nip;
 	
@@ -114,6 +126,21 @@ public class UserModel implements Serializable {
 		this.id = id;
 	}
 
+<<<<<<< HEAD
+=======
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+>>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 	public String getUsername() {
 		return username;
 	}

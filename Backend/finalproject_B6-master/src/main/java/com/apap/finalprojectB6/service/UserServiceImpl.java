@@ -10,6 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.apap.finalprojectB6.model.RoleModel;
 import com.apap.finalprojectB6.model.UserModel;
 import com.apap.finalprojectB6.repository.UserRoleDB;
+<<<<<<< HEAD
+=======
+import java.util.UUID;
+>>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 
 
 @Service
@@ -23,6 +27,7 @@ public class UserServiceImpl implements UserService {
 		user.setNip(user.CreateNIP());
 	}
 	
+<<<<<<< HEAD
 //	@Override
 //	public UserModel addUser(UserModel user) {
 //		String pass = encrypt(user.getPassword());
@@ -30,6 +35,21 @@ public class UserServiceImpl implements UserService {
 //		this.createNip(user);
 //		return userdb.save(user);
 //	}
+=======
+	@Override
+	public UserModel addUser(UserModel user) {
+//		String pass = encrypt(user.getPassword());
+		String uuid = UUID.randomUUID().toString().replace("-", "");
+		UserModel uuidcheck = this.getUserByUuid(uuid);
+		while (uuidcheck != null) {
+			uuid = UUID.randomUUID().toString().replace("-", "");
+		}
+//		user.setPassword(pass);
+		user.setUuid(uuid);
+		this.createNip(user);
+		return userdb.save(user);
+	}
+>>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 //	
 //	@Override
 //	public String encrypt(String password) {
@@ -51,8 +71,19 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+<<<<<<< HEAD
 	public UserModel getUserByPass(String pass) {
 		return userdb.findByPassword(pass);
+=======
+	public UserModel getUserByUuid(String uuid) {
+		return userdb.findByUuid(uuid);
+	}
+	
+	@Override
+	public UserModel getUserByUsername(String username) {
+		// TODO Auto-generated method stub
+		return userdb.findByUsername(username);
+>>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 	}
 
 	@Override

@@ -27,6 +27,11 @@ public class HomeModel implements Serializable{
     private int jumlah_pengguna;
     
     List<PeminjamanModel> peminjaman = new ArrayList<PeminjamanModel>();
+<<<<<<< HEAD
+=======
+    List<UserModel> nama_peminjam = new ArrayList<UserModel>();
+    List<BukuModel> nama_buku = new ArrayList<BukuModel>();
+>>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 
 	public int getJumlah_pengadaan() {
 		return jumlah_pengadaan;
@@ -60,4 +65,23 @@ public class HomeModel implements Serializable{
 		this.peminjaman = peminjaman;
 	}
 
+<<<<<<< HEAD
+=======
+	public List<UserModel> getNama_peminjam() {
+		return nama_peminjam;
+	}
+
+	public void setNama_peminjam(List<UserModel> nama_peminjam) {
+		this.nama_peminjam = nama_peminjam;
+	}
+
+	public List<BukuModel> getNama_buku() {
+		return nama_buku;
+	}
+
+	public void setNama_buku(List<BukuModel> nama_buku) {
+		this.nama_buku = nama_buku;
+	}
+	
+>>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 }

@@ -28,10 +28,23 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "peminjaman_buku")
 public class PeminjamanModel implements Serializable {	
+<<<<<<< HEAD
+=======
+	private static final long serialVersionUID = 1L;
+	
+>>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	
+<<<<<<< HEAD
+=======
+	@NotNull
+    @Size(max = 200)
+    @Column(name = "uuid_user", nullable = false)
+    private String uuid_user;
+	
+>>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
     @NotNull
     @Column(name = "tanggal_peminjaman", nullable = false)
     private Date tanggal_peminjaman;
@@ -56,10 +69,13 @@ public class PeminjamanModel implements Serializable {
     @Column(name = "id_buku", nullable = false)
     private int id_buku;
     
+<<<<<<< HEAD
     @NotNull
 //    @Size(max = 200)
     @Column(name = "uuid_user", nullable = false)
     private int uuid_user;
+=======
+>>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 
 //    @ManyToOne(fetch = FetchType.LAZY, optional = false)
 //    @JoinColumn(name = "uuid_user", referencedColumnName = "id")
@@ -84,6 +100,21 @@ public class PeminjamanModel implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+<<<<<<< HEAD
+=======
+	
+	public String getUuid_user() {
+		return uuid_user;
+	}
+
+	public void setUuid_user(String uuid_user) {
+		this.uuid_user = uuid_user;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+>>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 
 	public Date getTanggal_peminjaman() {
 		return tanggal_peminjaman;
@@ -125,6 +156,7 @@ public class PeminjamanModel implements Serializable {
 		this.denda = denda;
 	}
 
+<<<<<<< HEAD
 	public int getUuid_user() {
 		return uuid_user;
 	}
@@ -133,6 +165,8 @@ public class PeminjamanModel implements Serializable {
 		this.uuid_user = uuid_user;
 	}
 
+=======
+>>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 	public int getId_buku() {
 		return id_buku;
 	}
