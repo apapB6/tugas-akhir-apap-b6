@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
@@ -21,6 +21,7 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 import mockData from './data';
 import { StatusBullet } from 'components';
+import ComponentService from '../ComponentService'
 
 const useStyles = makeStyles(theme => ({
 	root: {},
@@ -53,8 +54,17 @@ const LatestOrders = props => {
 	const { className, ...rest } = props;
 
 	const classes = useStyles();
+	const [peminjamanList, setPeminjamanList] = useState([])
 
-	const [orders] = useState(mockData);
+	useEffect(() => refreshPeminjamanList())
+
+	const refreshPeminjamanList = () => {
+		ComponentService.getAllPeminjaman().then(response => {
+			const peminjamanOverdue = response.data.filter(peminjaman => peminjaman.status === 5)
+			console.log(peminjamanOverdue)
+		})
+	}
+
 
 	return (
 		<Card
@@ -83,15 +93,14 @@ const LatestOrders = props => {
 
 							</TableHead>
 							<TableBody>
-								{orders.map(order => (
+								{/* {peminjamanList.map(peminjaman => (
 									<TableRow
 										hover
-										key={order.id}
+										key={peminjaman.id}
 									>
-										<TableCell>{orders.indexOf(order) + 1}</TableCell>
-										{/* <TableCell>{order.ref}</TableCell> */}
-										<TableCell>{order.customer.name}</TableCell>
-										<TableCell>{order.customer.judul}</TableCell>
+										<TableCell>{peminjamanList.indexOf(peminjaman) + 1}</TableCell>
+										<TableCell>Ani</TableCell>
+										<TableCell>{judul}</TableCell>
 										<TableCell>
 											<div className={classes.statusContainer}>
 												<StatusBullet
@@ -105,7 +114,7 @@ const LatestOrders = props => {
 										<TableCell>{order.customer.jumlah_hari}</TableCell>
 										<TableCell>{order.customer.jumlah_denda}</TableCell>
 									</TableRow>
-								))}
+								))} */}
 							</TableBody>
 						</Table>
 					</div>

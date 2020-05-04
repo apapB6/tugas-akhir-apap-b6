@@ -2,7 +2,9 @@ package com.apap.finalprojectB6.model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -28,23 +30,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "peminjaman_buku")
 public class PeminjamanModel implements Serializable {	
-<<<<<<< HEAD
-=======
 	private static final long serialVersionUID = 1L;
 	
->>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	
-<<<<<<< HEAD
-=======
 	@NotNull
     @Size(max = 200)
     @Column(name = "uuid_user", nullable = false)
     private String uuid_user;
 	
->>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
     @NotNull
     @Column(name = "tanggal_peminjaman", nullable = false)
     private Date tanggal_peminjaman;
@@ -69,14 +65,11 @@ public class PeminjamanModel implements Serializable {
     @Column(name = "id_buku", nullable = false)
     private int id_buku;
     
-<<<<<<< HEAD
     @NotNull
-//    @Size(max = 200)
-    @Column(name = "uuid_user", nullable = false)
-    private int uuid_user;
-=======
->>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
-
+    @Size(max = 200)
+    @Column(name = "nama_buku", nullable = false)
+    private String nama_buku;
+    
 //    @ManyToOne(fetch = FetchType.LAZY, optional = false)
 //    @JoinColumn(name = "uuid_user", referencedColumnName = "id")
 //    @OnDelete(action = OnDeleteAction.CASCADE)
@@ -100,8 +93,6 @@ public class PeminjamanModel implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-<<<<<<< HEAD
-=======
 	
 	public String getUuid_user() {
 		return uuid_user;
@@ -114,7 +105,6 @@ public class PeminjamanModel implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
->>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 
 	public Date getTanggal_peminjaman() {
 		return tanggal_peminjaman;
@@ -156,17 +146,6 @@ public class PeminjamanModel implements Serializable {
 		this.denda = denda;
 	}
 
-<<<<<<< HEAD
-	public int getUuid_user() {
-		return uuid_user;
-	}
-
-	public void setUuid_user(int uuid_user) {
-		this.uuid_user = uuid_user;
-	}
-
-=======
->>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 	public int getId_buku() {
 		return id_buku;
 	}
@@ -174,8 +153,16 @@ public class PeminjamanModel implements Serializable {
 	public void setId_buku(int id_buku) {
 		this.id_buku = id_buku;
 	}
-	
 
+	public String getNama_buku() {
+		return nama_buku;
+	}
+
+	public void setNama_buku(String nama_buku) {
+		this.nama_buku = nama_buku;
+	}
+
+	
 //	public UserModel getUser_peminjaman() {
 //		return user_peminjaman;
 //	}

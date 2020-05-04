@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -18,7 +18,10 @@ import {
 } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import { getInitials } from 'helpers';
+import PengadaanListService from './PengadaanListService';
+import { StatusBullet } from 'components'
 
 const useStyles = makeStyles(theme => ({
 	root: {},
@@ -37,6 +40,9 @@ const useStyles = makeStyles(theme => ({
 	},
 	actions: {
 		justifyContent: 'flex-end'
+	},
+	status: {
+		marginRight: theme.spacing(1)
 	}
 }));
 
@@ -46,6 +52,15 @@ const PengadaanTable = props => {
 	const classes = useStyles();
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [page, setPage] = useState(0);
+	const [pengadaanList, setPengadaanList] = useState([]);
+
+	useEffect(() => {
+		refreshPengadaan()
+	})
+
+	const refreshPengadaan = () => {
+		PengadaanListService.getAllPengadaan().then(response => setPengadaanList(response.data))
+	}
 
 	const handlePageChange = (event, page) => {
 		setPage(page);
@@ -54,6 +69,50 @@ const PengadaanTable = props => {
 	const handleRowsPerPageChange = event => {
 		setRowsPerPage(event.target.value);
 	};
+
+	const statusOption = (index) => {
+		if (pengadaanList[index].status === 0) {
+			return (<div>
+				<StatusBullet
+					className={classes.status}
+					color="info"
+					size="sm"
+				/>
+				Usulan Pengguna
+			</div>
+			)
+		} else if (pengadaanList[index].status === 1) {
+			return (<div>
+				<StatusBullet
+					className={classes.status}
+					color="info"
+					size="sm"
+				/>
+				Menunggu Persetujuan
+			</div>
+			)
+		} else if (pengadaanList[index].status === 2) {
+			return (<div>
+				<StatusBullet
+					className={classes.status}
+					color="danger"
+					size="sm"
+				/>
+				Ditolak
+			</div>
+			)
+		} else {
+			return (<div>
+				<StatusBullet
+					className={classes.status}
+					color="success"
+					size="sm"
+				/>
+				Disetujui
+			</div>
+			)
+		}
+	}
 
 	return (
 		<Card
@@ -67,34 +126,29 @@ const PengadaanTable = props => {
 							<TableHead>
 								<TableRow>
 									<TableCell>No</TableCell>
-									<TableCell>Tanggal</TableCell>
-									<TableCell>Kode</TableCell>
-									<TableCell>Judul</TableCell>
+									<TableCell>Judul Buku</TableCell>
 									<TableCell>Jumlah</TableCell>
-									<TableCell>Total</TableCell>
+									<TableCell>Harga</TableCell>
 									<TableCell>Status</TableCell>
 									<TableCell>Aksi</TableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{users.slice(0, rowsPerPage).map(user => (
+								{pengadaanList.slice(0, rowsPerPage).map(pengadaan => (
 									<TableRow
 										className={classes.tableRow}
 										hover
-										key={user.id}
+										key={pengadaan.id}
 									>
-										<TableCell>{users.indexOf(user) + 1}</TableCell>
+										<TableCell>{pengadaanList.indexOf(pengadaan) + 1}</TableCell>
+										<TableCell>{pengadaan.judul}</TableCell>
 										<TableCell>
-											01/01/20
+											{pengadaan.jumlah}
 										</TableCell>
-										<TableCell>NIP123456</TableCell>
-										<TableCell>APAP</TableCell>
+										<TableCell>Rp {pengadaan.harga}</TableCell>
+										<TableCell>{statusOption(pengadaanList.indexOf(pengadaan))}</TableCell>
 										<TableCell>
-											12
-										</TableCell>
-										<TableCell>100</TableCell>
-										<TableCell>Menunggu</TableCell>
-										<TableCell>
+											<VisibilityIcon />
 											<DeleteIcon />
 										</TableCell>
 									</TableRow>
@@ -107,7 +161,7 @@ const PengadaanTable = props => {
 			<CardActions className={classes.actions}>
 				<TablePagination
 					component="div"
-					count={users.length}
+					count={pengadaanList.length}
 					onChangePage={handlePageChange}
 					onChangeRowsPerPage={handleRowsPerPageChange}
 					page={page}

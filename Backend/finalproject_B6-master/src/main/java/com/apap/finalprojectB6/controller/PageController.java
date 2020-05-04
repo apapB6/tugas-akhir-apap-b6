@@ -54,11 +54,8 @@ public class PageController {
 		for(int i = 0; i < loop.size(); i++) {
 			if(loop.get(i).getStatus() == 5) {
 				home.getPeminjaman().add(loop.get(i));
-<<<<<<< HEAD
-=======
 				home.getNama_buku().add(bukuService.getBukuById(loop.get(i).getId_buku()));
 				home.getNama_peminjam().add(userService.getUserByUuid(loop.get(i).getUuid_user()));
->>>>>>> 2fb8e35b368097eff3d56d45efd10d644c03a3b2
 			}
 		}
 
