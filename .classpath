@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Backend/finalproject_B6-master/.mvn/wrapper"/>
+	<classpathentry kind="src" path="Backend/finalproject_B6-master/src/main/java"/>
+	<classpathentry kind="src" path="Backend/finalproject_B6-master/src/test/java"/>
+	<classpathentry kind="src" path="finalproject_B6-master/.mvn/wrapper"/>
+	<classpathentry kind="src" path="finalproject_B6-master/src/main/java"/>
+	<classpathentry kind="src" path="finalproject_B6-master/src/test/java"/>
+	<classpathentry kind="output" path="Backend/finalproject_B6-master/target/classes"/>
+</classpath>
