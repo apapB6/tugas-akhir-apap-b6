@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Peminjaman</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #FFFFFF;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #000000;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #63b761;
+}
+
+.main {
+  margin-left: 250px; /* Same as the width of the sidenav */
+  font-size: 15px; /* Increased text to enable scrolling */
+  padding: 0px 0px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+
+<body>
+<div class="sidenav">
+	<br><a href="/profile">FOTO</a>
+	<p th:text="${detailUser.getNama()}"></p>
+	<p th:text="${detailUser.getUser_role().getNama()}"></p>
+	<br><br>
+	<a href="/">Beranda</a>
+	<a href="/jenis">Jenis Buku</a>
+	<a href="/buku">Buku</a>
+	<a href="/peminjaman">Peminjaman</a>
+	<a href="/pengadaan">Pengadaan</a>
+	<a href="/pengguna">Pengguna</a>
+</div>
+
+<div class="main">
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+  
+           
+           <div class="container-fluid">
+           <div class="container-fluid">
+           <br>   
+		<h4 align="center">DATA BUKU</h4>
+		<br>
+        <div class="row">
+            <br> 			
+                <div class="table-responsive">
+                	<br>
+					<!--  <form th:action = "@{/peminjaman/tambah}">
+						<button type = "submit" class="btn btn-primary">Tambah Buku</button>
+					</form> -->
+					<br>	                  
+                      	<table class="table table-striped">
+						<thead class="thead-dark">
+						<tr>
+							<th width="5%" style="text-align: center">No</th>
+							<th width="15%" style="text-align: center">Judul Buku</th>
+							<th width="15%" style="text-align: center">Tanggal Peminjaman</th>
+							<th width="15%" style="text-align: center">Tanggal Pengembalian</th>
+							<th width="10%" style="text-align: center">Status</th>
+							<th width="20%"style="text-align: center">Action</th>
+						</tr>
+						</thead>
+						
+					 	<tbody>
+							<tr  th:each="peminjaman, i : ${peminjaman}"> 
+								<td align=Center th:text="${i.count}"></td>
+								<td>
+								<span th:if="${peminjaman.PinjamBuku.id != 0}"> 
+										<span th:each="pinjam : ${peminjaman.PinjamBuku}">
+											<span th:text="${pinjam.judul}"></span>
+										</span>
+									</span></td>
+								<td th:text="${peminjaman.tanggal_peminjaman}"></td>
+								<td th:text="${peminjaman.tanggal_pengembalian}"></td>
+								<td>
+								<span style="color:blue" th:if="${peminjaman.status == 0}">Menunggu persetujuan</span>
+								<span style="color:red" th:if="${peminjaman.status == 1}">Ditolak</span>
+								<span style="color:green" th:if="${peminjaman.status == 2}">Disetujui</span>
+								<span style="color:green" th:if="${peminjaman.status == 3}">Sudah Diambil</span>
+								<span style="color:green" th:if="${peminjaman.status == 4}">Sudah Dikembalikan</span>
+								<span style="color:red" th:if="${peminjaman.status == 5}">Overdue</span>
+								</td>
+								<td align=Center style="padding: 10px;">
+								<a th:href="@{'/detail-peminjaman?id=' + ${peminjaman.id}}">
+				                <input type="button" class="btn btn-info" value = "Detail"></a>
+				                <a th:href="@{'/peminjaman/ubah/' + ${peminjaman.id}}">
+								<input type="button" class="btn btn-secondary" value = "Ubah"></a>
+								<a th:href="@{'/peminjaman/hapus/' + ${peminjaman.id}}">
+								<input type="button" class="btn btn-danger" value = "Hapus"></a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+      			</div>
+        	</div>
+    	</div>        
+	</div></div>
+</body>
+</html>
