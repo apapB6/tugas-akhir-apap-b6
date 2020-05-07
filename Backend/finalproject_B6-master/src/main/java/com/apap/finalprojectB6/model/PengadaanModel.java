@@ -38,7 +38,6 @@ public class PengadaanModel implements Serializable {
     @Column(name = "judul", nullable = false)
     private String judul;
 
-    
     @NotNull
     @Size(max = 200)
     @Column(name = "pengarang", nullable = false)
