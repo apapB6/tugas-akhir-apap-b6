@@ -26,8 +26,8 @@ public class PengadaanServiceImpl implements PengadaanService {
     }
 
     @Override
-	public void addPengadaan(PengadaanModel pengadaan){
-		pengadaandb.save(pengadaan);
+	public PengadaanModel addPengadaan(PengadaanModel pengadaan){
+		return pengadaandb.save(pengadaan);
     }
     
     @Override

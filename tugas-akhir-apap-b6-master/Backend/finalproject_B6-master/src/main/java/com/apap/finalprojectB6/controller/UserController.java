@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -69,18 +71,20 @@ public class UserController {
 	//
 	// @RequestMapping(value = "/pengguna/tambah", method = RequestMethod.POST,
 	// params={"submit"})
-	// private String addSubmit(@ModelAttribute UserModel user, Model model) {
+	@PostMapping(value = "/add")
+	private UserModel addSubmit(@RequestBody UserModel pengguna) {
 	// RoleModel role = roleService.getRoleById(5);
 	// String navigation = "Berhasil";
 	// user.setUser_role(role);
 	// role.getUserList().add(user);
-	// userService.addUser(user);
+		pengguna.setUuid("100");
+		return userService.addUser(pengguna);
 	// model.addAttribute("navigation", navigation);
 	// UserModel detailUser =
 	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 	// model.addAttribute("detailUser", detailUser);
 	// return "pengguna/add-success";
-	// }
+	}
 	//
 	//// @RequestMapping(value = "/viewbuku", method = RequestMethod.GET)
 	//// private String detail(@RequestParam(value = "id") int id, Model model) {

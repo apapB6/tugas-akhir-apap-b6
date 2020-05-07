@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -68,14 +70,15 @@ public class PengadaanController {
 	// return "pengadaan/addForm";
 	// }
 	//
-	// @RequestMapping(value = "/pengadaan/tambah", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
+	private PengadaanModel addSubmit(@RequestBody PengadaanModel pengadaan){
 	// private String addSubmit(@ModelAttribute PengadaanModel pengadaan, Model
 	// model){
 	// UserModel user =
 	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// pengadaan.setUser_pengadaan(user);
+		pengadaan.setUuid_user("1");
 	// pengadaan.setStatus(1);
-	// pengadaanService.addPengadaan(pengadaan);
+		return pengadaanService.addPengadaan(pengadaan);
 	// String navigation = "SIP";
 	// model.addAttribute("navigation", navigation);
 	// String typeMsg = "add";
@@ -86,7 +89,7 @@ public class PengadaanController {
 	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 	// model.addAttribute("detailUser", detailUser);
 	// return "pengadaan/notif";
-	// }
+	}
 	//
 	// @RequestMapping(value = "pengadaan/hapus/{id}")
 	// public String delete(@PathVariable(value = "id") int id, Model model){

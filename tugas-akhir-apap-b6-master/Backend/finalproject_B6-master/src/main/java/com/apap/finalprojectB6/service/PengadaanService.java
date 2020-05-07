@@ -8,6 +8,6 @@ public interface PengadaanService {
 	List<PengadaanModel> getAllPengadaan();
 	PengadaanModel getPengadaanById(int id);
 
-	void addPengadaan(PengadaanModel pengadaan);
+	PengadaanModel addPengadaan(PengadaanModel pengadaan);
 	void deletePengadaan(int id);
 }
