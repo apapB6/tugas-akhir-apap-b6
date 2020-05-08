@@ -77,7 +77,7 @@ public class UserController {
 	// String navigation = "Berhasil";
 	// user.setUser_role(role);
 	// role.getUserList().add(user);
-		pengguna.setUuid("100");
+		pengguna.setId_role(5);
 		return userService.addUser(pengguna);
 	// model.addAttribute("navigation", navigation);
 	// UserModel detailUser =
