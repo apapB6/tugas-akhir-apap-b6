@@ -35,13 +35,6 @@ public class PengadaanController {
 	@RequestMapping(value = "/viewall", method = RequestMethod.GET)
 	private List<PengadaanModel> index(Model model) {
 		List<PengadaanModel> pengadaan = pengadaanService.getAllPengadaan();
-		// String navigation = "SIP";
-		// model.addAttribute("navigation", navigation);
-		// model.addAttribute("pengadaan", pengadaan);
-		// UserModel detailUser =
-		// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-		// model.addAttribute("detailUser", detailUser);
-		// return "pengadaan/index";
 		return pengadaan;
 	}
 	//
@@ -72,25 +65,16 @@ public class PengadaanController {
 	//
 	@PostMapping(value = "/add")
 	private PengadaanModel addSubmit(@RequestBody PengadaanModel pengadaan){
-	// private String addSubmit(@ModelAttribute PengadaanModel pengadaan, Model
-	// model){
-	// UserModel user =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+		//hardcode uuid
 		pengadaan.setUuid_user("1");
-	// pengadaan.setStatus(1);
+//		if(user id_role nya == 5) {
+		pengadaan.setStatus(1);
+//		}else {
+//			pengadaan.setStatus(0);
+//		}
 		return pengadaanService.addPengadaan(pengadaan);
-	// String navigation = "SIP";
-	// model.addAttribute("navigation", navigation);
-	// String typeMsg = "add";
-	// model.addAttribute("typeMsg", typeMsg);
-	// String msg = "Pengadaan Berhasil Diajukan!";
-	// model.addAttribute("msg", msg);
-	// UserModel detailUser =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// model.addAttribute("detailUser", detailUser);
-	// return "pengadaan/notif";
 	}
-	//
+
 	// @RequestMapping(value = "pengadaan/hapus/{id}")
 	// public String delete(@PathVariable(value = "id") int id, Model model){
 	// pengadaanService.deletePengadaan(id);

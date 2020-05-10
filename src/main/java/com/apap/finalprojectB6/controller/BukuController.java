@@ -41,81 +41,47 @@ public class BukuController {
 	private BukuService bukuService;
 	
 	@Autowired
-	private JenisService jenisService;
-	
-	@Autowired
 	private PeminjamanService peminjamanService;
-	
-	@Autowired
-	private UserService userService;
 	
 	@GetMapping(value = "/viewall")
 	private List<BukuModel> view(Model model) {
 		List<BukuModel> buku = bukuService.getAllBuku();
-//		String navigation = "SIP";
-//		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-//		model.addAttribute("detailUser", detailUser);
-//		model.addAttribute("navigation", navigation);
-//		model.addAttribute("buku", buku);
 		return buku;
 	}
 	
-//	@RequestMapping(value = "/buku/tambah", method = RequestMethod.GET)
-//	private String add(Model model) {
-//		List <JenisModel> jenisList = jenisService.getAllJenis();
-//		String navigation = "Tambah Buku";
-//		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-//		model.addAttribute("detailUser", detailUser);
-//		model.addAttribute("navigation", navigation);
-//		model.addAttribute("jenisList", jenisList);
-//		model.addAttribute("buku", new BukuModel());
-//		return "buku/addForm";	
-//	}
-//	
 	@PostMapping(value = "/add")
 	private BukuModel addSubmit(@RequestBody BukuModel buku) {
-//		String navigation = "Berhasil";
-//		bukuService.addBuku(buku);
-//		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-//		model.addAttribute("detailUser", detailUser);
-//		model.addAttribute("navigation", navigation);
 		return bukuService.addBuku(buku);
 	} 
 //	
 	@GetMapping(value = "/detail")
 	private BukuModel detail(@RequestParam(value = "id") int id) {
 		BukuModel buku = bukuService.getBukuById(id);
-//		String navigation = "Detail Buku";
-//		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-//		model.addAttribute("detailUser", detailUser);
-//		model.addAttribute("navigation", navigation);
-//		model.addAttribute("buku", buku);
 		return buku;
 	}
 	
-//	@PostMapping(value = "/detail")
-//	private PeminjamanModel detail(@RequestParam(value = "id") int id, @RequestBody PeminjamanModel peminjaman) {
-////		UserModel user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-//		BukuModel buku = bukuService.getBukuById(id);
-//		LocalDate today = LocalDate.now();
-//		LocalDate nextWeek = today.plus(1, ChronoUnit.WEEKS);
-//		Date date = Date.valueOf(today);
-//		Date duedate = Date.valueOf(nextWeek);
-//		String navigation = "Detail Buku";
-////		PeminjamanModel peminjaman = new PeminjamanModel();
-//		peminjaman.setId_buku(buku.getId());
-//		peminjaman.setStatus(0);
-//		peminjaman.setTanggal_peminjaman(date);
-//		peminjaman.setTanggal_pengembalian(duedate);
-//		//HARDCODE
-//		peminjaman.setUuid_user(1);
-////		peminjamanService.addPeminjaman(peminjaman);
-////		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-////		model.addAttribute("detailUser", detailUser);
-//		bukuService.updateJumlahKurang(id, buku);
-////		model.addAttribute("navigation", navigation);
-//		return peminjamanService.addPeminjaman(peminjaman);
-//	}
+	@PostMapping(value = "/detail")
+	private PeminjamanModel detail(@RequestParam(value = "id") int id, @RequestBody PeminjamanModel peminjaman) {
+//		UserModel user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+		BukuModel buku = bukuService.getBukuById(id);
+		LocalDate today = LocalDate.now();
+		LocalDate nextWeek = today.plus(1, ChronoUnit.WEEKS);
+		Date date = Date.valueOf(today);
+		Date duedate = Date.valueOf(nextWeek);
+//		PeminjamanModel peminjaman = new PeminjamanModel();
+		peminjaman.setId_buku(buku.getId());
+		peminjaman.setStatus(0);
+		peminjaman.setTanggal_peminjaman(date);
+		peminjaman.setTanggal_pengembalian(duedate);
+		//HARDCODE
+		peminjaman.setUuid_user("1");
+//		peminjamanService.addPeminjaman(peminjaman);
+//		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+//		model.addAttribute("detailUser", detailUser);
+		bukuService.updateJumlahKurang(id, buku);
+//		model.addAttribute("navigation", navigation);
+		return peminjamanService.addPeminjaman(peminjaman);
+	}
 //	
 //	@RequestMapping(value = "/buku/ubah/{id}", method = RequestMethod.GET)
 //	private String updateBuku(@PathVariable(value = "id") int id, Model model) {
