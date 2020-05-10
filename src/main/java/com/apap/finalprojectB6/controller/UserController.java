@@ -44,20 +44,18 @@ public class UserController {
 	// return "profil/index";
 	// }
 	//
-	@RequestMapping(value = "/viewall", method = RequestMethod.GET)
+	@GetMapping(value = "/viewall")
 	private List<UserModel> pengguna(Model model) {
 		List<UserModel> user = userService.getAllUser();
-		// String navigation = "SIP";
-		// model.addAttribute("navigation", navigation);
-		// model.addAttribute("user", user);
-		// UserModel detailUser =
-		// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-		// model.addAttribute("detailUser", detailUser);
-		// return "pengguna/pengguna";
+		return user;
+	}
+	
+	@GetMapping(value = "/getuser")
+	private List<UserModel> getuser(Model model) {
+		List<UserModel> user = userService.getUserApi();
 		return user;
 	}
 
-	//
 	// @RequestMapping(value = "/pengguna/tambah", method = RequestMethod.GET)
 	// private String add(Model model) {
 	// String navigation = "Tambah Pengguna";
@@ -69,21 +67,11 @@ public class UserController {
 	// return "pengguna/tambah-pengguna";
 	// }
 	//
-	// @RequestMapping(value = "/pengguna/tambah", method = RequestMethod.POST,
-	// params={"submit"})
+
 	@PostMapping(value = "/add")
 	private UserModel addSubmit(@RequestBody UserModel pengguna) {
-	// RoleModel role = roleService.getRoleById(5);
-	// String navigation = "Berhasil";
-	// user.setUser_role(role);
-	// role.getUserList().add(user);
 		pengguna.setId_role(5);
 		return userService.addUser(pengguna);
-	// model.addAttribute("navigation", navigation);
-	// UserModel detailUser =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// model.addAttribute("detailUser", detailUser);
-	// return "pengguna/add-success";
 	}
 	//
 	//// @RequestMapping(value = "/viewbuku", method = RequestMethod.GET)

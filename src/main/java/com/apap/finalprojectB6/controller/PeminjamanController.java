@@ -37,13 +37,6 @@ public class PeminjamanController {
 	@RequestMapping(value = "/viewall", method = RequestMethod.GET)
 	private List<PeminjamanModel> pengguna(Model model) {
 		List<PeminjamanModel> peminjaman = peminjamanService.getAllPeminjaman();
-		// String navigation = "SIP";
-		// model.addAttribute("navigation", navigation);
-		// model.addAttribute("peminjaman", peminjaman);
-		// UserModel detailUser =
-		// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-		// model.addAttribute("detailUser", detailUser);
-		// return "peminjaman/peminjaman";
 		return peminjaman;
 	}
 	//
