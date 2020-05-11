@@ -39,95 +39,102 @@ import com.apap.finalprojectB6.service.UserService;
 public class BukuController {
 	@Autowired
 	private BukuService bukuService;
-	
+
 	@Autowired
 	private PeminjamanService peminjamanService;
-	
+
 	@GetMapping(value = "/viewall")
 	private List<BukuModel> view(Model model) {
 		List<BukuModel> buku = bukuService.getAllBuku();
 		return buku;
 	}
-	
+
 	@PostMapping(value = "/add")
 	private BukuModel addSubmit(@RequestBody BukuModel buku) {
 		return bukuService.addBuku(buku);
-	} 
-//	
-	@GetMapping(value = "/detail")
-	private BukuModel detail(@RequestParam(value = "id") int id) {
+	}
+
+	//
+	@GetMapping(value = "/detail/{id}")
+	private BukuModel detail(@PathVariable int id) {
 		BukuModel buku = bukuService.getBukuById(id);
 		return buku;
 	}
-	
+
 	@PostMapping(value = "/detail")
 	private PeminjamanModel detail(@RequestParam(value = "id") int id, @RequestBody PeminjamanModel peminjaman) {
-//		UserModel user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+		// UserModel user =
+		// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 		BukuModel buku = bukuService.getBukuById(id);
 		LocalDate today = LocalDate.now();
 		LocalDate nextWeek = today.plus(1, ChronoUnit.WEEKS);
 		Date date = Date.valueOf(today);
 		Date duedate = Date.valueOf(nextWeek);
-//		PeminjamanModel peminjaman = new PeminjamanModel();
+		// PeminjamanModel peminjaman = new PeminjamanModel();
 		peminjaman.setId_buku(buku.getId());
 		peminjaman.setStatus(0);
 		peminjaman.setTanggal_peminjaman(date);
 		peminjaman.setTanggal_pengembalian(duedate);
-		//HARDCODE
+		// HARDCODE
 		peminjaman.setUuid_user("1");
-//		peminjamanService.addPeminjaman(peminjaman);
-//		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-//		model.addAttribute("detailUser", detailUser);
+		// peminjamanService.addPeminjaman(peminjaman);
+		// UserModel detailUser =
+		// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+		// model.addAttribute("detailUser", detailUser);
 		bukuService.updateJumlahKurang(id, buku);
-//		model.addAttribute("navigation", navigation);
+		// model.addAttribute("navigation", navigation);
 		return peminjamanService.addPeminjaman(peminjaman);
 	}
-//	
-//	@RequestMapping(value = "/buku/ubah/{id}", method = RequestMethod.GET)
-//	private String updateBuku(@PathVariable(value = "id") int id, Model model) {
-//		BukuModel old = bukuService.getBukuById(id);
-//		List <JenisModel> jenisList = jenisService.getAllJenis();
-//		String navigation = "Ubah Buku";
-//		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-//		model.addAttribute("detailUser", detailUser);
-//		model.addAttribute("navigation", navigation);
-//		model.addAttribute("old", old);
-//		model.addAttribute("jenis_buku", jenisList);
-//		model.addAttribute("new", new BukuModel());
-//		return "buku/ubah-buku";
-//	}
-//	
-//	@RequestMapping(value = "/buku/ubah/{id}", method = RequestMethod.POST)
-//	private String updateBuku(@ModelAttribute BukuModel newBuku, 
-//			@PathVariable(value = "id") int id, Model model) {
-//		bukuService.updateBuku(id, newBuku);
-//		BukuModel buku = bukuService.getBukuById(id);
-//		String navigation = "Berhasil";
-//		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-//		model.addAttribute("detailUser", detailUser);
-//		model.addAttribute("navigation", navigation);
-//		model.addAttribute("buku", buku);
-//		return "buku/update-success";
-//	}
-//	
-//	@RequestMapping(value = "/buku/hapus/{id}", method = RequestMethod.GET)
-//	private String deleteBuku(@PathVariable(value = "id") int id, Model model) {
-//			BukuModel buku = bukuService.getBukuById(id);
-//			model.addAttribute("buku", buku);
-//			String navigation = "Hapus Buku";
-//			model.addAttribute("navigation", navigation);
-//			UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-//			model.addAttribute("detailUser", detailUser);
-//			return "buku/hapus-buku";
-//		}
-//	
-//	@RequestMapping(value = "/buku/hapus/{id}", method = RequestMethod.POST)
-//	private String delete(@PathVariable(value = "id") int id, Model model) {
-//			bukuService.deleteBuku(id);
-//			String navigation = "Berhasil";
-//			model.addAttribute("navigation", navigation);
-//			UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-//			model.addAttribute("detailUser", detailUser);
-//			return "buku/delete-success";
-//	}
+	//
+	// @RequestMapping(value = "/buku/ubah/{id}", method = RequestMethod.GET)
+	// private String updateBuku(@PathVariable(value = "id") int id, Model model) {
+	// BukuModel old = bukuService.getBukuById(id);
+	// List <JenisModel> jenisList = jenisService.getAllJenis();
+	// String navigation = "Ubah Buku";
+	// UserModel detailUser =
+	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+	// model.addAttribute("detailUser", detailUser);
+	// model.addAttribute("navigation", navigation);
+	// model.addAttribute("old", old);
+	// model.addAttribute("jenis_buku", jenisList);
+	// model.addAttribute("new", new BukuModel());
+	// return "buku/ubah-buku";
+	// }
+	//
+	// @RequestMapping(value = "/buku/ubah/{id}", method = RequestMethod.POST)
+	// private String updateBuku(@ModelAttribute BukuModel newBuku,
+	// @PathVariable(value = "id") int id, Model model) {
+	// bukuService.updateBuku(id, newBuku);
+	// BukuModel buku = bukuService.getBukuById(id);
+	// String navigation = "Berhasil";
+	// UserModel detailUser =
+	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+	// model.addAttribute("detailUser", detailUser);
+	// model.addAttribute("navigation", navigation);
+	// model.addAttribute("buku", buku);
+	// return "buku/update-success";
+	// }
+	//
+	// @RequestMapping(value = "/buku/hapus/{id}", method = RequestMethod.GET)
+	// private String deleteBuku(@PathVariable(value = "id") int id, Model model) {
+	// BukuModel buku = bukuService.getBukuById(id);
+	// model.addAttribute("buku", buku);
+	// String navigation = "Hapus Buku";
+	// model.addAttribute("navigation", navigation);
+	// UserModel detailUser =
+	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+	// model.addAttribute("detailUser", detailUser);
+	// return "buku/hapus-buku";
+	// }
+	//
+	// @RequestMapping(value = "/buku/hapus/{id}", method = RequestMethod.POST)
+	// private String delete(@PathVariable(value = "id") int id, Model model) {
+	// bukuService.deleteBuku(id);
+	// String navigation = "Berhasil";
+	// model.addAttribute("navigation", navigation);
+	// UserModel detailUser =
+	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+	// model.addAttribute("detailUser", detailUser);
+	// return "buku/delete-success";
+	// }
 }
