@@ -65,6 +65,7 @@ public class PengadaanController {
 		pengadaan.setUuid_user("1");
 //		if(user id_role nya == 5) {
 		pengadaan.setStatus(1);
+		pengadaan.setNama(userService.getUserByUuid(pengadaan.getUuid_user()).getNama());
 //		}else {
 //			pengadaan.setStatus(0);
 //		}
