@@ -56,6 +56,12 @@ public class UserController {
 		return user;
 	}
 
+	@GetMapping(value = "/detail/{id}")
+	private UserModel detail(@PathVariable int id){
+		UserModel pengguna = userService.getUserById(id);
+		return pengguna;
+	}
+
 	// @RequestMapping(value = "/pengguna/tambah", method = RequestMethod.GET)
 	// private String add(Model model) {
 	// String navigation = "Tambah Pengguna";
