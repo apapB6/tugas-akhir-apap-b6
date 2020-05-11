@@ -42,6 +42,9 @@ public class BukuController {
 
 	@Autowired
 	private PeminjamanService peminjamanService;
+	
+	@Autowired
+	private UserService userService;
 
 	@GetMapping(value = "/viewall")
 	private List<BukuModel> view(Model model) {
@@ -61,31 +64,27 @@ public class BukuController {
 		return buku;
 	}
 
-	@PostMapping(value = "/detail")
-	private PeminjamanModel detail(@RequestParam(value = "id") int id, @RequestBody PeminjamanModel peminjaman) {
-		// UserModel user =
-		// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+	@PostMapping(value = "/peminjaman/{id}")
+	private PeminjamanModel detail1(@PathVariable int id) {
+//			, @RequestBody PeminjamanModel peminjaman) {
+		PeminjamanModel peminjaman = new PeminjamanModel();
 		BukuModel buku = bukuService.getBukuById(id);
 		LocalDate today = LocalDate.now();
 		LocalDate nextWeek = today.plus(1, ChronoUnit.WEEKS);
 		Date date = Date.valueOf(today);
 		Date duedate = Date.valueOf(nextWeek);
-		// PeminjamanModel peminjaman = new PeminjamanModel();
 		peminjaman.setId_buku(buku.getId());
 		peminjaman.setStatus(0);
 		peminjaman.setTanggal_peminjaman(date);
 		peminjaman.setTanggal_pengembalian(duedate);
 		// HARDCODE
 		peminjaman.setUuid_user("1");
-		// peminjamanService.addPeminjaman(peminjaman);
-		// UserModel detailUser =
-		// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-		// model.addAttribute("detailUser", detailUser);
+		peminjaman.setNama_buku(buku.getJudul());
+		peminjaman.setNama_peminjam(userService.getUserByUuid(peminjaman.getUuid_user()).getNama());
 		bukuService.updateJumlahKurang(id, buku);
-		// model.addAttribute("navigation", navigation);
 		return peminjamanService.addPeminjaman(peminjaman);
 	}
-	//
+
 	// @RequestMapping(value = "/buku/ubah/{id}", method = RequestMethod.GET)
 	// private String updateBuku(@PathVariable(value = "id") int id, Model model) {
 	// BukuModel old = bukuService.getBukuById(id);
