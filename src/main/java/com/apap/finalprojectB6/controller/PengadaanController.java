@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,17 +39,13 @@ public class PengadaanController {
 		return pengadaan;
 	}
 	//
-	// @RequestMapping(value = "/pengadaan/detail", method = RequestMethod.GET)
-	// private String view(@RequestParam(value = "id") int id, Model model){
-	// PengadaanModel pengadaan = pengadaanService.getPengadaanById(id);
-	// String navigation = "SIP";
-	// model.addAttribute("navigation", navigation);
-	// model.addAttribute("pengadaan", pengadaan);
-	// UserModel detailUser =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// model.addAttribute("detailUser", detailUser);
-	// return "pengadaan/detail";
-	// }
+	@GetMapping(value = "/detail/{id}")
+	private PengadaanModel detail(@PathVariable int id){
+		PengadaanModel pengadaan = pengadaanService.getPengadaanById(id);
+		// UserModel pengguna = new UserModel();
+		// pengadaan.getUuid_user().add(userService.getUserByUuid(id));
+		return pengadaan;
+	}
 	//
 	// @RequestMapping(value = "/pengadaan/tambah", method = RequestMethod.GET)
 	// private String add(Model model){
