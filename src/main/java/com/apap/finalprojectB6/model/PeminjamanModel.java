@@ -70,6 +70,11 @@ public class PeminjamanModel implements Serializable {
     @Column(name = "nama_buku", nullable = false)
     private String nama_buku;
     
+    @NotNull
+    @Size(max = 200)
+    @Column(name = "nama_peminjam", nullable = false)
+    private String nama_peminjam;
+    
 //    @ManyToOne(fetch = FetchType.LAZY, optional = false)
 //    @JoinColumn(name = "uuid_user", referencedColumnName = "id")
 //    @OnDelete(action = OnDeleteAction.CASCADE)
@@ -160,6 +165,14 @@ public class PeminjamanModel implements Serializable {
 
 	public void setNama_buku(String nama_buku) {
 		this.nama_buku = nama_buku;
+	}
+
+	public String getNama_peminjam() {
+		return nama_peminjam;
+	}
+
+	public void setNama_peminjam(String nama_peminjam) {
+		this.nama_peminjam = nama_peminjam;
 	}
 
 	
