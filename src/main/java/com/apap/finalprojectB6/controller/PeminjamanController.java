@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apap.finalprojectB6.model.BukuModel;
 import com.apap.finalprojectB6.model.PeminjamanModel;
+import com.apap.finalprojectB6.model.PengadaanModel;
 import com.apap.finalprojectB6.model.UserModel;
 import com.apap.finalprojectB6.service.BukuService;
 import com.apap.finalprojectB6.service.PeminjamanService;
@@ -37,6 +39,15 @@ public class PeminjamanController {
 	@RequestMapping(value = "/viewall", method = RequestMethod.GET)
 	private List<PeminjamanModel> pengguna(Model model) {
 		List<PeminjamanModel> peminjaman = peminjamanService.getAllPeminjaman();
+		return peminjaman;
+	}
+	
+	@GetMapping(value = "/detail/{id}")
+	private PeminjamanModel detail(@PathVariable int id){
+		PeminjamanModel peminjaman = peminjamanService.getPeminjamanById(id);
+		peminjaman.setNama_peminjam(userService.getUserByUuid(peminjaman.getUuid_user()).getNama());
+		// UserModel pengguna = new UserModel();
+		// pengadaan.getUuid_user().add(userService.getUserByUuid(id));
 		return peminjaman;
 	}
 	//

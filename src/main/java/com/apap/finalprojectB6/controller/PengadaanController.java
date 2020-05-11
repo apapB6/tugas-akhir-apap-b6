@@ -42,6 +42,7 @@ public class PengadaanController {
 	@GetMapping(value = "/detail/{id}")
 	private PengadaanModel detail(@PathVariable int id){
 		PengadaanModel pengadaan = pengadaanService.getPengadaanById(id);
+		pengadaan.setNama(userService.getUserByUuid(pengadaan.getUuid_user()).getNama());
 		// UserModel pengguna = new UserModel();
 		// pengadaan.getUuid_user().add(userService.getUserByUuid(id));
 		return pengadaan;

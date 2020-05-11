@@ -49,6 +49,11 @@ public class PengadaanModel implements Serializable {
     private String penerbit;
     
     @NotNull
+    @Size(max = 200)
+    @Column(name = "nama", nullable = false)
+    private String nama;
+    
+    @NotNull
     @Column(name = "jumlah", nullable = false)
     private int jumlah;
     
@@ -137,6 +142,14 @@ public class PengadaanModel implements Serializable {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public String getNama() {
+		return nama;
+	}
+
+	public void setNama(String nama) {
+		this.nama = nama;
 	}
 
 //	public UserModel getUser_pengadaan() {
