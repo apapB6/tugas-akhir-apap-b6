@@ -87,7 +87,8 @@ public class BukuController {
 
 	 @GetMapping(value = "/buku/ubah/{id}")
 	 private BukuModel updateBuku(@PathVariable int id) {
-		 return bukuService.getBukuById(id);
+		 BukuModel old = bukuService.getBukuById(id);
+		 return old;
 	 }
 	
 	 @PostMapping(value = "/buku/ubah/{id}")
