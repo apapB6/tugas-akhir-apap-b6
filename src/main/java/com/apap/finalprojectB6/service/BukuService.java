@@ -10,7 +10,7 @@ public interface BukuService {
 	BukuModel addBuku(BukuModel buku);
 	List<BukuModel> getAllBuku();
 	BukuModel getBukuById(int id);
-	void updateBuku(int id, BukuModel buku);
+	BukuModel updateBuku(int id, BukuModel buku);
 	void updateJumlahKurang(int id, BukuModel buku);
 	void updateJumlahTambah(int id, BukuModel buku);
 	void deleteBuku(int id);
