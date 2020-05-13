@@ -85,35 +85,20 @@ public class BukuController {
 		return peminjamanService.addPeminjaman(peminjaman);
 	}
 
-	// @RequestMapping(value = "/buku/ubah/{id}", method = RequestMethod.GET)
-	// private String updateBuku(@PathVariable(value = "id") int id, Model model) {
-	// BukuModel old = bukuService.getBukuById(id);
-	// List <JenisModel> jenisList = jenisService.getAllJenis();
-	// String navigation = "Ubah Buku";
-	// UserModel detailUser =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// model.addAttribute("detailUser", detailUser);
-	// model.addAttribute("navigation", navigation);
-	// model.addAttribute("old", old);
-	// model.addAttribute("jenis_buku", jenisList);
-	// model.addAttribute("new", new BukuModel());
-	// return "buku/ubah-buku";
-	// }
-	//
-	// @RequestMapping(value = "/buku/ubah/{id}", method = RequestMethod.POST)
-	// private String updateBuku(@ModelAttribute BukuModel newBuku,
-	// @PathVariable(value = "id") int id, Model model) {
-	// bukuService.updateBuku(id, newBuku);
-	// BukuModel buku = bukuService.getBukuById(id);
-	// String navigation = "Berhasil";
-	// UserModel detailUser =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// model.addAttribute("detailUser", detailUser);
-	// model.addAttribute("navigation", navigation);
-	// model.addAttribute("buku", buku);
-	// return "buku/update-success";
-	// }
-	//
+	 @GetMapping(value = "/buku/ubah/{id}")
+	 private BukuModel updateBuku(@PathVariable int id) {
+		 BukuModel old = bukuService.getBukuById(id);
+		 return old;
+	 }
+	
+	 @PostMapping(value = "/buku/ubah/{id}")
+	 private BukuModel updateBuku(@RequestBody BukuModel buku,
+		 @PathVariable int id) {	 
+//	 BukuModel buku = bukuService.getBukuById(id);
+	 //userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+		 return bukuService.updateBuku(id, buku);
+	 }
+	
 	// @RequestMapping(value = "/buku/hapus/{id}", method = RequestMethod.GET)
 	// private String deleteBuku(@PathVariable(value = "id") int id, Model model) {
 	// BukuModel buku = bukuService.getBukuById(id);

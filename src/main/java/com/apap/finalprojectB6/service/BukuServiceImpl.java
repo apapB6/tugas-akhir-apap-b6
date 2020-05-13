@@ -36,14 +36,10 @@ public class BukuServiceImpl implements BukuService {
 	}
 	
 	@Override
-	public void updateBuku(int id, BukuModel buku) {
+	public BukuModel updateBuku(int id, BukuModel buku) {
 		BukuModel old = this.getBukuById(id);
-//		old.setJudul(buku.getJudul());
-//		old.setPengarang(buku.getPengarang());
-//		old.setPenerbit(buku.getPenerbit());
 		old.setJumlah(buku.getJumlah());
-//		old.setBuku_jenis(buku.getBuku_jenis());
-		bukudb.save(old);
+		return bukudb.save(old);
 	}
 	
 	@Override
