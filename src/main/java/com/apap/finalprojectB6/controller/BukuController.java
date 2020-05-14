@@ -96,14 +96,14 @@ public class BukuController {
 		 return bukuService.updateBuku(id, buku);
 	 }
 	
-	 @GetMapping(value = "/buku/hapus/{id}")
+	 @GetMapping(value = "/buku/delete/{id}")
 	 private BukuModel deleteBuku(@PathVariable int id) {
 	 BukuModel buku = bukuService.getBukuById(id);
 //	 UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 	 return buku;
 	 }
 	
-	 @PostMapping(value = "/buku/hapus/{id}")
+	 @PostMapping(value = "/buku/delete/{id}")
 	 private BukuModel delete(@PathVariable int id) {
 	 return bukuService.deleteBuku(id);
 	 }
