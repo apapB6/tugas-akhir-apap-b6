@@ -13,6 +13,6 @@ public interface BukuService {
 	BukuModel updateBuku(int id, BukuModel buku);
 	void updateJumlahKurang(int id, BukuModel buku);
 	void updateJumlahTambah(int id, BukuModel buku);
-	void deleteBuku(int id);
+	BukuModel deleteBuku(int id);
 
 }

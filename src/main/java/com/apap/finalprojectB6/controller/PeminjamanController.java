@@ -36,7 +36,7 @@ public class PeminjamanController {
 	@Autowired
 	private BukuService bukuService;
 
-	@RequestMapping(value = "/viewall", method = RequestMethod.GET)
+	@GetMapping(value = "/viewall")
 	private List<PeminjamanModel> pengguna(Model model) {
 		List<PeminjamanModel> peminjaman = peminjamanService.getAllPeminjaman();
 		return peminjaman;
@@ -55,19 +55,10 @@ public class PeminjamanController {
 	private PeminjamanModel update(@PathVariable int id) {
 		PeminjamanModel peminjaman = peminjamanService.getPeminjamanById(id);
 		peminjaman.setNama_peminjam(userService.getUserByUuid(peminjaman.getUuid_user()).getNama());
-	// List <UserModel> userList = userService.getAllUser();
-	// String navigation = "Ubah Status Peminjaman";
-	// model.addAttribute("navigation", navigation);
-	// model.addAttribute("old", old);
-	// model.addAttribute("user", userList);
-	// model.addAttribute("new", new PeminjamanModel());
-	// UserModel detailUser =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// model.addAttribute("detailUser", detailUser);
 		return peminjaman;
 	}
-	//
-	// @RequestMapping(value = "/peminjaman/ubah/{id}", method = RequestMethod.POST)
+
+	// @PostMapping(value = "/peminjaman/edit/{id}")
 	// private String update(@ModelAttribute PeminjamanModel newPeminjaman,
 	// @PathVariable(value = "id") int id, Model model) {
 	//// peminjamanService.getPeminjamanById_Buku(id);
@@ -85,19 +76,7 @@ public class PeminjamanController {
 	// model.addAttribute("detailUser", detailUser);
 	// return "peminjaman/update-success";
 	// }
-	//
-	// @RequestMapping(value = "/detail-peminjaman", method = RequestMethod.GET)
-	// private String detail(@RequestParam(value = "id") int id, Model model) {
-	// PeminjamanModel old = peminjamanService.getPeminjamanById(id);
-	// String navigation = "Detail Buku";
-	// model.addAttribute("navigation", navigation);
-	// model.addAttribute("old", old);
-	// UserModel detailUser =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// model.addAttribute("detailUser", detailUser);
-	// return "peminjaman/detail-peminjaman";
-	// }
-	//
+
 	// @RequestMapping(value = "/peminjaman/hapus/{id}", method = RequestMethod.GET)
 	// private String deleteUser(@PathVariable(value = "id") int id, Model model) {
 	// PeminjamanModel old = peminjamanService.getPeminjamanById(id);

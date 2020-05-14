@@ -57,7 +57,7 @@ public class BukuServiceImpl implements BukuService {
 	}
 	
 	@Override
-	public void deleteBuku(int id) {
-		bukudb.deleteById(id);
+	public BukuModel deleteBuku(int id) {
+		return bukudb.deleteById(id);
 	}
 }

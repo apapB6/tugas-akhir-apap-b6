@@ -6,6 +6,6 @@ import com.apap.finalprojectB6.model.BukuModel;
 
 public interface BukuDB extends JpaRepository<BukuModel, Integer>{
 	BukuModel findById(int id);
-	void deleteById(int id);
+	BukuModel deleteById(int id);
 
 }

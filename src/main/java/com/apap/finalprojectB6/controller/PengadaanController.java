@@ -45,20 +45,7 @@ public class PengadaanController {
 		pengadaan.setNama(userService.getUserByUuid(pengadaan.getUuid_user()).getNama());
 		return pengadaan;
 	}
-	//
-	// @RequestMapping(value = "/pengadaan/tambah", method = RequestMethod.GET)
-	// private String add(Model model){
-	// UserModel user =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// String navigation = "SIP";
-	// model.addAttribute("navigation", navigation);
-	// model.addAttribute("user", user);
-	// UserModel detailUser =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// model.addAttribute("detailUser", detailUser);
-	// return "pengadaan/addForm";
-	// }
-	//
+
 	@PostMapping(value = "/add")
 	private PengadaanModel addSubmit(@RequestBody PengadaanModel pengadaan){
 		//hardcode uuid
