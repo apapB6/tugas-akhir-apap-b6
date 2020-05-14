@@ -51,9 +51,10 @@ public class PeminjamanController {
 		return peminjaman;
 	}
 	//
-	// @RequestMapping(value = "/peminjaman/ubah/{id}", method = RequestMethod.GET)
-	// private String update(@PathVariable(value = "id") int id, Model model) {
-	// PeminjamanModel old = peminjamanService.getPeminjamanById(id);
+	@GetMapping(value = "/peminjaman/edit/{id}")
+	private PeminjamanModel update(@PathVariable int id) {
+		PeminjamanModel peminjaman = peminjamanService.getPeminjamanById(id);
+		peminjaman.setNama_peminjam(userService.getUserByUuid(peminjaman.getUuid_user()).getNama());
 	// List <UserModel> userList = userService.getAllUser();
 	// String navigation = "Ubah Status Peminjaman";
 	// model.addAttribute("navigation", navigation);
@@ -63,8 +64,8 @@ public class PeminjamanController {
 	// UserModel detailUser =
 	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 	// model.addAttribute("detailUser", detailUser);
-	// return "peminjaman/ubah-status-peminjaman";
-	// }
+		return peminjaman;
+	}
 	//
 	// @RequestMapping(value = "/peminjaman/ubah/{id}", method = RequestMethod.POST)
 	// private String update(@ModelAttribute PeminjamanModel newPeminjaman,
