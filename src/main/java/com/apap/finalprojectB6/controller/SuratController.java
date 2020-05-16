@@ -47,11 +47,15 @@ public class SuratController {
 	
 	@PostMapping(value = "/add")
 	private SuratModel addSubmit(@RequestBody SuratModel surat) {
+		LocalDate today = LocalDate.now();
+		Date date = Date.valueOf(today);
 		surat.setId_jenis_surat(5);
 		surat.setNomor_surat("-");
 		surat.setStatus(0);
+		surat.setKeterangan("Overdue Peminjaman Buku");
 		//masih hardcode
 		surat.setUuid_user("1");
+		surat.setTanggal_pengajuan(date);
 		return suratService.addSurat(surat);
 	} 
 //	
