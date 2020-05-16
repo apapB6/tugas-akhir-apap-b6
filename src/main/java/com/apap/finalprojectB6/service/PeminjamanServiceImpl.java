@@ -46,13 +46,10 @@ public class PeminjamanServiceImpl implements PeminjamanService {
 	}
 	
 	@Override
-	public void updatePeminjaman(int id, PeminjamanModel pinjam) {
-		PeminjamanModel old = this.getPeminjamanById(id);
-		old.setStatus(pinjam.getStatus());
-		if(pinjam.getStatus() == 5) {
-			this.hitungHari(id, pinjam);
-		}
-		peminjamandb.save(old);
+	public PeminjamanModel updateStatus(int id, PeminjamanModel statusPeminjaman){
+		PeminjamanModel peminjaman = this.getPeminjamanById(id);
+		peminjaman.setStatus(statusPeminjaman.getStatus());
+		return peminjamandb.save(peminjaman);
 	}
 	
 	@Override
