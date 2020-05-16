@@ -51,7 +51,7 @@ public class PeminjamanController {
 		return peminjaman;
 	}
 	//
-	@GetMapping(value = "/peminjaman/edit/{id}")
+	@GetMapping(value = "/edit/{id}")
 	private PeminjamanModel update(@PathVariable int id) {
 		PeminjamanModel peminjaman = peminjamanService.getPeminjamanById(id);
 		peminjaman.setNama_peminjam(userService.getUserByUuid(peminjaman.getUuid_user()).getNama());

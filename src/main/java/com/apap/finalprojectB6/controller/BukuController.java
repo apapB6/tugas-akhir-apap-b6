@@ -83,27 +83,27 @@ public class BukuController {
 		return peminjamanService.addPeminjaman(peminjaman);
 	}
 
-	 @GetMapping(value = "/buku/edit/{id}")
+	 @GetMapping(value = "/edit/{id}")
 	 private BukuModel updateBuku(@PathVariable int id) {
 		 BukuModel buku = bukuService.getBukuById(id);
 		 return buku;
 	 }
 	
-	 @PostMapping(value = "/buku/edit/{id}")
+	 @PostMapping(value = "/edit/{id}")
 	 private BukuModel updateBuku(@RequestBody BukuModel buku,
 		 @PathVariable int id) {	 
 	 //UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 		 return bukuService.updateBuku(id, buku);
 	 }
 	
-	 @GetMapping(value = "/buku/delete/{id}")
+	 @GetMapping(value = "/delete/{id}")
 	 private BukuModel deleteBuku(@PathVariable int id) {
 	 BukuModel buku = bukuService.getBukuById(id);
 //	 UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 	 return buku;
 	 }
 	
-	 @PostMapping(value = "/buku/delete/{id}")
+	 @PostMapping(value = "/delete/{id}")
 	 private BukuModel delete(@PathVariable int id) {
 	 return bukuService.deleteBuku(id);
 	 }
