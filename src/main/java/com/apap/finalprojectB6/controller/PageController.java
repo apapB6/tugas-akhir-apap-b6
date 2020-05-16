@@ -49,7 +49,8 @@ public class PageController {
 		HomeModel home = new HomeModel();
 		home.setJumlah_buku(bukuService.getAllBuku().size());
 		home.setJumlah_pengadaan(pengadaanService.getAllPengadaan().size());
-		home.setJumlah_pengguna(userService.getAllUser().size());		
+		home.setJumlah_pengguna(userService.getAllUser().size());
+		home.setJumlah_peminjaman(userService.getAllPeminjaman().size());		
 
 		List<PeminjamanModel> loop = peminjamanService.getAllPeminjaman();
 		for(int i = 0; i < loop.size(); i++) {
