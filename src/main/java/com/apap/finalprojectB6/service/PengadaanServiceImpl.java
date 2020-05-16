@@ -29,9 +29,10 @@ public class PengadaanServiceImpl implements PengadaanService {
 	public PengadaanModel addPengadaan(PengadaanModel pengadaan){
 		return pengadaandb.save(pengadaan);
     }
-    
+
     @Override
-	public void deletePengadaan(int id){
-		pengadaandb.deleteById(id);
+	public PengadaanModel deletePengadaan(int id) {
+		return pengadaandb.deleteById(id);
 	}
+    
 }

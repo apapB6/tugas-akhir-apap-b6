@@ -7,7 +7,6 @@ import com.apap.finalprojectB6.model.PengadaanModel;
 public interface PengadaanService {
 	List<PengadaanModel> getAllPengadaan();
 	PengadaanModel getPengadaanById(int id);
-
 	PengadaanModel addPengadaan(PengadaanModel pengadaan);
-	void deletePengadaan(int id);
+	PengadaanModel deletePengadaan(int id);
 }
