@@ -62,6 +62,7 @@ public class PengadaanController {
 	@GetMapping(value = "/delete/{id}")
 	private PengadaanModel delete(@PathVariable int id){
 		PengadaanModel pengadaan = pengadaanService.getPengadaanById(id);
+		pengadaan.setNama(userService.getUserByUuid(pengadaan.getUuid_user()).getNama());
 		return pengadaan;
 	}
 
