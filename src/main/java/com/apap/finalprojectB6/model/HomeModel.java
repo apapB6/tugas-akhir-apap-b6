@@ -10,21 +10,16 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-//@Entity
-//@Table(name = "home")
+
 public class HomeModel implements Serializable{
    
-//    @NotNull
-//    @Column(name = "jumlah_pengadaan", nullable = false)
     private int jumlah_pengadaan;
     
-//    @NotNull
-//    @Column(name = "jumlah_buku", nullable = false)
     private int jumlah_buku;
     
-//    @NotNull
-//    @Column(name = "jumlah_pengguna", nullable = false)
     private int jumlah_pengguna;
+	
+	private int jumlah_peminjaman;
     
     List<PeminjamanModel> peminjaman = new ArrayList<PeminjamanModel>();
     List<UserModel> nama_peminjam = new ArrayList<UserModel>();
@@ -36,6 +31,14 @@ public class HomeModel implements Serializable{
 
 	public void setJumlah_pengadaan(int jumlah_pengadaan) {
 		this.jumlah_pengadaan = jumlah_pengadaan;
+	}
+	
+	public int getJumlah_peminjaman() {
+		return jumlah_peminjaman;
+	}
+
+	public void setJumlah_peminjaman(int jumlah_peminjaman) {
+		this.jumlah_peminjaman = jumlah_peminjaman;
 	}
 
 	public int getJumlah_buku() {
