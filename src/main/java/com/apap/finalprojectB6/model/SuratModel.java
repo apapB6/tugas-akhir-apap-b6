@@ -42,9 +42,8 @@ public class SuratModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	
-	@NotNull
 	@Size(max = 200)
-	@Column(name = "nomor_surat", nullable = false)
+	@Column(name = "nomor_surat", nullable = true)
 	private String nomor_surat;
 	
 	@NotNull
@@ -52,25 +51,22 @@ public class SuratModel implements Serializable {
 	@Column(name = "uuid_user", nullable = false)
 	private String uuid_user;
 	
-	@NotNull
 	@Size(max = 200)
-	@Column(name = "keterangan", nullable = false, unique = true)
+	@Column(name = "keterangan", nullable = true)
 	private String keterangan;
 	
 	@NotNull
 	@Column(name = "tanggal_pengajuan")
 	private Date tanggal_pengajuan;
 	
-	@Column(name = "tanggal_disetujui", nullable = true)
+	@Column(name = "tanggal_disetujui")
 	private Date tanggal_disetujui;
 
     
-    @NotNull
-    @Column(name = "status", nullable = false)
+    @Column(name = "status", nullable = true)
     private int status;
     
-    @NotNull
-    @Column(name = "id_jenis_surat", nullable = false)
+    @Column(name = "id_jenis_surat", nullable = true)
     private int id_jenis_surat;
 
     /**
