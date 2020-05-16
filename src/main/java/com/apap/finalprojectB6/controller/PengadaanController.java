@@ -59,18 +59,15 @@ public class PengadaanController {
 		return pengadaanService.addPengadaan(pengadaan);
 	}
 
-	// @RequestMapping(value = "pengadaan/hapus/{id}")
-	// public String delete(@PathVariable(value = "id") int id, Model model){
-	// pengadaanService.deletePengadaan(id);
-	// String navigation = "SIP";
-	// model.addAttribute("navigation", navigation);
-	// String typeMsg = "add";
-	// model.addAttribute("typeMsg", typeMsg);
-	// String msg = "Pengadaan Berhasil Diajukan!";
-	// model.addAttribute("msg", msg);
-	// UserModel detailUser =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// model.addAttribute("detailUser", detailUser);
-	// return "pengadaan/notif";
-	// }
+	@GetMapping(value = "/delete/{id}")
+	private PengadaanModel delete(@PathVariable int id){
+		PengadaanModel pengadaan = pengadaanService.getPengadaanById(id);
+		pengadaan.setNama(userService.getUserByUuid(pengadaan.getUuid_user()).getNama());
+		return pengadaan;
+	}
+
+	@PostMapping(value = "/delete/{id}")
+	private PengadaanModel deleteSubmit(@PathVariable int id){
+		return pengadaanService.deletePengadaan(id);
+	}
 }

@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PengadaanDB extends JpaRepository<PengadaanModel, Integer>{
 	PengadaanModel findById(int id);
-	void deleteById(int id);
+	PengadaanModel deleteById(int id);
 }

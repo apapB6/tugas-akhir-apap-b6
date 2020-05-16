@@ -10,9 +10,8 @@ public interface PeminjamanService {
 	List<PeminjamanModel> getAllPeminjaman();
 	PeminjamanModel getPeminjamanById(int id);
 	PeminjamanModel getPeminjamanByStatus(int status);
-	void updatePeminjaman(int id, PeminjamanModel pinjam);
 	void deletePeminjaman(int id);
 	void hitungHari(int id, PeminjamanModel buku);
-	
+	PeminjamanModel updateStatus(int id, PeminjamanModel statusPeminjaman);
 
 }

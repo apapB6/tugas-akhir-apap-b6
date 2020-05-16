@@ -10,16 +10,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apap.finalprojectB6.model.BukuModel;
 import com.apap.finalprojectB6.model.PeminjamanModel;
-import com.apap.finalprojectB6.model.PengadaanModel;
-import com.apap.finalprojectB6.model.UserModel;
-import com.apap.finalprojectB6.service.BukuService;
 import com.apap.finalprojectB6.service.PeminjamanService;
 import com.apap.finalprojectB6.service.UserService;
 
@@ -32,9 +30,6 @@ public class PeminjamanController {
 
 	@Autowired
 	private UserService userService;
-
-	@Autowired
-	private BukuService bukuService;
 
 	@GetMapping(value = "/viewall")
 	private List<PeminjamanModel> pengguna(Model model) {
@@ -58,9 +53,8 @@ public class PeminjamanController {
 		return peminjaman;
 	}
 
-	// @PostMapping(value = "/peminjaman/edit/{id}")
-	// private String update(@ModelAttribute PeminjamanModel newPeminjaman,
-	// @PathVariable(value = "id") int id, Model model) {
+	@PostMapping(value = "/edit/{id}")
+	private PeminjamanModel update(@RequestBody PeminjamanModel peminjaman, @PathVariable int id) {
 	//// peminjamanService.getPeminjamanById_Buku(id);
 	//// int id_buku =
 	// (int)peminjamanService.getPeminjamanById_Buku(id).getPinjamBuku().getId();
@@ -74,8 +68,8 @@ public class PeminjamanController {
 	// UserModel detailUser =
 	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 	// model.addAttribute("detailUser", detailUser);
-	// return "peminjaman/update-success";
-	// }
+		return peminjamanService.updateStatus(id, peminjaman);
+	}
 
 	// @RequestMapping(value = "/peminjaman/hapus/{id}", method = RequestMethod.GET)
 	// private String deleteUser(@PathVariable(value = "id") int id, Model model) {
