@@ -59,18 +59,6 @@ public class PeminjamanController {
 	@PostMapping(value = "/edit/{id}")
 	private PeminjamanModel update(@RequestBody PeminjamanModel peminjaman, @PathVariable int id) {
 		BukuModel buku = bukuService.getBukuById(peminjaman.getId_buku());
-	//// int id_buku =
-	// (int)peminjamanService.getPeminjamanById_Buku(id).getPinjamBuku().getId();
-	//// BukuModel buku = bukuService.getBukuById(id_buku);
-	// peminjamanService.updatePeminjaman(id, newPeminjaman);
-	// PeminjamanModel peminjaman = peminjamanService.getPeminjamanById(id);
-	//// bukuService.updateJumlahTambah(id_buku, buku);
-	// String navigation = "Berhasil";
-	// model.addAttribute("navigation", navigation);
-	// model.addAttribute("peminjaman", peminjaman);
-	// UserModel detailUser =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// model.addAttribute("detailUser", detailUser);
 		if(peminjaman.getStatus() == 5){
 			peminjamanService.hitungHari(id, peminjaman);
 			return peminjamanService.updateStatus(id, peminjaman);
