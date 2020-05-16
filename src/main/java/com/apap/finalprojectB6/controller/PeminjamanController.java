@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apap.finalprojectB6.model.BukuModel;
 import com.apap.finalprojectB6.model.PeminjamanModel;
+import com.apap.finalprojectB6.service.BukuService;
 import com.apap.finalprojectB6.service.PeminjamanService;
 import com.apap.finalprojectB6.service.UserService;
 
@@ -30,6 +32,9 @@ public class PeminjamanController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private BukuService bukuService;
 
 	@GetMapping(value = "/viewall")
 	private List<PeminjamanModel> pengguna(Model model) {
@@ -41,8 +46,6 @@ public class PeminjamanController {
 	private PeminjamanModel detail(@PathVariable int id){
 		PeminjamanModel peminjaman = peminjamanService.getPeminjamanById(id);
 		peminjaman.setNama_peminjam(userService.getUserByUuid(peminjaman.getUuid_user()).getNama());
-		// UserModel pengguna = new UserModel();
-		// pengadaan.getUuid_user().add(userService.getUserByUuid(id));
 		return peminjaman;
 	}
 	//
@@ -55,7 +58,7 @@ public class PeminjamanController {
 
 	@PostMapping(value = "/edit/{id}")
 	private PeminjamanModel update(@RequestBody PeminjamanModel peminjaman, @PathVariable int id) {
-	//// peminjamanService.getPeminjamanById_Buku(id);
+		BukuModel buku = bukuService.getBukuById(peminjaman.getId_buku());
 	//// int id_buku =
 	// (int)peminjamanService.getPeminjamanById_Buku(id).getPinjamBuku().getId();
 	//// BukuModel buku = bukuService.getBukuById(id_buku);
@@ -68,30 +71,16 @@ public class PeminjamanController {
 	// UserModel detailUser =
 	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 	// model.addAttribute("detailUser", detailUser);
+		if(peminjaman.getStatus() == 5){
+			peminjamanService.hitungHari(id, peminjaman);
+			return peminjamanService.updateStatus(id, peminjaman);
+		} else if ((peminjaman.getStatus() == 1) || (peminjaman.getStatus() == 1)){
+			bukuService.updateJumlahTambah(peminjaman.getId_buku(), buku);
+			return peminjamanService.updateStatus(id, peminjaman);
+		}
+		else {
 		return peminjamanService.updateStatus(id, peminjaman);
+		}
 	}
 
-	// @RequestMapping(value = "/peminjaman/hapus/{id}", method = RequestMethod.GET)
-	// private String deleteUser(@PathVariable(value = "id") int id, Model model) {
-	// PeminjamanModel old = peminjamanService.getPeminjamanById(id);
-	// model.addAttribute("old",old);
-	// String navigation = "Hapus Peminjaman";
-	// model.addAttribute("navigation", navigation);
-	// UserModel detailUser =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// model.addAttribute("detailUser", detailUser);
-	// return "peminjaman/hapus-peminjaman";
-	// }
-	//
-	// @RequestMapping(value = "/peminjaman/hapus/{id}", method =
-	// RequestMethod.POST)
-	// private String delete(@PathVariable(value = "id") int id, Model model) {
-	// peminjamanService.deletePeminjaman(id);
-	// String navigation = "Berhasil";
-	// model.addAttribute("navigation", navigation);
-	// UserModel detailUser =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// model.addAttribute("detailUser", detailUser);
-	// return "peminjaman/delete-success";
-	// }
 }
