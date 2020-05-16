@@ -64,8 +64,13 @@ public class PeminjamanServiceImpl implements PeminjamanService {
 		Date date = Date.valueOf(today);
 		Period period = Period.between(peminjaman.getTanggal_pengembalian().toLocalDate(), today);
 	    int diff = period.getDays();
-		old.setJumlah_hari(diff);
-		old.setDenda(1000*(diff));
+		if(diff >= 0){
+			old.setJumlah_hari(diff);
+			old.setDenda(1000*(diff));
+		}else{
+			old.setJumlah_hari(0);
+			old.setDenda(0);
+		}
 		peminjamandb.save(old);
 	}
 }
