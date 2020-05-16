@@ -62,7 +62,7 @@ public class PeminjamanController {
 		if(peminjaman.getStatus() == 5){
 			peminjamanService.hitungHari(id, peminjaman);
 			return peminjamanService.updateStatus(id, peminjaman);
-		} else if ((peminjaman.getStatus() == 1) || (peminjaman.getStatus() == 1)){
+		} else if ((peminjaman.getStatus() == 1) || (peminjaman.getStatus() == 4)){
 			bukuService.updateJumlahTambah(peminjaman.getId_buku(), buku);
 			return peminjamanService.updateStatus(id, peminjaman);
 		}
