@@ -55,11 +55,10 @@ public class SuratModel implements Serializable {
 	@Column(name = "keterangan", nullable = true)
 	private String keterangan;
 	
-	@NotNull
-	@Column(name = "tanggal_pengajuan")
+	@Column(name = "tanggal_pengajuan", nullable = true)
 	private Date tanggal_pengajuan;
 	
-	@Column(name = "tanggal_disetujui")
+	@Column(name = "tanggal_disetujui", nullable = true)
 	private Date tanggal_disetujui;
 
     
