@@ -3,6 +3,7 @@ package com.apap.finalprojectB6.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 // import org.springframework.security.core.Authentication;
 // import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -27,39 +28,31 @@ import com.apap.finalprojectB6.service.UserService;
 //
 //
 @RestController
-@RequestMapping("/pengguna")
+@RequestMapping("/api")
 @CrossOrigin(origins = "*")
-public class UserController {
+public class ApiController {
 	@Autowired
 	private UserService userService;
 
 	@Autowired
 	private RoleService roleService;
 
-	//
-	// @RequestMapping(value = "/profile", method = RequestMethod.GET)
-	// private String profil(Model model) {
-	// UserModel detailUser =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// model.addAttribute("detailUser", detailUser);
-	// return "profil/index";
-	// }
-	//
-	@GetMapping(value = "/viewall")
-	private List<UserModel> pengguna(Model model) {
-		List<UserModel> user = userService.getAllUser();
-		return user;
-	}
 	
-	@GetMapping(value = "/detail/{id}")
-	private UserModel detail(@PathVariable int id){
-		UserModel pengguna = userService.getUserById(id);
-		return pengguna;
-	}
+//	@RequestMapping(value = "/employees", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
+//	public String getAllEmployeesJSON(Model model) 
+//	{
+//	    model.addAttribute("employees", getEmployeesCollection());
+//	    return "jsonTemplate";
+//	}
+//	
+//	private static void getEmployees()
+//	{
+//	    final String url = "https://webservice-situ.free.beeceptor.com/perpustakaan/user/viewall";
+//	     
+//	    RestTemplate restTemplate = new RestTemplate();
+//	    String result = restTemplate.getForObject(url, String.class);
+//	     
+//	    System.out.println(result);
+//	}
 
-	@PostMapping(value = "/add")
-	private UserModel addSubmit(@RequestBody UserModel pengguna) {
-		pengguna.setId_role(5);
-		return userService.addUser(pengguna);
-	}
 }
