@@ -38,21 +38,14 @@ public class ApiController {
 	private RoleService roleService;
 
 	
-//	@RequestMapping(value = "/employees", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
-//	public String getAllEmployeesJSON(Model model) 
-//	{
-//	    model.addAttribute("employees", getEmployeesCollection());
-//	    return "jsonTemplate";
-//	}
-//	
-//	private static void getEmployees()
-//	{
-//	    final String url = "https://webservice-situ.free.beeceptor.com/perpustakaan/user/viewall";
-//	     
-//	    RestTemplate restTemplate = new RestTemplate();
-//	    String result = restTemplate.getForObject(url, String.class);
-//	     
-//	    System.out.println(result);
-//	}
+	@GetMapping(value = "/getuser")
+	public String getAllUser(Model model) 
+	{
+		String url = "https://webservice-situ.free.beeceptor.com/perpustakaan/user/viewall";
+	    RestTemplate restTemplate = new RestTemplate();
+	    String result = restTemplate.getForObject(url, String.class);
+	     
+	    return result;
+	}
 
 }
