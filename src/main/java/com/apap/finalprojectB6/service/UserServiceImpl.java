@@ -52,12 +52,6 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public List<UserModel> getUserApi() {
-		return userdb.userApi();
-	}
-	
-	
-	@Override
 	public UserModel getUserById(int id) {
 		return userdb.findById(id);
 	}
