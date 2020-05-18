@@ -58,6 +58,4 @@ public class SuratController {
 		surat.setTanggal_pengajuan(date);
 		return suratService.addSurat(surat);
 	} 
-//	
-
 }
