@@ -34,51 +34,26 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-@Table(name = "surat")
 public class SuratModel implements Serializable {	
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-	
-	@Size(max = 200)
-	@Column(name = "nomor_surat", nullable = true)
 	private String nomor_surat;
-	
-	@NotNull
-	@Size(max = 200)
-	@Column(name = "uuid_user", nullable = false)
 	private String uuid_user;
-	
-	@Size(max = 200)
-	@Column(name = "keterangan", nullable = true)
 	private String keterangan;
-	
-	@Column(name = "tanggal_pengajuan", nullable = true)
 	private Date tanggal_pengajuan;
-	
-	@Column(name = "tanggal_disetujui", nullable = true)
 	private Date tanggal_disetujui;
-
-    
-    @Column(name = "status", nullable = true)
     private int status;
-    
-    @Column(name = "id_jenis_surat", nullable = true)
     private int id_jenis_surat;
 
-    /**
-     * 
-     * Getter&Setter
-     */
-    
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+	public SuratModel(String nomor_surat,  Date tanggal_pengajuan, Date tanggal_disetujui, String keterangan, int status, int id_jenis_surat, String uuid_user){
+		this.nomor_surat = nomor_surat;
+		this.tanggal_pengajuan = tanggal_pengajuan;
+		this.tanggal_disetujui = tanggal_disetujui;
+		this.keterangan = keterangan;
+		this.status = status;
+		this.id_jenis_surat = id_jenis_surat;
+		this.uuid_user = uuid_user;
 	}
 
 	public String getNomor_surat() {
