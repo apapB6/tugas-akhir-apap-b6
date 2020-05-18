@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 // import org.springframework.security.core.Authentication;
 // import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -57,5 +58,24 @@ public class WebserviceController {
 			}
 		return restUser;
 	}
+	
+//	@RequestMapping(value = "/tu/add", method = RequestMethod.POST)
+//	public ResponseEntity<String> createEmployee(@RequestBody EmployeeVO employee) 
+//	{
+//	    System.out.println(employee);
+//	    return new ResponseEntity(HttpStatus.CREATED);
+//	}
+//	
+//	private static void createEmployee()
+//	{
+//	    final String uri = "https://backend-si.herokuapp.com/pengajuan-surat/add";
+//	 
+//	    EmployeeVO newEmployee = new EmployeeVO(-1, "Adam", "Gilly", "test@email.com");
+//	 
+//	    RestTemplate restTemplate = new RestTemplate();
+//	    EmployeeVO result = restTemplate.postForObject( uri, newEmployee, EmployeeVO.class);
+//	 
+//	    System.out.println(result);
+//	}
 
 }
