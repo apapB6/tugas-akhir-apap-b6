@@ -37,7 +37,7 @@ import com.apap.finalprojectB6.service.UserService;
 @RestController
 @RequestMapping("/perpustakaan")
 @CrossOrigin(origins = "*")
-public class WebserviceController {
+public class TuRestController {
 	@Autowired
 	private UserService userService;
 
@@ -52,7 +52,7 @@ public class WebserviceController {
 //	    return result;
 //	}
 	
-	@GetMapping(value = "/user/viewall")
+	@GetMapping(value = "api/user/viewall")
 	private List<UserWebServiceModel> pengguna() {
 		List<UserModel> user = userService.getAllUser();
 		ArrayList<UserWebServiceModel> restUser = new ArrayList<UserWebServiceModel>();
@@ -63,7 +63,7 @@ public class WebserviceController {
 		return restUser;
 	}
 	
-	// @RequestMapping(value = "/tu/add", method = RequestMethod.POST)
+	// @RequestMapping(value = "api/tu/addsurat", method = RequestMethod.POST)
 	// public ResponseEntity<String> createEmployee(@RequestBody SuratModel surat) 
 	// {
 	//     final String url = "https://backend-si.herokuapp.com/pengajuan-surat/add";
