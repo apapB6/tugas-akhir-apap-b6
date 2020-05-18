@@ -1,5 +1,6 @@
 package com.apap.finalprojectB6.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,30 +23,39 @@ import org.springframework.web.client.RestTemplate;
 
 import com.apap.finalprojectB6.model.RoleModel;
 import com.apap.finalprojectB6.model.UserModel;
+import com.apap.finalprojectB6.model.UserWebServiceModel;
 import com.apap.finalprojectB6.service.RoleService;
 import com.apap.finalprojectB6.service.UserService;
 
 //
 //
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/perpustakaan")
 @CrossOrigin(origins = "*")
-public class ApiController {
+public class WebserviceController {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private RoleService roleService;
-
 	
-	@GetMapping(value = "/getuser")
-	public String getAllUser(Model model) 
-	{
-		String url = "https://webservice-situ.free.beeceptor.com/perpustakaan/user/viewall";
-	    RestTemplate restTemplate = new RestTemplate();
-	    String result = restTemplate.getForObject(url, String.class);
-	     
-	    return result;
+//	@GetMapping(value = "/getuser")
+//	public String getAllUser(Model model) 
+//	{
+//		String url = "https://webservice-situ.free.beeceptor.com/perpustakaan/user/viewall";
+//	    RestTemplate restTemplate = new RestTemplate();
+//	    String result = restTemplate.getForObject(url, String.class);
+//	     
+//	    return result;
+//	}
+	
+	@GetMapping(value = "/user/viewall")
+	private List<UserWebServiceModel> pengguna() {
+		List<UserModel> user = userService.getAllUser();
+		ArrayList<UserWebServiceModel> restUser = new ArrayList<UserWebServiceModel>();
+			for(int i = 0; i<user.size(); i++) {
+				UserWebServiceModel getuser = new UserWebServiceModel(user.get(i).getUsername(), user.get(i).getId_role());
+				restUser.add(getuser);
+			}
+		return restUser;
 	}
 
 }

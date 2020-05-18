@@ -9,7 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.apap.finalprojectB6.model.RoleModel;
 import com.apap.finalprojectB6.model.UserModel;
+import com.apap.finalprojectB6.model.UserWebServiceModel;
 import com.apap.finalprojectB6.repository.UserRoleDB;
+import com.apap.finalprojectB6.repository.UserWebServiceDB;
+
 import java.util.UUID;
 
 
@@ -18,6 +21,9 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRoleDB userdb;
+	
+	@Autowired
+	private UserWebServiceDB userwebdb;
 	
 	@Override
 	public void createNip(UserModel user) {
@@ -49,6 +55,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<UserModel> getAllUser() {
 		return userdb.findAll();
+	}
+	
+	@Override
+	public List<UserWebServiceModel> getUserPerpustakaan() {
+		return userwebdb.findAll();
 	}
 	
 	@Override

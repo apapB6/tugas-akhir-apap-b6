@@ -17,4 +17,7 @@ public interface UserRoleDB extends JpaRepository<UserModel, Integer> {
 	@Query(value = "SELECT * FROM pengguna WHERE username = ?1", nativeQuery = true)
 	public ArrayList<UserModel> validate(String username);
 	
+//	@Query(value = "SELECT username, id_role FROM pengguna WHERE id > 0", nativeQuery = true)
+//	public ArrayList<UserModel> getUser();
+	
 }

@@ -3,6 +3,7 @@ package com.apap.finalprojectB6.service;
 import java.util.List;
 
 import com.apap.finalprojectB6.model.UserModel;
+import com.apap.finalprojectB6.model.UserWebServiceModel;
 
 
 public interface UserService {
@@ -15,4 +16,5 @@ public interface UserService {
 	void createNip(UserModel user);
 	UserModel getUser(String user);
 	boolean validate(String username);
+	List<UserWebServiceModel> getUserPerpustakaan();
 }
