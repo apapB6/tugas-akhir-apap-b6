@@ -32,36 +32,22 @@ import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
-@Table(name = "webservicepengguna")
+
 public class UserWebServiceModel implements Serializable {	
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-	
-    @NotNull
-    @Size(max = 200)
-    @Column(name = "username", nullable = false)
+
     private String username;
-    
-    @NotNull
-    @Column(name = "id_role", nullable = false)
+
     private int id_role;
+    
+    public UserWebServiceModel(String username, int id_role){
+    	this.username = username;
+    	this.id_role = id_role;
+    }
 
     /**
      * 
      * Getter&Setter
      */
-    
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getUsername() {
 		return username;
@@ -78,10 +64,5 @@ public class UserWebServiceModel implements Serializable {
 	public void setId_role(int id_role) {
 		this.id_role = id_role;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-    
 
 }

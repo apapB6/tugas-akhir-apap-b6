@@ -1,5 +1,6 @@
 package com.apap.finalprojectB6.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +36,6 @@ public class WebserviceController {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private RoleService roleService;
-
 	
 //	@GetMapping(value = "/getuser")
 //	public String getAllUser(Model model) 
@@ -49,10 +47,15 @@ public class WebserviceController {
 //	    return result;
 //	}
 	
-	@GetMapping(value = "/getAllUser")
-	private List<UserWebServiceModel> pengguna(Model model) {
-		List<UserWebServiceModel> user = userService.getUserPerpustakaan();
-		return user;
+	@GetMapping(value = "/user/viewall")
+	private List<UserWebServiceModel> pengguna() {
+		List<UserModel> user = userService.getAllUser();
+		ArrayList<UserWebServiceModel> restUser = new ArrayList<UserWebServiceModel>();
+			for(int i = 0; i<user.size(); i++) {
+				UserWebServiceModel getuser = new UserWebServiceModel(user.get(i).getUsername(), user.get(i).getId_role());
+				restUser.add(getuser);
+			}
+		return restUser;
 	}
 
 }
