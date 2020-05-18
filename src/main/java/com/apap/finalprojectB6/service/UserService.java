@@ -16,5 +16,4 @@ public interface UserService {
 	void createNip(UserModel user);
 	UserModel getUser(String user);
 	boolean validate(String username);
-	List<UserWebServiceModel> getUserPerpustakaan();
 }
