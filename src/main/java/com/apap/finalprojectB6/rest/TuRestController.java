@@ -63,17 +63,27 @@ public class TuRestController {
 		return restUser;
 	}
 	
-	// @RequestMapping(value = "api/tu/addsurat", method = RequestMethod.POST)
-	// public ResponseEntity<String> createEmployee(@RequestBody SuratModel surat) 
-	// {
-	//     final String url = "https://backend-si.herokuapp.com/pengajuan-surat/add";
+	 @PostMapping(value = "api/tu/add-surat")
+	 public SuratModel createSurat(@RequestBody SuratModel surat) 
+	 {
+		LocalDate today = LocalDate.now();
+		Date date = Date.valueOf(today);
+//		surat.setId_jenis_surat(5);
+//		surat.setNomor_surat("-");
+//		surat.setStatus(0);
+//		surat.setKeterangan("Overdue Peminjaman Buku");
+//		//masih hardcode
+//		surat.setUuid_user("1");
+//		surat.setTanggal_pengajuan(date);
+		
+		final String url = "https://backend-si.herokuapp.com/pengajuan-surat/add";
 
-	// 	SuratModel newSurat = new SuratModel("-", Date tanggal_pengajuan, Date tanggal_disetujui, "Overdue Peminjaman Buku", int status, int id_jenis_surat, "1");
+		surat = new SuratModel("-", date, null, "Overdue Peminjaman Buku", 0, 5, "1");
 	 
-	//     RestTemplate restTemplate = new RestTemplate();
-	// 	SuratModel result = restTemplate.postForObject( uri, newSurat, ResponseEntity<String>.class);
+	  	RestTemplate restTemplate = new RestTemplate();
+	 	SuratModel result = restTemplate.postForObject( url, surat, SuratModel.class);
 	 
-	//     return result;
-	// }
+	     return result;
+	 }
 
 }
