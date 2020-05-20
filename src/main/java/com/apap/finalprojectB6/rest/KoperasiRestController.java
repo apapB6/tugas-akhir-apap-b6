@@ -37,42 +37,19 @@ import com.apap.finalprojectB6.service.UserService;
 @RestController
 @RequestMapping("/perpustakaan")
 @CrossOrigin(origins = "*")
-public class TuRestController {
+public class KoperasiRestController {
 	@Autowired
 	private UserService userService;
-	
-	@GetMapping(value = "api/employees")
-	private List<UserWebServiceModel> pengguna() {
-		List<UserModel> user = userService.getAllUser();
-		ArrayList<UserWebServiceModel> restUser = new ArrayList<UserWebServiceModel>();
-			for(int i = 0; i<user.size(); i++) {
-				UserWebServiceModel getuser = new UserWebServiceModel(user.get(i).getUsername(), user.get(i).getId_role());
-				restUser.add(getuser);
-			}
-		return restUser;
-	}
-	
-	 @PostMapping(value = "api/add-surat")
-	 public SuratModel createSurat(@RequestBody SuratModel surat) 
-	 {
-		LocalDate today = LocalDate.now();
-		Date date = Date.valueOf(today);
-//		surat.setId_jenis_surat(5);
-//		surat.setNomor_surat("-");
-//		surat.setStatus(0);
-//		surat.setKeterangan("Overdue Peminjaman Buku");
-//		//masih hardcode
-//		surat.setUuid_user("1");
-//		surat.setTanggal_pengajuan(date);
-		
-		final String url = "https://backend-si.herokuapp.com/pengajuan-surat/add";
 
-		surat = new SuratModel("-", date, null, "Overdue Peminjaman Buku", 0, 5, "1");
-	 
-	  	RestTemplate restTemplate = new RestTemplate();
-	 	SuratModel result = restTemplate.postForObject( url, surat, SuratModel.class);
-	 
+	
+	@GetMapping(value = "/api/koperasi-employees")
+	//masih string karena ngga tau bang jae ngesetnya apa aja
+	public String getAllUser(Model model) 
+	{
+		String url = "https://webservice-situ.free.beeceptor.com/perpustakaan/user/viewall";
+	    RestTemplate restTemplate = new RestTemplate();
+	    String result = restTemplate.getForObject(url, String.class);	     
 	    return result;
-	 }
+	}
 
 }

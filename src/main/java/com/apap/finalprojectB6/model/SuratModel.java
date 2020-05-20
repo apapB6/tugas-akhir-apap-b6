@@ -54,6 +54,10 @@ public class SuratModel implements Serializable {
 		this.id_jenis_surat = id_jenis_surat;
 		this.uuid_user = uuid_user;
 	}
+	
+	public SuratModel() {
+		
+	}
 
 	public String getNomor_surat() {
 		return nomor_surat;
