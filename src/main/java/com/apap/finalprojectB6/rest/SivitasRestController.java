@@ -3,7 +3,9 @@ package com.apap.finalprojectB6.rest;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,6 +30,7 @@ import org.springframework.web.client.RestTemplate;
 import com.apap.finalprojectB6.model.RoleModel;
 import com.apap.finalprojectB6.model.SuratModel;
 import com.apap.finalprojectB6.model.UserModel;
+import com.apap.finalprojectB6.model.UserProfileModel;
 import com.apap.finalprojectB6.model.UserWebServiceModel;
 import com.apap.finalprojectB6.service.RoleService;
 import com.apap.finalprojectB6.service.UserService;
@@ -37,42 +40,22 @@ import com.apap.finalprojectB6.service.UserService;
 @RestController
 @RequestMapping("/perpustakaan")
 @CrossOrigin(origins = "*")
-public class TuRestController {
+public class SivitasRestController {
 	@Autowired
 	private UserService userService;
-	
-	@GetMapping(value = "api/employees")
-	private List<UserWebServiceModel> pengguna() {
-		List<UserModel> user = userService.getAllUser();
-		ArrayList<UserWebServiceModel> restUser = new ArrayList<UserWebServiceModel>();
-			for(int i = 0; i<user.size(); i++) {
-				UserWebServiceModel getuser = new UserWebServiceModel(user.get(i).getUsername(), user.get(i).getId_role());
-				restUser.add(getuser);
-			}
-		return restUser;
-	}
-	
-	 @PostMapping(value = "api/add-surat")
-	 public SuratModel createSurat(@RequestBody SuratModel surat) 
-	 {
-		LocalDate today = LocalDate.now();
-		Date date = Date.valueOf(today);
-//		surat.setId_jenis_surat(5);
-//		surat.setNomor_surat("-");
-//		surat.setStatus(0);
-//		surat.setKeterangan("Overdue Peminjaman Buku");
-//		//masih hardcode
-//		surat.setUuid_user("1");
-//		surat.setTanggal_pengajuan(date);
-		
-		final String url = "https://backend-si.herokuapp.com/pengajuan-surat/add";
 
-		surat = new SuratModel("-", date, null, "Overdue Peminjaman Buku", 0, 5, "1");
-	 
-	  	RestTemplate restTemplate = new RestTemplate();
-	 	SuratModel result = restTemplate.postForObject( url, surat, SuratModel.class);
-	 
+	
+	@GetMapping(value = "/api/user-profile/{uuid}")
+	public UserProfileModel getUser(@PathVariable String uuid) 
+	{
+		String url = "http://si-sivitas.herokuapp.com/api/employees/{uuid}";
+		Map<String, String> params = new HashMap<String, String>();
+		//uuid masih hardcode sesuai yang ada di sivitas
+	    params.put("uuid", "53338ba8258241989aaec882270795c6");
+	    
+	    RestTemplate restTemplate = new RestTemplate();
+	    UserProfileModel result = restTemplate.getForObject(url, UserProfileModel.class, params);	     
 	    return result;
-	 }
+	}
 
 }
