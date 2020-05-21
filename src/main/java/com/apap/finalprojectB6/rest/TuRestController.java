@@ -57,17 +57,18 @@ public class TuRestController {
 	 {
 		LocalDate today = LocalDate.now();
 		Date date = Date.valueOf(today);
-//		surat.setId_jenis_surat(5);
-//		surat.setNomor_surat("-");
-//		surat.setStatus(0);
-//		surat.setKeterangan("Overdue Peminjaman Buku");
-//		//masih hardcode
-//		surat.setUuid_user("1");
-//		surat.setTanggal_pengajuan(date);
+		surat.setId_jenis_surat(5);
+		surat.setNomor_surat("-");
+		surat.setStatus(0);
+		surat.setKeterangan("Overdue Peminjaman Buku");
+		//masih hardcode
+		surat.setUuid_user("1");
+		surat.setTanggal_pengajuan(date);
 		
-		final String url = "https://backend-si.herokuapp.com/pengajuan-surat/add";
+//		final String url = "https://backend-si.herokuapp.com/pengajuan-surat/add";
+		final String url = "https://webservice-situ.free.beeceptor.com/tu/pengajuan-surat";
 
-		surat = new SuratModel("-", date, null, "Overdue Peminjaman Buku", 0, 5, "1");
+//		surat = new SuratModel("-", date, null, "Overdue Peminjaman Buku", 0, 5, "1");
 	 
 	  	RestTemplate restTemplate = new RestTemplate();
 	 	SuratModel result = restTemplate.postForObject( url, surat, SuratModel.class);
