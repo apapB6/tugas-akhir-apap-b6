@@ -42,10 +42,9 @@ public class KoperasiRestController {
 	private UserService userService;
 
 	
-	@GetMapping(value = "/api/koperasi-employees")
-	//masih string karena ngga tau bang jae ngesetnya apa aja
+	@GetMapping(value = "/api/koperasi-employees", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getAllUser(Model model) 
-	{
+	{	//masih pake urlnya rija wkwk
 		String url = "https://webservice-situ.free.beeceptor.com/perpustakaan/user/viewall";
 	    RestTemplate restTemplate = new RestTemplate();
 	    String result = restTemplate.getForObject(url, String.class);	     

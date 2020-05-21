@@ -45,8 +45,8 @@ public class SivitasRestController {
 	private UserService userService;
 
 	
-	@GetMapping(value = "/api/user-profile/{uuid}")
-	public UserProfileModel getUser(@PathVariable String uuid) 
+	@GetMapping(value = "/api/user-profile/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String getUser(@PathVariable String uuid) 
 	{
 		String url = "http://si-sivitas.herokuapp.com/api/employees/{uuid}";
 		Map<String, String> params = new HashMap<String, String>();
@@ -54,7 +54,7 @@ public class SivitasRestController {
 	    params.put("uuid", "53338ba8258241989aaec882270795c6");
 	    
 	    RestTemplate restTemplate = new RestTemplate();
-	    UserProfileModel result = restTemplate.getForObject(url, UserProfileModel.class, params);	     
+	    String result = restTemplate.getForObject(url, String.class, params);	     
 	    return result;
 	}
 
