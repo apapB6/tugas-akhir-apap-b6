@@ -28,12 +28,12 @@ public class SuratServiceImpl implements SuratService {
 	}
 	
 	public boolean createSuratTU(PengajuanSuratModel surat){
-		final String url = "https://backend-si.herokuapp.com/pengajuan-surat/add";
+		final String url = "https://backend-si.herokuapp.com";
 		LocalDate today = LocalDate.now();
 		Date datetoday = Date.valueOf(today);
 		RestTemplate restTemplate = new RestTemplate();
 			PengajuanSuratModel newSurat = new PengajuanSuratModel("-", datetoday, null, "Overdue Peminjaman Buku", 0, 5, "1");
-			PengajuanSuratModel result = restTemplate.postForObject(url, newSurat, PengajuanSuratModel.class);
+			PengajuanSuratModel result = restTemplate.postForObject((url+"//pengajuan-surat/add"), newSurat, PengajuanSuratModel.class);
 			return true;
 	}
 
