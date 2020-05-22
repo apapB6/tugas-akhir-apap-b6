@@ -11,6 +11,7 @@ import com.apap.finalprojectB6.model.RoleModel;
 import com.apap.finalprojectB6.model.UserModel;
 import com.apap.finalprojectB6.model.UserWebServiceModel;
 import com.apap.finalprojectB6.repository.UserRoleDB;
+import java.text.SimpleDateFormat;
 
 import java.util.UUID;
 
@@ -21,22 +22,25 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRoleDB userdb;
 	
-	@Override
-	public void createNip(UserModel user) {
-		user.setNip(user.CreateNIP());
-	}
+	// @Override
+	// public void createNip(UserModel user) {
+	// 	user.setNip(user.CreateNIP());
+	// }
 	
 	@Override
 	public UserModel addUser(UserModel user) {
 //		String pass = encrypt(user.getPassword());
 		String uuid = UUID.randomUUID().toString().replace("-", "");
 		UserModel uuidcheck = this.getUserByUuid(uuid);
+		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy");
+		String strDate= formatter.format(user.getTanggal_lahir());
+		String nip = "P" + strDate + uuid;
 		while (uuidcheck != null) {
 			uuid = UUID.randomUUID().toString().replace("-", "");
 		}
 //		user.setPassword(pass);
 		user.setUuid(uuid);
-		this.createNip(user);
+		user.setNip(nip);
 		return userdb.save(user);
 	}
 //	

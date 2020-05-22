@@ -253,15 +253,19 @@ public class UserModel implements Serializable {
 		this.id_role = id_role;
 	}
 
-	public String CreateNIP() {
-		//Random Alphabet
-		Random r = new Random();
-        String random =  String.valueOf((char)(r.nextInt(26)+'A') + String.valueOf((char)(r.nextInt(26)+'A')));	
-        //Formatting Year
-		int year = Calendar.getInstance().get(Calendar.YEAR);
-		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyy");
-		String strDate= formatter.format(getTanggal_lahir());			
-		return String.valueOf(year) + strDate + random ;
-	}
+	// public String CreateNIP() {
+	// 	//Random Alphabet
+	// 	// Random r = new Random();
+    //     // String random =  String.valueOf((char)(r.nextInt(26)+'A') + String.valueOf((char)(r.nextInt(26)+'A')));	
+    //     //Formatting Year
+	// 	// int year = Calendar.getInstance().get(Calendar.YEAR);
+	// 	// SimpleDateFormat formatter = new SimpleDateFormat("ddMMyy");
+	// 	// String strDate= formatter.format(getTanggal_lahir());			
+	// 	// return String.valueOf(year) + strDate + random ;
+
+	// 	SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy");
+	// 	String strDate= formatter.format(getTanggal_lahir());
+	// 	return "P" + strDate;
+	// }
 
 }

@@ -13,7 +13,7 @@ public interface UserService {
 	UserModel getUserById(int id);
 	UserModel getUserByUuid(String uuid);
 	UserModel getUserByUsername(String username);
-	void createNip(UserModel user);
+	// void createNip(UserModel user);
 	UserModel getUser(String user);
 	boolean validate(String username);
 }
