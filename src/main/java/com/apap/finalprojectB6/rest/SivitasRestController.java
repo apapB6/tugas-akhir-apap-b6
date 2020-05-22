@@ -51,7 +51,7 @@ public class SivitasRestController {
 		String url = "http://si-sivitas.herokuapp.com/api/employees/{uuid}";
 		Map<String, String> params = new HashMap<String, String>();
 		//uuid masih hardcode sesuai yang ada di sivitas
-	    params.put("uuid", "53338ba8258241989aaec882270795c6");
+	    params.put("uuid", uuid);
 	    
 	    RestTemplate restTemplate = new RestTemplate();
 	    String result = restTemplate.getForObject(url, String.class, params);	     
