@@ -1,17 +1,17 @@
 package com.apap.finalprojectB6.service;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
-import com.apap.finalprojectB6.model.RoleModel;
 import com.apap.finalprojectB6.model.UserModel;
-import com.apap.finalprojectB6.model.UserWebServiceModel;
+import com.apap.finalprojectB6.model.UserSivitasModel;
 import com.apap.finalprojectB6.repository.UserRoleDB;
-import java.text.SimpleDateFormat;
 
 import java.util.UUID;
 
@@ -22,10 +22,10 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRoleDB userdb;
 	
-	// @Override
-	// public void createNip(UserModel user) {
-	// 	user.setNip(user.CreateNIP());
-	// }
+//	@Override
+//	public void createNip(UserModel user) {
+//		user.setNip(user.CreateNIP());
+//	}
 	
 	@Override
 	public UserModel addUser(UserModel user) {
@@ -41,9 +41,18 @@ public class UserServiceImpl implements UserService {
 //		user.setPassword(pass);
 		user.setUuid(uuid);
 		user.setNip(nip);
+		addUserSivitas(user);
 		return userdb.save(user);
 	}
-//	
+	
+	public boolean addUserSivitas(UserModel user){
+		final String url = "http://si-sivitas.herokuapp.com/api";
+		RestTemplate restTemplate = new RestTemplate();
+			UserSivitasModel newUser = new UserSivitasModel(user);
+			UserSivitasModel result = restTemplate.postForObject( (url+"/employees"), newUser, UserSivitasModel.class);
+			return true;
+	}
+
 //	@Override
 //	public String encrypt(String password) {
 //		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

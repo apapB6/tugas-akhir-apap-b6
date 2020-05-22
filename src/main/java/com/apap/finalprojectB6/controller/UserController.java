@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,6 +22,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.apap.finalprojectB6.model.RoleModel;
 import com.apap.finalprojectB6.model.UserModel;
+// import com.apap.finalprojectB6.model.ValidateAddUser;
 import com.apap.finalprojectB6.service.RoleService;
 import com.apap.finalprojectB6.service.UserService;
 
@@ -33,9 +35,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private RoleService roleService;
-
 	//
 	// @RequestMapping(value = "/profile", method = RequestMethod.GET)
 	// private String profil(Model model) {
@@ -45,6 +44,7 @@ public class UserController {
 	// return "profil/index";
 	// }
 	//
+	
 	@GetMapping(value = "/viewall")
 	private List<UserModel> pengguna(Model model) {
 		List<UserModel> user = userService.getAllUser();
@@ -57,9 +57,14 @@ public class UserController {
 		return pengguna;
 	}
 
-	@PostMapping(value = "/add")
-	private UserModel addSubmit(@RequestBody UserModel pengguna) {
-		pengguna.setId_role(5);
-		return userService.addUser(pengguna);
+	@PostMapping(value = "/add", consumes = { MimeTypeUtils.APPLICATION_JSON_VALUE })
+	private boolean addSubmit(@RequestBody UserModel pengguna) {	
+		if (userService.validate(pengguna.getUsername())) {
+			pengguna.setId_role(5);
+			userService.addUser(pengguna);
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

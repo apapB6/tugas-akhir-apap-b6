@@ -1,14 +1,8 @@
-package com.apap.finalprojectB6.rest;
+package com.apap.finalprojectB6.controller;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 // import org.springframework.security.core.Authentication;
 // import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -26,32 +20,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.apap.finalprojectB6.model.RoleModel;
 import com.apap.finalprojectB6.model.PengajuanSuratModel;
+import com.apap.finalprojectB6.model.RoleModel;
 import com.apap.finalprojectB6.model.UserModel;
-import com.apap.finalprojectB6.model.UserSivitasModel;
-import com.apap.finalprojectB6.model.UserWebServiceModel;
+// import com.apap.finalprojectB6.model.ValidateAddUser;
 import com.apap.finalprojectB6.service.RoleService;
+import com.apap.finalprojectB6.service.SuratService;
 import com.apap.finalprojectB6.service.UserService;
 
 //
 //
 @RestController
-@RequestMapping("/perpustakaan")
+@RequestMapping("/surat")
 @CrossOrigin(origins = "*")
-public class TuRestController {
+public class SuratController {
 	@Autowired
-	private UserService userService;
-	
-	@GetMapping(value = "api/employees")
-	private List<UserWebServiceModel> pengguna() {
-		List<UserModel> user = userService.getAllUser();
-		ArrayList<UserWebServiceModel> restUser = new ArrayList<UserWebServiceModel>();
-			for(int i = 0; i<user.size(); i++) {
-				UserWebServiceModel getuser = new UserWebServiceModel(user.get(i).getUsername(), user.get(i).getId_role());
-				restUser.add(getuser);
-			}
-		return restUser;
-	}
+	private SuratService suratService;
 
+	@PostMapping(value = "/add", consumes = { MimeTypeUtils.APPLICATION_JSON_VALUE })
+	private PengajuanSuratModel addSubmit(@RequestBody PengajuanSuratModel surat) {	
+		return suratService.addSurat(surat);
+	}
+			
 }

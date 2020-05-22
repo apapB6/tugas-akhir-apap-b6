@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.apap.finalprojectB6.model.RoleModel;
-import com.apap.finalprojectB6.model.SuratModel;
+import com.apap.finalprojectB6.model.PengajuanSuratModel;
 import com.apap.finalprojectB6.model.UserModel;
 import com.apap.finalprojectB6.model.UserProfileModel;
 import com.apap.finalprojectB6.model.UserWebServiceModel;
