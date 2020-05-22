@@ -58,13 +58,13 @@ public class UserController {
 	}
 
 	@PostMapping(value = "/add", consumes = { MimeTypeUtils.APPLICATION_JSON_VALUE })
-	private ValidateAddUser addSubmit(@RequestBody UserModel pengguna) {	
+	private boolean addSubmit(@RequestBody UserModel pengguna) {	
 		if (userService.validate(pengguna.getUsername())) {
 			pengguna.setId_role(5);
 			userService.addUser(pengguna);
-			return new ValidateAddUser(true, "Data is Successfully Added", "pengguna");
+			return true;
 		} else {
-			return new ValidateAddUser(false, "Username is Already Exist", "pengguna");
+			return false;
 		}
 	}
 }
