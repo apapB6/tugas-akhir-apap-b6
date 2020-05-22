@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 // import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,8 +27,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.apap.finalprojectB6.model.RoleModel;
-import com.apap.finalprojectB6.model.SuratModel;
+import com.apap.finalprojectB6.model.PengajuanSuratModel;
 import com.apap.finalprojectB6.model.UserModel;
+import com.apap.finalprojectB6.model.UserSivitasModel;
 import com.apap.finalprojectB6.model.UserWebServiceModel;
 import com.apap.finalprojectB6.service.RoleService;
 import com.apap.finalprojectB6.service.UserService;
@@ -52,26 +54,21 @@ public class TuRestController {
 		return restUser;
 	}
 	
-	 @PostMapping(value = "api/add-surat")
-	 public SuratModel createSurat(@RequestBody SuratModel surat) 
+	 @PostMapping(value = "api/add-surat", consumes = { MimeTypeUtils.APPLICATION_JSON_VALUE })
+	 public PengajuanSuratModel createSurat(@RequestBody PengajuanSuratModel surat) 
 	 {
 		LocalDate today = LocalDate.now();
-		Date date = Date.valueOf(today);
-		surat.setId_jenis_surat(5);
-		surat.setNomor_surat("-");
-		surat.setStatus(0);
-		surat.setKeterangan("Overdue Peminjaman Buku");
-		//masih hardcode
-		surat.setUuid_user("1");
-		surat.setTanggal_pengajuan(date);
+		LocalDate tomorrow = today.plusDays(1);
+		Date datetoday = Date.valueOf(today);
+		Date datetomorrow = Date.valueOf(tomorrow);
 		
-//		final String url = "https://backend-si.herokuapp.com/pengajuan-surat/add";
-		final String url = "https://webservice-situ.free.beeceptor.com/tu/pengajuan-surat";
-
-//		surat = new SuratModel("-", date, null, "Overdue Peminjaman Buku", 0, 5, "1");
-	 
-	  	RestTemplate restTemplate = new RestTemplate();
-	 	SuratModel result = restTemplate.postForObject( url, surat, SuratModel.class);
+		final String url = "https://backend-si.herokuapp.com/pengajuan-surat/add";
+//		final String url = "https://webservice-situ.free.beeceptor.com/tu/pengajuan-surat";
+		
+		RestTemplate restTemplate = new RestTemplate();
+		surat = new PengajuanSuratModel("-", datetoday, datetomorrow, "Overdue Peminjaman Buku", 0, 5, "1"); 
+	  	
+	 	PengajuanSuratModel result = restTemplate.postForObject( url, surat, PengajuanSuratModel.class);
 	 
 	    return result;
 	 }
