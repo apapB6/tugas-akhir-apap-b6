@@ -64,6 +64,11 @@ public class PageController {
 		return home;
 		
 	}
+
+	@RequestMapping({ "/hello" })
+	public String firstPage(){
+		return "home";
+	}
 	
 //	@RequestMapping("/login")
 //	public String login () {
