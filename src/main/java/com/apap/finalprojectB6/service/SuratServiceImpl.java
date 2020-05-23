@@ -23,11 +23,11 @@ public class SuratServiceImpl implements SuratService {
 	
 	@Override
 	public PengajuanSuratModel addSurat(PengajuanSuratModel surat) {
-		createSuratTU(surat);
-		return suratdb.save(surat);
-	}
+//		createSuratTU(surat);
+//		return suratdb.save(surat);
+//	}
 	
-	public boolean createSuratTU(PengajuanSuratModel surat){
+//	public boolean createSuratTU(PengajuanSuratModel surat){
 		final String url = "https://backend-situ.herokuapp.com";
 		LocalDate today = LocalDate.now();
 		Date datetoday = Date.valueOf(today);
@@ -35,7 +35,7 @@ public class SuratServiceImpl implements SuratService {
 			//uuid_user masih hardcode
 			PengajuanSuratModel newSurat = new PengajuanSuratModel("-", datetoday, null, "Overdue Peminjaman Buku", 0, 5, "1");
 			PengajuanSuratModel result = restTemplate.postForObject((url+"//pengajuan-surat/add"), newSurat, PengajuanSuratModel.class);
-			return true;
+			return result;
 	}
 
 }
