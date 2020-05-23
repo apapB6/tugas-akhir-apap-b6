@@ -11,15 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import com.apap.finalprojectB6.model.PengajuanSuratModel;
-import com.apap.finalprojectB6.repository.SuratDB;
 
 
 
 @Service
 @Transactional
 public class SuratServiceImpl implements SuratService {
-	@Autowired
-	private SuratDB suratdb;
 	
 	@Override
 	public PengajuanSuratModel addSurat(PengajuanSuratModel surat) {
