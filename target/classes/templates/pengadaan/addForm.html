@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+    <title>Tambah Pengadaan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+      
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	    
+    <style>
+      body {
+        font-family: "Lato", sans-serif;
+      }
+
+      .sidenav {
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #FFFFFF;
+        overflow-x: hidden;
+        padding-top: 20px;
+      }
+
+      .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #000000;
+        display: block;
+      }
+
+      .sidenav a:hover {
+        color: #63b761;
+      }
+
+      .main {
+        margin-left: 250px; /* Same as the width of the sidenav */
+        font-size: 15px; /* Increased text to enable scrolling */
+        padding: 0px 0px;
+      }
+
+      @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+      }
+    </style>
+	</head>
+	<body>
+    <div class="sidenav">
+      <br><a href="/profile">FOTO</a>
+      <p th:text="${detailUser.getNama()}"></p>
+      <p th:text="${detailUser.getUser_role().getNama()}"></p>
+      <br><br>
+      <a href="/">Beranda</a>
+      <a href="/jenis">Jenis Buku</a>
+      <a href="/buku">Buku</a>
+      <a href="/peminjaman">Peminjaman</a>
+      <a href="/pengadaan">Pengadaan</a>
+      <a href="/pengguna">Pengguna</a>
+    </div>
+
+    <div class="main">
+	    <nav th:replace="fragments/fragment :: navbar"></nav>
+	    <br>
+	    <div class="container">	      
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <div class="card">
+              <b><center><div text-align = "center" class="card-header">Tambah Data Pengadaan</div></center></b>
+              <div class="card-body"> 
+                <form th:action="@{/pengadaan/tambah}" th:object="${user}" method="POST">
+                  Judul: <br>
+                  <input type="text" name="judul" class="form-control"/>
+                  <br>
+                  Pengarang: <br>
+                  <input type="text" name="pengarang" class="form-control"/>
+                  <br>
+                  Penerbit: <br>
+                  <input type="text" name="penerbit" class="form-control"/>
+                  <br>
+                  Jumlah: <br>
+                  <input type="number" name="jumlah" min=0 class="form-control"/>
+                  <br>
+                  Harga: <br>
+                  <input type="number" name="harga" min=0 class="form-control"/>
+                  <br>
+                  <button type="submit" class="btn btn-success" name="submit">Simpan</button>
+                  <br>
+                </form>
+              </div>
+            </div>		        
+          </div>
+        </div>        
+	    </div>
+    </div>
+	</body>
+</html>
