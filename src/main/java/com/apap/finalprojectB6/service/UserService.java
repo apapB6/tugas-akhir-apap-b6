@@ -8,13 +8,13 @@ import com.apap.finalprojectB6.model.UserWebServiceModel;
 
 public interface UserService {
 	UserModel addUser(UserModel user);
-	boolean addUserSivitas(UserModel user);
-	public String encrypt(String Password);
-	boolean validate(String username);
+//	public String encrypt(String Password);
 	List<UserModel> getAllUser();
 	UserModel getUserById(int id);
 	UserModel getUserByUuid(String uuid);
 	UserModel getUserByUsername(String username);
 //	void createNip(UserModel user);
 	UserModel getUser(String user);
+	boolean validate(String username);
+	boolean addUserSivitas(UserModel user);
 }

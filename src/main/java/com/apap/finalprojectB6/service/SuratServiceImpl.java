@@ -28,7 +28,7 @@ public class SuratServiceImpl implements SuratService {
 	}
 	
 	public boolean createSuratTU(PengajuanSuratModel surat){
-		final String url = "https://backend-si.herokuapp.com";
+		final String url = "https://backend-situ.herokuapp.com";
 		LocalDate today = LocalDate.now();
 		Date datetoday = Date.valueOf(today);
 		RestTemplate restTemplate = new RestTemplate();
