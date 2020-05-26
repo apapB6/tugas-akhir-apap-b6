@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public UserModel addUser(UserModel user) {
-//		String pass = encrypt(user.getPassword());
+		String pass = encrypt(user.getPassword());
 		String uuid = UUID.randomUUID().toString().replace("-", "");
 		UserModel uuidcheck = this.getUserByUuid(uuid);
 		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy");
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 		while (uuidcheck != null) {
 			uuid = UUID.randomUUID().toString().replace("-", "");
 		}
-//		user.setPassword(pass);
+		user.setPassword(pass);
 		user.setUuid(uuid);
 		user.setNip(nip);
 		addUserSivitas(user);
@@ -53,12 +53,12 @@ public class UserServiceImpl implements UserService {
 			return true;
 	}
 
-//	@Override
-//	public String encrypt(String password) {
-//		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//		String hashedPassword = passwordEncoder.encode(password);
-//		return hashedPassword;
-//	}
+	@Override
+	public String encrypt(String password) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(password);
+		return hashedPassword;
+	}
 	
 	@Override
 	public boolean validate(String username) {
