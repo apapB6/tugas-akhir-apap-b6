@@ -11,6 +11,8 @@ package com.apap.finalprojectB6.security;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.apap.finalprojectB6.service.JwtUserDetailsService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,7 +37,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
     @Autowired
-    private UserDetailsService jwtUserDetailsService;
+	private UserDetailsService jwtUserDetailsService;
+
+	@Bean
+	public UserDetailsService userDetailsService() {
+		return super.userDetailsService();
+	}
 
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
