@@ -65,10 +65,11 @@ public class PageController {
 		
 	}
 
-	// @RequestMapping({ "/hello" })
-	// public String firstPage(){
-	// 	return "home";
-	// }
+	@GetMapping({ "/hello" })
+	public List<UserModel> firstPage(){
+		List<UserModel> user = userService.getAllUser();
+		return user;
+	}
 	
 //	@RequestMapping("/login")
 //	public String login () {
