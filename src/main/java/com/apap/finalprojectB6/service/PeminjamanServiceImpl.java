@@ -1,21 +1,15 @@
 package com.apap.finalprojectB6.service;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.apap.finalprojectB6.model.BukuModel;
 import com.apap.finalprojectB6.model.PeminjamanModel;
-import com.apap.finalprojectB6.repository.BukuDB;
 import com.apap.finalprojectB6.repository.PeminjamanDB;
-
 
 @Service
 @Transactional
@@ -28,12 +22,10 @@ public class PeminjamanServiceImpl implements PeminjamanService {
 		return peminjamandb.save(pinjam);
 	}
 
-	
 	@Override
 	public List<PeminjamanModel> getAllPeminjaman() {
 		return peminjamandb.findAll();
 	}
-	
 	
 	@Override
 	public PeminjamanModel getPeminjamanById(int id) {
@@ -61,7 +53,6 @@ public class PeminjamanServiceImpl implements PeminjamanService {
 	public void hitungHari(int id, PeminjamanModel peminjaman) {
 		PeminjamanModel old = this.getPeminjamanById(id);
 		LocalDate today = LocalDate.now();
-		Date date = Date.valueOf(today);
 		Period period = Period.between(peminjaman.getTanggal_pengembalian().toLocalDate(), today);
 	    int diff = period.getDays();
 		if(diff >= 0){

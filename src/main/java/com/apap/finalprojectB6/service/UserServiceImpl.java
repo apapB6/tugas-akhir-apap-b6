@@ -15,7 +15,6 @@ import com.apap.finalprojectB6.repository.UserRoleDB;
 
 import java.util.UUID;
 
-
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {

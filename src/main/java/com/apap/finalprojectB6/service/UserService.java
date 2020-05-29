@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.apap.finalprojectB6.model.UserModel;
 
-
 public interface UserService {
 	UserModel addUser(UserModel user);
 	boolean addUserSivitas(UserModel user);
