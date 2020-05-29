@@ -42,7 +42,7 @@ public class BukuController {
 
 	@Autowired
 	private PeminjamanService peminjamanService;
-	
+
 	@Autowired
 	private UserService userService;
 
@@ -64,7 +64,7 @@ public class BukuController {
 	}
 
 	@PostMapping(value = "/peminjaman/{id}")
-	private PeminjamanModel detail1(@PathVariable int id) {
+	private PeminjamanModel detail1(@RequestBody String uuid_user, @PathVariable int id) {
 		PeminjamanModel peminjaman = new PeminjamanModel();
 		BukuModel buku = bukuService.getBukuById(id);
 		LocalDate today = LocalDate.now();
@@ -77,30 +77,30 @@ public class BukuController {
 		peminjaman.setTanggal_pengembalian(duedate);
 		peminjaman.setNama_buku(buku.getJudul());
 		peminjaman.setNama_peminjam(userService.getUserByUuid(peminjaman.getUuid_user()).getNama());
+		peminjaman.setNama_peminjam(userService.getUserByUuid(uuid_user).getNama());
 		bukuService.updateJumlahKurang(id, buku);
 		return peminjamanService.addPeminjaman(peminjaman);
 	}
 
-	 @GetMapping(value = "/edit/{id}")
-	 private BukuModel updateBuku(@PathVariable int id) {
-		 BukuModel buku = bukuService.getBukuById(id);
-		 return buku;
-	 }
-	
-	 @PostMapping(value = "/edit/{id}")
-	 private BukuModel updateBuku(@RequestBody BukuModel buku,
-		 @PathVariable int id) {	 
-		 return bukuService.updateBuku(id, buku);
-	 }
-	
-	 @GetMapping(value = "/delete/{id}")
-	 private BukuModel deleteBuku(@PathVariable int id) {
-	 BukuModel buku = bukuService.getBukuById(id);
-	 return buku;
-	 }
-	
-	 @PostMapping(value = "/delete/{id}")
-	 private BukuModel delete(@PathVariable int id) {
-	 return bukuService.deleteBuku(id);
-	 }
+	@GetMapping(value = "/edit/{id}")
+	private BukuModel updateBuku(@PathVariable int id) {
+		BukuModel buku = bukuService.getBukuById(id);
+		return buku;
+	}
+
+	@PostMapping(value = "/edit/{id}")
+	private BukuModel updateBuku(@RequestBody BukuModel buku, @PathVariable int id) {
+		return bukuService.updateBuku(id, buku);
+	}
+
+	@GetMapping(value = "/delete/{id}")
+	private BukuModel deleteBuku(@PathVariable int id) {
+		BukuModel buku = bukuService.getBukuById(id);
+		return buku;
+	}
+
+	@PostMapping(value = "/delete/{id}")
+	private BukuModel delete(@PathVariable int id) {
+		return bukuService.deleteBuku(id);
+	}
 }
