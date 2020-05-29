@@ -84,18 +84,6 @@ public class UserModel implements Serializable {
     @Size(max = 200)
     @Column(name = "password", nullable = false)
     private String password;
-   
-//    @OneToMany(mappedBy = "user_peminjaman", fetch = FetchType.LAZY)
-//    private Set<PeminjamanModel> listPeminjaman = new HashSet<>();
-//    
-//    @OneToMany(mappedBy = "user_pengadaan", fetch = FetchType.LAZY)
-//    private Set<PengadaanModel> listPengadaan = new HashSet<>();
-//    
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "id_role", referencedColumnName = "id")
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-//    @JsonIgnore
-//    private RoleModel user_role;
     
     @NotNull
     @Column(name = "id_role", nullable = false)
@@ -141,31 +129,6 @@ public class UserModel implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-//	public RoleModel getUser_role() {
-//		return user_role;
-//	}
-//
-//	public void setUser_role(RoleModel user_role) {
-//		this.user_role = user_role;
-//	}
-
-//	public Set<PeminjamanModel> getListPeminjaman() {
-//		return listPeminjaman;
-//	}
-//
-//	public void setListPeminjaman(Set<PeminjamanModel> listPeminjaman) {
-//		this.listPeminjaman = listPeminjaman;
-//	}
-//
-//	public Set<PengadaanModel> getListPengadaan() {
-//		return listPengadaan;
-//	}
-//
-//	public void setListPengadaan(Set<PengadaanModel> listPengadaan) {
-//		this.listPengadaan = listPengadaan;
-//	}
-	
 
 	public String getNama() {
 		return nama;
@@ -215,36 +178,6 @@ public class UserModel implements Serializable {
 		this.telepon = telepon;
 	}
 	
-	
-
-//	@Override
-//	public boolean equals(Object o) {
-//	    if(o == null)
-//	    {
-//	        return false;
-//	    }
-//	    if (o == this)
-//	    {
-//	        return true;
-//	    }
-//	    if (getClass() != o.getClass())
-//	    {
-//	        return false;
-//	    }
-//	     
-//	    UserModel user = (UserModel) o;
-//	    return (this.getId() == user.getId());
-//	}
-//	
-//	@Override
-//	public int hashCode()
-//	{
-//	    final int PRIME = 31;
-//	    int result = 1;
-//	    result = PRIME * result + (int) getId();
-//	    return result;
-//	}  
-	
 	public int getId_role() {
 		return id_role;
 	}
@@ -252,16 +185,5 @@ public class UserModel implements Serializable {
 	public void setId_role(int id_role) {
 		this.id_role = id_role;
 	}
-
-//	public String CreateNIP() {
-//		//Random Alphabet
-//		Random r = new Random();
-//        String random =  String.valueOf((char)(r.nextInt(26)+'A') + String.valueOf((char)(r.nextInt(26)+'A')));	
-//        //Formatting Year
-//		int year = Calendar.getInstance().get(Calendar.YEAR);
-//		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyy");
-//		String strDate= formatter.format(getTanggal_lahir());			
-//		return String.valueOf(year) + strDate + random ;
-//	}
 
 }

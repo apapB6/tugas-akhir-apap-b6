@@ -74,18 +74,7 @@ public class PeminjamanModel implements Serializable {
     @Size(max = 200)
     @Column(name = "nama_peminjam", nullable = false)
     private String nama_peminjam;
-    
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "uuid_user", referencedColumnName = "id")
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-//    @JsonIgnore
-//    private UserModel user_peminjaman;
-//	
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "id_buku", referencedColumnName = "id")
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-//    @JsonIgnore
-//    private BukuModel PinjamBuku;
+
 
     /**
      * Getter&Setter
@@ -174,38 +163,4 @@ public class PeminjamanModel implements Serializable {
 	public void setNama_peminjam(String nama_peminjam) {
 		this.nama_peminjam = nama_peminjam;
 	}
-
-	
-//	public UserModel getUser_peminjaman() {
-//		return user_peminjaman;
-//	}
-//
-//	public void setUser_peminjaman(UserModel user_peminjaman) {
-//		this.user_peminjaman = user_peminjaman;
-//	}
-//
-//	public BukuModel getPinjamBuku() {
-//		return PinjamBuku;
-//	}
-//
-//	public void setPinjamBuku(BukuModel pinjamBuku) {
-//		PinjamBuku = pinjamBuku;
-//	}
-//
-//	public int getJumlah_hari() {
-//		return jumlah_hari;
-//	}
-//
-//	public void setJumlah_hari(int jumlah_hari) {
-//		this.jumlah_hari = jumlah_hari;
-//	}
-//
-//	public int getDenda() {
-//		return denda;
-//	}
-//
-//	public void setDenda(int denda) {
-//		this.denda = denda;
-//	}
-
 }
