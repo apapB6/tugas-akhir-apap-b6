@@ -50,15 +50,6 @@ public class PengajuanSuratModel implements Serializable {
 		@NotNull
 		@Column(name = "uuid_user", nullable = true)
 		private String uuid_user;
-		
-//    private int id;
-//	private String nomor_surat;
-//	private String uuid_user;
-//	private String keterangan;
-//	private Date tanggal_pengajuan;
-//	private Date tanggal_disetujui;
-//    private int status;
-//    private int id_jenis_surat;
 
 	public PengajuanSuratModel(String nomor_surat,  Date tanggal_pengajuan, Date tanggal_disetujui, String keterangan, int status, int id_jenis_surat, String uuid_user){
 		this.nomor_surat = nomor_surat;

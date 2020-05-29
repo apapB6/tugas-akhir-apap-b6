@@ -64,12 +64,7 @@ public class PengadaanModel implements Serializable {
     @NotNull
     @Column(name = "status", nullable = false)
     private int status;
-    
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "uuid_user", referencedColumnName = "id")
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-//    @JsonIgnore
-//    private UserModel user_pengadaan;
+
     
     /**
      * Getter&Setter
@@ -150,15 +145,6 @@ public class PengadaanModel implements Serializable {
 
 	public void setNama(String nama) {
 		this.nama = nama;
-	}
-
-//	public UserModel getUser_pengadaan() {
-//		return user_pengadaan;
-//	}
-//
-//	public void setUser_pengadaan(UserModel user_pengadaan) {
-//		this.user_pengadaan = user_pengadaan;
-//	}
-    
+	} 
     
 }

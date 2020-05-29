@@ -27,7 +27,7 @@ import com.apap.finalprojectB6.service.PeminjamanService;
 import com.apap.finalprojectB6.service.PengadaanService;
 
 @RestController
-@RequestMapping("/beranda")
+@RequestMapping("/")
 @CrossOrigin(origins = "*")
 @Controller
 public class PageController {
@@ -43,9 +43,8 @@ public class PageController {
 	@Autowired
     private BukuService bukuService;
 
-	@GetMapping("/")
+	@GetMapping("beranda")
 	public HomeModel home(Model model) {
-//		UserModel detailUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
 		HomeModel home = new HomeModel();
 		home.setJumlah_buku(bukuService.getAllBuku().size());
 		home.setJumlah_pengadaan(pengadaanService.getAllPengadaan().size());
@@ -70,10 +69,5 @@ public class PageController {
 		List<UserModel> user = userService.getAllUser();
 		return user;
 	}
-	
-//	@RequestMapping("/login")
-//	public String login () {
-//		return "login";
-//	}
-//	
+		
 }

@@ -53,15 +53,6 @@ public class BukuModel implements Serializable {
     @NotNull
     @Column(name = "jumlah", nullable = false)
     private int jumlah;
-    
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "id_jenis_buku", referencedColumnName = "id")
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-//    @JsonIgnore
-//    private JenisModel buku_jenis;
-//    
-//    @OneToMany(mappedBy = "PinjamBuku", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-//    private Set<PeminjamanModel> peminjamanList = new HashSet<>();
 
     @NotNull
     @Column(name = "id_jenis_buku", nullable = false)
@@ -118,50 +109,5 @@ public class BukuModel implements Serializable {
 	public void setId_jenis_buku(int id_jenis_buku) {
 		this.id_jenis_buku = id_jenis_buku;
 	}
-	
-
-//	public JenisModel getBuku_jenis() {
-//		return buku_jenis;
-//	}
-
-//	public void setBuku_jenis(JenisModel bukuJenis) {
-//		this.buku_jenis = bukuJenis;
-//	}
-//
-//	public Set<PeminjamanModel> getPeminjamanList() {
-//		return peminjamanList;
-//	}
-//
-//	public void setPeminjamanList(Set<PeminjamanModel> peminjamanList) {
-//		this.peminjamanList = peminjamanList;
-//	}
-//
-//	@Override
-//	public boolean equals(Object o) {
-//	    if(o == null)
-//	    {
-//	        return false;
-//	    }
-//	    if (o == this)
-//	    {
-//	        return true;
-//	    }
-//	    if (getClass() != o.getClass())
-//	    {
-//	        return false;
-//	    }
-//	     
-//	    BukuModel buku = (BukuModel) o;
-//	    return (this.getId() == buku.getId());
-//	}
-//	
-//	@Override
-//	public int hashCode()
-//	{
-//	    final int PRIME = 31;
-//	    int result = 1;
-//	    result = PRIME * result + (int) getId();
-//	    return result;
-//	}  
-    
+   
 }
