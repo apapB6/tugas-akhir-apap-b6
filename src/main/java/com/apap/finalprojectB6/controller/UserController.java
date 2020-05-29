@@ -34,15 +34,11 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	//
-	// @RequestMapping(value = "/profile", method = RequestMethod.GET)
-	// private String profil(Model model) {
-	// UserModel detailUser =
-	// userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-	// model.addAttribute("detailUser", detailUser);
-	// return "profil/index";
-	// }
-	//
+	@GetMapping(value = "/profile/{uuid}")
+	private UserModel profile(@PathVariable String uuid){
+		UserModel profile = userService.getUserByUuid(uuid);
+		return profile;
+	}
 	
 	@GetMapping(value = "/viewall")
 	private List<UserModel> pengguna(Model model) {
