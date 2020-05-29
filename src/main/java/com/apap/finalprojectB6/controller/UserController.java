@@ -55,7 +55,7 @@ public class UserController {
 	@PostMapping(value = "/add", consumes = { MimeTypeUtils.APPLICATION_JSON_VALUE })
 	private boolean addSubmit(@RequestBody UserModel pengguna) {	
 		if (userService.validate(pengguna.getUsername())) {
-			pengguna.setId_role(3);
+			pengguna.setId_role(5);
 			userService.addUser(pengguna);
 			return true;
 		} else {
