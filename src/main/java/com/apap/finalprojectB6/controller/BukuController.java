@@ -75,8 +75,6 @@ public class BukuController {
 		peminjaman.setStatus(0);
 		peminjaman.setTanggal_peminjaman(date);
 		peminjaman.setTanggal_pengembalian(duedate);
-		// HARDCODE
-		peminjaman.setUuid_user("1");
 		peminjaman.setNama_buku(buku.getJudul());
 		peminjaman.setNama_peminjam(userService.getUserByUuid(peminjaman.getUuid_user()).getNama());
 		bukuService.updateJumlahKurang(id, buku);
