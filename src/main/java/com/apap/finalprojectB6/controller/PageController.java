@@ -4,12 +4,8 @@ import com.apap.finalprojectB6.model.UserModel;
 import com.apap.finalprojectB6.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.context.SecurityContextHolder;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apap.finalprojectB6.model.BukuModel;
 import com.apap.finalprojectB6.model.HomeModel;
 import com.apap.finalprojectB6.model.PeminjamanModel;
-import com.apap.finalprojectB6.model.PengadaanModel;
 import com.apap.finalprojectB6.service.BukuService;
 import com.apap.finalprojectB6.service.PeminjamanService;
 import com.apap.finalprojectB6.service.PengadaanService;
