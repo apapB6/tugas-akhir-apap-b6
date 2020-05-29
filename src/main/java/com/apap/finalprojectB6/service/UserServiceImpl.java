@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 		UserModel uuidcheck = this.getUserByUuid(uuid);
 		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy");
 		String strDate= formatter.format(user.getTanggal_lahir());
-		String nip = "P" + strDate + uuid;
+		String nip = "G" + strDate + uuid;
 		while (uuidcheck != null) {
 			uuid = UUID.randomUUID().toString().replace("-", "");
 		}
