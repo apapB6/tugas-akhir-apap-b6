@@ -76,7 +76,7 @@ public class BukuController {
 		peminjaman.setTanggal_peminjaman(date);
 		peminjaman.setTanggal_pengembalian(duedate);
 		peminjaman.setNama_buku(buku.getJudul());
-		peminjaman.setNama_peminjam(userService.getUserByUuid(peminjaman.getUuid_user()).getNama());
+		// peminjaman.setNama_peminjam(userService.getUserByUuid(peminjaman.getUuid_user()).getNama());
 		peminjaman.setNama_peminjam(userService.getUserByUuid(uuid_user).getNama());
 		bukuService.updateJumlahKurang(id, buku);
 		return peminjamanService.addPeminjaman(peminjaman);
