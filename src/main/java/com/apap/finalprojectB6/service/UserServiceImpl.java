@@ -22,11 +22,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRoleDB userdb;
 	
-//	@Override
-//	public void createNip(UserModel user) {
-//		user.setNip(user.CreateNIP());
-//	}
-	
 	@Override
 	public UserModel addUser(UserModel user) {
 		String pass = encrypt(user.getPassword());
