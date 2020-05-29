@@ -64,7 +64,7 @@ public class PageController {
 		
 	}
 
-	@GetMapping({ "/hello" })
+	@GetMapping({ "hello" })
 	public List<UserModel> firstPage(){
 		List<UserModel> user = userService.getAllUser();
 		return user;
