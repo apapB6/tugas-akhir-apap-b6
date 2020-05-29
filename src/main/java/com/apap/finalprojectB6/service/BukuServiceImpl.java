@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.apap.finalprojectB6.model.BukuModel;
-import com.apap.finalprojectB6.model.JenisModel;
 import com.apap.finalprojectB6.repository.BukuDB;
-
 
 @Service
 @Transactional
@@ -22,13 +20,11 @@ public class BukuServiceImpl implements BukuService {
 		return bukudb.save(buku);
 	}
 
-	
 	@Override
 	public List<BukuModel> getAllBuku() {
 		List<BukuModel> allBuku = (List<BukuModel>) bukudb.findAll();
 		return allBuku;
 	}
-	
 	
 	@Override
 	public BukuModel getBukuById(int id) {

@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.apap.finalprojectB6.model.PeminjamanModel;
 
-
 public interface PeminjamanService {
 	PeminjamanModel addPeminjaman(PeminjamanModel pinjam);
 	List<PeminjamanModel> getAllPeminjaman();

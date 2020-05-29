@@ -3,8 +3,6 @@ package com.apap.finalprojectB6.service;
 import java.util.List;
 
 import com.apap.finalprojectB6.model.BukuModel;
-import com.apap.finalprojectB6.model.JenisModel;
-
 
 public interface BukuService {
 	BukuModel addBuku(BukuModel buku);
