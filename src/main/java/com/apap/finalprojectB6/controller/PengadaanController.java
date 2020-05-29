@@ -38,7 +38,7 @@ public class PengadaanController {
 		List<PengadaanModel> pengadaan = pengadaanService.getAllPengadaan();
 		return pengadaan;
 	}
-	//
+
 	@GetMapping(value = "/detail/{id}")
 	private PengadaanModel detail(@PathVariable int id){
 		PengadaanModel pengadaan = pengadaanService.getPengadaanById(id);
@@ -48,14 +48,14 @@ public class PengadaanController {
 
 	@PostMapping(value = "/add")
 	private PengadaanModel addSubmit(@RequestBody PengadaanModel pengadaan){
-		//hardcode uuid
-		pengadaan.setUuid_user("1");
-//		if(user id_role nya == 5) {
-		pengadaan.setStatus(1);
+		UserModel user = userService.getUserByUuid(pengadaan.getUuid_user());
+
+		if(user.getId_role() == 5) {
+			pengadaan.setStatus(1);		
+		}else {
+			pengadaan.setStatus(0);
+		}
 		pengadaan.setNama(userService.getUserByUuid(pengadaan.getUuid_user()).getNama());
-//		}else {
-//			pengadaan.setStatus(0);
-//		}
 		return pengadaanService.addPengadaan(pengadaan);
 	}
 
