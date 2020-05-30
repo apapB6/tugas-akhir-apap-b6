@@ -51,9 +51,9 @@ public class BukuController {
 		return buku;
 	}
 
-	@PostMapping(value = "/peminjaman/{id}")
-	private PeminjamanModel addpeminjaman(@RequestBody PeminjamanModel peminjaman, @PathVariable int id) {
-		//PeminjamanModel peminjaman = new PeminjamanModel();
+	@PostMapping(value = "/peminjaman/{id}", consumes = "text/plain")
+	private PeminjamanModel addpeminjaman(@RequestBody String uuid_user, @PathVariable int id) {
+		PeminjamanModel peminjaman = new PeminjamanModel();
 		BukuModel buku = bukuService.getBukuById(id);
 		LocalDate today = LocalDate.now();
 		LocalDate nextWeek = today.plus(1, ChronoUnit.WEEKS);
@@ -64,7 +64,8 @@ public class BukuController {
 		peminjaman.setTanggal_peminjaman(date);
 		peminjaman.setTanggal_pengembalian(duedate);
 		peminjaman.setNama_buku(buku.getJudul());
-		peminjaman.setNama_peminjam(userService.getUserByUuid(peminjaman.getUuid_user()).getNama());
+		// peminjaman.setNama_peminjam(userService.getUserByUuid(peminjaman.getUuid_user()).getNama());
+		peminjaman.setNama_peminjam(userService.getUserByUuid(uuid_user).getNama());
 		bukuService.updateJumlahKurang(id, buku);
 		return peminjamanService.addPeminjaman(peminjaman);
 	}
