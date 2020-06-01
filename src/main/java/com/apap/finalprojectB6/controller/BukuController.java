@@ -94,7 +94,7 @@ public class BukuController {
 		List<PeminjamanModel> peminjaman = peminjamanService.getAllPeminjaman();
 		for(int i=0; i<peminjaman.size(); i++) {
 			if(buku.getJudul().equals(peminjaman.get(i).getNama_buku())) {
-				if((peminjaman.get(i).getNama_buku() == 1) || (peminjaman.get(i).getNama_buku() == 4)){
+				if((peminjaman.get(i).getStatus() == 1) || (peminjaman.get(i).getStatus() == 4)){
 					break;
 				}else{
 					return false;
