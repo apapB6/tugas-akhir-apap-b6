@@ -96,7 +96,7 @@ public class BukuController {
 			if(buku.getJudul().equals(peminjaman.get(i).getNama_buku())) {
 				return false;
 			} else {
-				continue
+				continue;
 			}
 		} bukuService.deleteBuku(id);
 		return true;
