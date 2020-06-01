@@ -22,7 +22,8 @@ public class BukuServiceImpl implements BukuService {
 
 	@Override
 	public List<BukuModel> getAllBuku() {
-		List<BukuModel> allBuku = (List<BukuModel>) bukudb.findAll();
+		// List<BukuModel> allBuku = (List<BukuModel>) bukudb.findAll();
+		List<BukuModel> allBuku = (List<BukuModel>) bukudb.getAllBuku();
 		return allBuku;
 	}
 	

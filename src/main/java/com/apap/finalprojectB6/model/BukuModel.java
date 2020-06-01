@@ -1,6 +1,8 @@
 package com.apap.finalprojectB6.model;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,7 +42,9 @@ public class BukuModel implements Serializable {
 
     @NotNull
     @Column(name = "id_jenis_buku", nullable = false)
-    private int id_jenis_buku;
+	private int id_jenis_buku;
+	
+	private Date deleted_at;
     
     /**
      * Getter&Setter
@@ -92,6 +96,14 @@ public class BukuModel implements Serializable {
 
 	public void setId_jenis_buku(int id_jenis_buku) {
 		this.id_jenis_buku = id_jenis_buku;
+	}
+
+	public Date getDeleted_At(){
+		return deleted_at;
+	}
+
+	public void setDeleted_At(Date deleted_at){
+		this.deleted_at = deleted_at;
 	}
    
 }

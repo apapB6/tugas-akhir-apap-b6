@@ -85,20 +85,31 @@ public class BukuController {
 	@GetMapping(value = "/delete/{id}")
 	private BukuModel deleteBuku(@PathVariable int id) {
 		BukuModel buku = bukuService.getBukuById(id);
+		LocalDate today = LocalDate.now();
+		Date date = Date.valueOf(today);
+		buku.setDeleted_At(date);
 		return buku;
 	}
 
 	@PostMapping(value = "/delete/{id}")
 	private Boolean delete(@PathVariable int id) {
 		BukuModel buku = bukuService.getBukuById(id);
-		List<PeminjamanModel> peminjaman = peminjamanService.getAllPeminjaman();
-		for(int i=0; i<peminjaman.size(); i++) {
-			if(buku.getJudul().equals(peminjaman.get(i).getNama_buku())) {
-				return false;
-			} else {
-				continue;
-			}
-		} bukuService.deleteBuku(id);
-		return true;
+
+		if(buku.getDeleted_At() == null){
+			return false;
+		}else{
+			bukuService.deleteBuku(id);
+			return true;
+		}
+
+		// List<PeminjamanModel> peminjaman = peminjamanService.getAllPeminjaman();
+		// for(int i=0; i<peminjaman.size(); i++) {
+		// 	if(buku.getJudul().equals(peminjaman.get(i).getNama_buku())) {
+		// 		return false;
+		// 	} else {
+		// 		continue;
+		// 	}
+		// } bukuService.deleteBuku(id);
+		// return true;
 	}
 }
