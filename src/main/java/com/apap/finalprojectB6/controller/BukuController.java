@@ -92,14 +92,13 @@ public class BukuController {
 	private Boolean delete(@PathVariable int id) {
 		BukuModel buku = bukuService.getBukuById(id);
 		List<PeminjamanModel> peminjaman = peminjamanService.getAllPeminjaman();
-		Boolean result = false;
 		for(int i=0; i<peminjaman.size(); i++) {
 			if(buku.getJudul().equals(peminjaman.get(i).getNama_buku())) {
-				result = false;
+				return false;
 			} else {
-				bukuService.deleteBuku(id);
-				result = true;
+				continue
 			}
-		} return result;
+		} bukuService.deleteBuku(id);
+		return true;
 	}
 }
