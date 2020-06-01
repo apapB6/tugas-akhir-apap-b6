@@ -21,11 +21,11 @@ public class KoperasiRestController {
 
 	
 	@GetMapping(value = "/api/koperasi-employees", produces = MediaType.APPLICATION_JSON_VALUE)
-	public KoperasiModel getAllUser(Model model) 
+	public String getAllUser(Model model) 
 	{	//url masih dummy
 		String url = "https://webservice-siperpus.free.beeceptor.com/siperpus/sikoperasi/employees";
 	    RestTemplate restTemplate = new RestTemplate();
-	    KoperasiModel result = restTemplate.getForObject(url, KoperasiModel.class);	     
+	    String result = restTemplate.getForObject(url, String.class);	     
 	    return result;
 	}
 
