@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.apap.finalprojectB6.model.KoperasiModel;
 import com.apap.finalprojectB6.service.UserService;
 
 @RestController
@@ -20,11 +21,11 @@ public class KoperasiRestController {
 
 	
 	@GetMapping(value = "/api/koperasi-employees", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String getAllUser(Model model) 
+	public KoperasiModel getAllUser(Model model) 
 	{	//url masih dummy
 		String url = "https://webservice-siperpus.free.beeceptor.com/siperpus/sikoperasi/employees";
 	    RestTemplate restTemplate = new RestTemplate();
-	    String result = restTemplate.getForObject(url, String.class);	     
+	    KoperasiModel result = restTemplate.getForObject(url, KoperasiModel.class);	     
 	    return result;
 	}
 
