@@ -2,6 +2,7 @@ package com.apap.finalprojectB6.service;
 
 import java.util.List;
 
+import com.apap.finalprojectB6.model.KoperasiModel;
 import com.apap.finalprojectB6.model.PengadaanModel;
 import com.apap.finalprojectB6.repository.PengadaanDB;
 
@@ -34,5 +35,5 @@ public class PengadaanServiceImpl implements PengadaanService {
 	public PengadaanModel deletePengadaan(int id) {
 		return pengadaandb.deleteById(id);
 	}
-    
+
 }

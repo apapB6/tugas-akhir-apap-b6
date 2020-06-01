@@ -51,8 +51,8 @@ public class BukuController {
 		return buku;
 	}
 
-	@PostMapping(value = "/peminjaman/{id}")
-	private PeminjamanModel detail1(@RequestBody String uuid_user, @PathVariable int id) {
+	@PostMapping(value = "/peminjaman/{id}", consumes = "text/plain")
+	private PeminjamanModel addpeminjaman(@RequestBody String uuid_user, @PathVariable int id) {
 		PeminjamanModel peminjaman = new PeminjamanModel();
 		BukuModel buku = bukuService.getBukuById(id);
 		LocalDate today = LocalDate.now();
@@ -65,6 +65,7 @@ public class BukuController {
 		peminjaman.setTanggal_pengembalian(duedate);
 		peminjaman.setNama_buku(buku.getJudul());
 		// peminjaman.setNama_peminjam(userService.getUserByUuid(peminjaman.getUuid_user()).getNama());
+		peminjaman.setUuid_user(uuid_user);
 		peminjaman.setNama_peminjam(userService.getUserByUuid(uuid_user).getNama());
 		bukuService.updateJumlahKurang(id, buku);
 		return peminjamanService.addPeminjaman(peminjaman);
@@ -88,7 +89,20 @@ public class BukuController {
 	}
 
 	@PostMapping(value = "/delete/{id}")
-	private BukuModel delete(@PathVariable int id) {
-		return bukuService.deleteBuku(id);
+	private Boolean delete(@PathVariable int id) {
+		BukuModel buku = bukuService.getBukuById(id);
+		List<PeminjamanModel> peminjaman = peminjamanService.getAllPeminjaman();
+		for(int i=0; i<peminjaman.size(); i++) {
+			if(buku.getJudul().equals(peminjaman.get(i).getNama_buku())) {
+				if((peminjaman.get(i).getStatus() == 1) || (peminjaman.get(i).getStatus() == 4)){
+					break;
+				}else{
+					return false;
+				}
+			} else {
+				continue;
+			}
+		} bukuService.deleteBuku(id);
+		return true;
 	}
 }
