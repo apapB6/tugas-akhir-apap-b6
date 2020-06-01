@@ -89,7 +89,17 @@ public class BukuController {
 	}
 
 	@PostMapping(value = "/delete/{id}")
-	private BukuModel delete(@PathVariable int id) {
-		return bukuService.deleteBuku(id);
+	private Boolean delete(@PathVariable int id) {
+		BukuModel buku = bukuService.getBukuById(id);
+		List<PeminjamanModel> peminjaman = peminjamanService.getAllPeminjaman();
+		Boolean result = false;
+		for(int i=0; i<peminjaman.size(); i++) {
+			if(buku.getJudul().equals(peminjaman.get(i).getNama_buku())) {
+				result = false;
+			} else {
+				bukuService.deleteBuku(id);
+				result = true;
+			}
+		} return result;
 	}
 }
