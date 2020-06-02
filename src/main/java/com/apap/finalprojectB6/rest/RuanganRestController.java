@@ -24,7 +24,7 @@ import com.apap.finalprojectB6.service.UserService;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
-public class KoperasiRestController {
+public class RuanganRestController {
 	@Autowired
 	private PengadaanService pengadaanService;
 
