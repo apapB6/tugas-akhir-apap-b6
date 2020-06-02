@@ -12,13 +12,13 @@ import com.apap.finalprojectB6.model.PengajuanSuratModel;
 import com.apap.finalprojectB6.service.SuratService;
 
 @RestController
-@RequestMapping("/surat")
+@RequestMapping("/perpustakaan")
 @CrossOrigin(origins = "*")
 public class SuratController {
 	@Autowired
 	private SuratService suratService;
 
-	@PostMapping(value = "/add", consumes = { MimeTypeUtils.APPLICATION_JSON_VALUE })
+	@PostMapping(value = "/api/add-surat", consumes = { MimeTypeUtils.APPLICATION_JSON_VALUE })
 	private PengajuanSuratModel addSubmit(@RequestBody PengajuanSuratModel surat) {	
 		return suratService.addSurat(surat);
 	}
