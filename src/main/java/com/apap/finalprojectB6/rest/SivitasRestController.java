@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import com.apap.finalprojectB6.model.UserModel;
 import com.apap.finalprojectB6.service.UserService;
+import org.springframework.util.MimeTypeUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/api")
