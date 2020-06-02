@@ -16,6 +16,7 @@ import com.apap.finalprojectB6.model.UserWebServiceModel;
 import com.apap.finalprojectB6.service.UserService;
 import com.apap.finalprojectB6.model.PengajuanSuratModel;
 import com.apap.finalprojectB6.service.SuratService;
+import org.springframework.util.MimeTypeUtils;
 
 @RestController
 @RequestMapping("/api")
