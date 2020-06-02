@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/perpustakaan")
+@RequestMapping("/api")
 @CrossOrigin(origins = "*")
 public class SivitasRestController {
 
-	@GetMapping(value = "/api/user-profile/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/user-profile/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getUser(@PathVariable String uuid) 
 	{
 		String url = "http://si-sivitas.herokuapp.com/api/employees/{uuid}";
@@ -27,6 +27,17 @@ public class SivitasRestController {
 	    RestTemplate restTemplate = new RestTemplate();
 	    String result = restTemplate.getForObject(url, String.class, params);	     
 	    return result;
+	}
+	
+	@PostMapping(value = "/add-user", consumes = { MimeTypeUtils.APPLICATION_JSON_VALUE })
+	private boolean addSubmit(@RequestBody UserModel pengguna) {	
+		if (userService.validate(pengguna.getUsername())) {
+			pengguna.setId_role(5);
+			userService.addUser(pengguna);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

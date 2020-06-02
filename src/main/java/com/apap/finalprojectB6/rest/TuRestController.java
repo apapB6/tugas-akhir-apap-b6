@@ -8,19 +8,26 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.apap.finalprojectB6.model.UserModel;
 import com.apap.finalprojectB6.model.UserWebServiceModel;
 import com.apap.finalprojectB6.service.UserService;
+import com.apap.finalprojectB6.model.PengajuanSuratModel;
+import com.apap.finalprojectB6.service.SuratService;
 
 @RestController
-@RequestMapping("/perpustakaan")
+@RequestMapping("/api")
 @CrossOrigin(origins = "*")
 public class TuRestController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping(value = "api/employees")
+	@Autowired
+	private SuratService suratService;
+	
+	@GetMapping(value = "/employees")
 	private List<UserWebServiceModel> pengguna() {
 		List<UserModel> user = userService.getAllUser();
 		ArrayList<UserWebServiceModel> restUser = new ArrayList<UserWebServiceModel>();
@@ -29,6 +36,11 @@ public class TuRestController {
 				restUser.add(getuser);
 			}
 		return restUser;
+	}
+
+	@PostMapping(value = "/add-surat", consumes = { MimeTypeUtils.APPLICATION_JSON_VALUE })
+	private PengajuanSuratModel addSubmit(@RequestBody PengajuanSuratModel surat) {	
+		return suratService.addSurat(surat);
 	}
 
 }
