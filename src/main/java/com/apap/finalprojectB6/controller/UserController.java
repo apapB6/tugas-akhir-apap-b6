@@ -40,4 +40,15 @@ public class UserController {
 		UserModel pengguna = userService.getUserById(id);
 		return pengguna;
 	}
+
+	@PostMapping(value = "/add", consumes = { MimeTypeUtils.APPLICATION_JSON_VALUE })
+	private boolean addSubmit(@RequestBody UserModel pengguna) {	
+		if (userService.validate(pengguna.getUsername())) {
+			pengguna.setId_role(5);
+			userService.addUser(pengguna);
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
