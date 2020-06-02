@@ -13,14 +13,14 @@ import com.apap.finalprojectB6.model.KoperasiModel;
 import com.apap.finalprojectB6.service.UserService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/perpustakaan")
 @CrossOrigin(origins = "*")
 public class KoperasiRestController {
 	@Autowired
 	private UserService userService;
 
 	
-	@GetMapping(value = "/koperasi-employees", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/api/koperasi-employees", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getAllUser(Model model) 
 	{	//url masih dummy
 		String url = "https://webservice-siperpus.free.beeceptor.com/siperpus/sikoperasi/employees";

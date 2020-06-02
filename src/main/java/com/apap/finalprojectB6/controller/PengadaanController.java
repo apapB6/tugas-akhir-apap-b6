@@ -41,6 +41,19 @@ public class PengadaanController {
 		return pengadaan;
 	}
 
+	@PostMapping(value = "/add")
+	private PengadaanModel addSubmit(@RequestBody PengadaanModel pengadaan){
+		UserModel user = userService.getUserByUuid(pengadaan.getUuid_user());
+
+		if(user.getId_role() == 5) {
+			pengadaan.setStatus(1);		
+		}else {
+			pengadaan.setStatus(0);
+		}
+		pengadaan.setNama(userService.getUserByUuid(pengadaan.getUuid_user()).getNama());
+		return pengadaanService.addPengadaan(pengadaan);
+	}
+
 	@GetMapping(value = "/delete/{id}")
 	private PengadaanModel delete(@PathVariable int id){
 		PengadaanModel pengadaan = pengadaanService.getPengadaanById(id);
