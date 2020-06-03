@@ -39,7 +39,7 @@ public class TuRestController {
 		return restUser;
 	}
 
-	@PostMapping(value = "/add", consumes = { MimeTypeUtils.APPLICATION_JSON_VALUE })
+	@PostMapping(value = "/add-surat", consumes = { MimeTypeUtils.APPLICATION_JSON_VALUE })
 	private PengajuanSuratModel addSubmit(@RequestBody PengajuanSuratModel surat) {	
 		return suratService.addSurat(surat);
 	}
