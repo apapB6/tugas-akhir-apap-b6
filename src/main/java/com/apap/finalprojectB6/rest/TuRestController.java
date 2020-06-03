@@ -14,13 +14,13 @@ import com.apap.finalprojectB6.model.UserWebServiceModel;
 import com.apap.finalprojectB6.service.UserService;
 
 @RestController
-@RequestMapping("/perpustakaan")
+@RequestMapping("/api")
 @CrossOrigin(origins = "*")
 public class TuRestController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping(value = "api/employees")
+	@GetMapping(value = "/employees")
 	private List<UserWebServiceModel> pengguna() {
 		List<UserModel> user = userService.getAllUser();
 		ArrayList<UserWebServiceModel> restUser = new ArrayList<UserWebServiceModel>();
