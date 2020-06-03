@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apap.finalprojectB6.model.PengajuanSuratModel;
 import com.apap.finalprojectB6.model.UserModel;
 import com.apap.finalprojectB6.model.UserWebServiceModel;
+import com.apap.finalprojectB6.service.SuratService;
 import com.apap.finalprojectB6.service.UserService;
 
 @RestController
@@ -19,6 +24,9 @@ import com.apap.finalprojectB6.service.UserService;
 public class TuRestController {
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private SuratService suratService;
 	
 	@GetMapping(value = "/employees")
 	private List<UserWebServiceModel> pengguna() {
@@ -29,6 +37,11 @@ public class TuRestController {
 				restUser.add(getuser);
 			}
 		return restUser;
+	}
+
+	@PostMapping(value = "/add", consumes = { MimeTypeUtils.APPLICATION_JSON_VALUE })
+	private PengajuanSuratModel addSubmit(@RequestBody PengajuanSuratModel surat) {	
+		return suratService.addSurat(surat);
 	}
 
 }
