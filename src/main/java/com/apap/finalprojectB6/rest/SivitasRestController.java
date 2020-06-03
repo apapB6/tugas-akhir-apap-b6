@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/perpustakaan")
+@RequestMapping("/api")
 @CrossOrigin(origins = "*")
 public class SivitasRestController {
 
-	@GetMapping(value = "/api/user-profile/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/user-profile/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getUser(@PathVariable String uuid) 
 	{
 		String url = "http://si-sivitas.herokuapp.com/api/employees/{uuid}";
