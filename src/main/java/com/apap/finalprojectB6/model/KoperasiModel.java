@@ -23,8 +23,8 @@ public class KoperasiModel implements Serializable {
 	
 	@NotNull
 	@Size(max = 200)
-	@Column(name = "uuid_user", nullable = false)
-	private String uuid_user;
+	@Column(name = "username", nullable = false)
+	private String username;
 	
 	@NotNull
 	@Column(name = "jumlah_simpanan", nullable = false)
@@ -48,12 +48,12 @@ public class KoperasiModel implements Serializable {
 	}
 
 
-	public String getUuid_user() {
-		return uuid_user;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUuid_user(String uuid_user) {
-		this.uuid_user = uuid_user;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public int getId_role() {
