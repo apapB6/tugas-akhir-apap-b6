@@ -52,7 +52,8 @@ public class RuanganRestController {
 						break;
 					}
 				}continue;
-			} pengadaan.setStatus(0);
+			} 
+			//pengadaan.setStatus(0);
 		}else {
 			pengadaan.setStatus(0);
 		}
