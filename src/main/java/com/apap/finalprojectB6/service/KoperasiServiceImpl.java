@@ -16,7 +16,8 @@ public class KoperasiServiceImpl implements KoperasiService {
 	private KoperasiDB kopdb;
 	
 	@Override
-	public KoperasiModel add(KoperasiModel kop) {
-		return kopdb.save(kop);
+	public List<KoperasiModel> getAllUser(){
+		List<KoperasiModel> all = (List<KoperasiModel>) kopdb.findAll();
+		return all;
 	}
 }
