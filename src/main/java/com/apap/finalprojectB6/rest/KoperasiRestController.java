@@ -21,7 +21,7 @@ public class KoperasiRestController {
 
 	
 	@GetMapping(value = "/koperasi-employees", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String getAllUser(Model model) 
+	public String getAllUser() 
 	{	//url masih dummy
 		String url = "https://webservice-siperpus.free.beeceptor.com/siperpus/sikoperasi/employees";
 	    RestTemplate restTemplate = new RestTemplate();
