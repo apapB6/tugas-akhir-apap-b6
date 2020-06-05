@@ -3,7 +3,6 @@ package com.apap.finalprojectB6.controller;
 import java.util.List;
 
 import com.apap.finalprojectB6.model.PengadaanModel;
-import com.apap.finalprojectB6.model.UserModel;
 import com.apap.finalprojectB6.service.PengadaanService;
 import com.apap.finalprojectB6.service.UserService;
 
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
