@@ -33,7 +33,7 @@ public class KoperasiRestController {
 	@GetMapping(value = "/koperasi-employees", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getAllUser() 
 	{	//url masih dummy
-		String url = "https://si-perpus-b6.herokuapp.com/dummy/koperasi-employees";
+		String url = "https://si-perpus-b6.herokuapp.com/api/dummy/koperasi-employees";
 	    RestTemplate restTemplate = new RestTemplate();
 	    String result = restTemplate.getForObject(url, String.class);	     
 	    return result;
