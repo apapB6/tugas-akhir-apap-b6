@@ -39,12 +39,14 @@ public class RuanganRestController {
 		UserModel user = userService.getUserByUuid(pengadaan.getUuid_user());
 		
 		String[] cekUser = koperasi.getAllUser().split("[,{}: \n]");
-		
+		System.out.println(koperasi.getAllUser());
 		if(user.getId_role() == 5) {
 			pengadaan.setStatus(1);		
 		}else if (user.getId_role() == 3){
 			for(int i = 0; i<cekUser.length; i++) {
+				System.out.println(cekUser[i]);
 				if(user.getUsername().equals(cekUser[i])) {
+					System.out.println(cekUser[i+3]);
 					int simpanan=Integer.parseInt(cekUser[i+6]);
 					if((cekUser[i+3].equals("6")) && (simpanan > 1000000)) {
 						pengadaan.setStatus(3);
