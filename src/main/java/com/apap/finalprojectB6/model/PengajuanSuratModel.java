@@ -3,52 +3,14 @@ package com.apap.finalprojectB6.model;
 import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
-
-import com.sun.istack.NotNull;
-
-@Entity
-@Table(name = "surat")
 public class PengajuanSuratModel implements Serializable {	
-	private static final long serialVersionUID = 1L;
-		
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private long id;
 
-		@NotNull
-		@Size(max = 200)
-		@Column(name = "nomor_surat", nullable = false)
 		private String nomor_surat;
-
-		@NotNull
-		@Column(name = "tanggal_pengajuan", nullable = false)
 		private Date tanggal_pengajuan;
-
-		@Column(name = "tanggal_disetujui", nullable = true)
 		private Date tanggal_disetujui;
-
-		@NotNull
-		@Size(max = 200)
-		@Column(name = "keterangan", nullable = true)
 		private String keterangan;
-
-		@NotNull
-		@Column(name = "status", nullable = false)
 		private int status;
-
-		@NotNull
-		@Column(name = "id_jenis_surat", nullable = false)
 		private int id_jenis_surat;
-
-		@NotNull
-		@Column(name = "uuid_user", nullable = true)
 		private String uuid_user;
 
 	public PengajuanSuratModel(String nomor_surat,  Date tanggal_pengajuan, Date tanggal_disetujui, String keterangan, int status, int id_jenis_surat, String uuid_user){
@@ -119,10 +81,6 @@ public class PengajuanSuratModel implements Serializable {
 
 	public void setId_jenis_surat(int id_jenis_surat) {
 		this.id_jenis_surat = id_jenis_surat;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 }
     
