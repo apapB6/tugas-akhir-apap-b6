@@ -45,8 +45,8 @@ public class RuanganRestController {
 		}else if (user.getId_role() == 3){
 			for(int i = 0; i<cekUser.length; i++) {
 				if(user.getUsername().equals(cekUser[i])) {
-					int simpanan=Integer.parseInt(cekUser[i+4]);
-					if((cekUser[i+2].equals("6")) && (simpanan > 1000000)) {
+					int simpanan=Integer.parseInt(cekUser[i+6]);
+					if((cekUser[i+3].equals("6")) && (simpanan > 1000000)) {
 						pengadaan.setStatus(3);
 					}else {
 						break;
