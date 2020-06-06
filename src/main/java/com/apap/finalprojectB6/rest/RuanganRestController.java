@@ -37,7 +37,7 @@ public class RuanganRestController {
 	@PostMapping(value = "/add-pengadaan")
 	private PengadaanModel addSubmit(@RequestBody PengadaanModel pengadaan){
 		UserModel user = userService.getUserByUuid(pengadaan.getUuid_user());
-		String[] cekUser = koperasi.getAllUser().split("[{,:}]");
+		String[] cekUser = koperasi.getAllUser().split("[{,:\"}]");
 		if(user.getId_role() == 5) {
 			pengadaan.setStatus(1);		
 		}else if (user.getId_role() == 3){
