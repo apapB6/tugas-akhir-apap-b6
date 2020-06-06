@@ -35,7 +35,7 @@
 ### Response
 ```json
 {
-		"nomor_surat": "-",
+        "nomor_surat": "-",
 	"tanggal_pengajuan": "2020-05-06",
 	"tanggal_disetujui": null,
 	"keterangan":"Overdue Peminjaman Buku",
