@@ -61,7 +61,7 @@
     "telepon": "085691123456",
     "username": "pustakawan",
     "password": "$2a$10$LDHouLTuAnqyHeW80eh2NuDs/8B.OgZlN1Q0XZGB6vkanet/zbH5W",
-    "id_role": 3
+    "id_role": 5
 }
 ```
 
