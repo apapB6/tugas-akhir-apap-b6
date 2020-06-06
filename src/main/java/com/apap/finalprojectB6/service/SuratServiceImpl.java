@@ -19,7 +19,6 @@ public class SuratServiceImpl implements SuratService {
 		LocalDate today = LocalDate.now();
 		Date datetoday = Date.valueOf(today);
 		RestTemplate restTemplate = new RestTemplate();
-			//uuid_user masih hardcode
 			PengajuanSuratModel newSurat = new PengajuanSuratModel("-", datetoday, null, "Overdue Peminjaman Buku", 0, 5, "1");
 			PengajuanSuratModel result = restTemplate.postForObject((url+"//pengajuan-surat/add"), newSurat, PengajuanSuratModel.class);
 			return result;
